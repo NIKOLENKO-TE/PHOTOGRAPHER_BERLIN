@@ -61,7 +61,7 @@ const Featured = () => {
         setCurrentIndex(slideIndex)
     }
     return (
-        <div className='h-[700px] w-full py-1 px-4 relative group '>
+        <div className='ssm:h-[500px] md:h-[700px] w-full py-1 px-2 relative group '>
             <div className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
                 style={{ backgroundImage: `url(${sliders[currentIndex].url})` }}
             ></div>
