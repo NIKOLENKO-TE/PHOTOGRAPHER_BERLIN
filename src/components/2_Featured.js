@@ -65,10 +65,10 @@ const Featured = () => {
             <div className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
                 style={{ backgroundImage: `url(${sliders[currentIndex].url})` }}
             ></div>
-            <div className='hidden group-hover:block absolute top-[30%] -translate-x-0 translate-y-[100%] left-5 text-2xl rounded-full p-2 py-10 bg-[#f779368c] text-white cursor-pointer'>
+            <div className='hidden group-hover:block absolute ssm:top-[20%] md:top-[30%] -translate-x-0 translate-y-[100%] left-5 text-2xl rounded-full p-2 py-10 bg-[#f779368c] text-white cursor-pointer'>
                 <TiArrowLeftThick size={20} onClick={prevSlider} />
             </div>
-            <div className='hidden group-hover:block absolute top-[30%] -translate-x-0 translate-y-[100%] right-5 text-2xl rounded-full p-2 py-10 bg-[#f779368c] text-white cursor-pointer'>
+            <div className='hidden group-hover:block absolute ssm:top-[20%] md:top-[30%] -translate-x-0 translate-y-[100%] right-5 text-2xl rounded-full p-2 py-10 bg-[#f779368c] text-white cursor-pointer'>
                 <TiArrowRightThick size={20} onClick={nextSlider} />
             </div>
             <div className='flex top-4 justify-center py-2'>
