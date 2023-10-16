@@ -6,6 +6,7 @@ import Meal from "./components/5_Meal";
 import Categories from "./components/6_Categories";
 import NewsLetter from "./components/7_NewsLetter";
 import Footer from "./components/8_Footer";
+import BottomBanner from "./components/9_Bottom_banner";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Categories/>
       <NewsLetter/>
       <Footer/>
+      <BottomBanner/>
     </div>
   );
 }
