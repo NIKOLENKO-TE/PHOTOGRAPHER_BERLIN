@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TiArrowLeftThick, TiArrowRightThick } from "react-icons/ti";
 import { RxDotFilled } from 'react-icons/rx'
+import Slider from "react-slick";
 import featured_photo_0 from './img/Featured/0.jpg'
 import featured_photo_1 from './img/Featured/1.jpg'
 import featured_photo_2 from './img/Featured/2.jpg'

@@ -26,8 +26,8 @@ const TopPicks = () => {
         <>
             <div >
                 <h3 className="flex justify-center py-1">
-                    <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
-                        <span className='relative text-white font-bold text-2xl '>Top Works</span>
+                    <span className=" bg-indigo-700 relative rounded-full h-9 shadow-md w-content">
+                        <span className='relative text-white font-bold text-2xl '> Select photo category </span>
                     </span>
                 </h3>
                 <div className='xl:flex lg:flex md:flex sd:flex w-full m-auto py-2 px-2'>
@@ -40,7 +40,7 @@ const TopPicks = () => {
                                         <p className='px-2'>{item.price}</p>
                                         <button className='border-dotted border-white text-white mx-2 absolute bottom-4'>Add to cart</button>
                                     </div>
-                                    <img className='h-[200px] w-full object-cover rounded-3xl cursor-pointer hover:scale-105 ease-out duration-300' src={item.img} alt={item.title} />
+                                    <img className='h-[300px] w-full object-cover rounded-3xl cursor-pointer hover:scale-105 ease-out duration-300' src={item.img} alt={item.title} />
                                 </div>
                             </SplideSlide>
                         ))}
