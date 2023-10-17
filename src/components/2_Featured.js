@@ -16,10 +16,10 @@ import featured_photo_9 from './img/Featured/9.jpg'
 const Featured = () => {
     const sliders = [
         {
-            url: featured_photo_0
+            url: featured_photo_1
         },
         {
-            url: featured_photo_1
+            url: featured_photo_0
         },
         {
             url: featured_photo_2
