@@ -20,15 +20,18 @@ function App() {
     <div className="relative">
       <div className="absolute inset-0 blur-sm " style={app_dg_image_style} />
       <div className="relative bg-origin-content ">
-        <TopNav />
+        <TopNav /> 
         <Featured />
-        <Delivery />
-        <TopPicks />
+
+      <Delivery />
+           {/*   
+               <BottomBanner /> 
+  <TopPicks />
         <Meal />
         <Categories />
         <NewsLetter />
-        <Footer />
-        <BottomBanner />
+        <Footer />*/}
+       
       </div>
     </div>
   );
