@@ -8,7 +8,7 @@ const Delivery = () => {
       <h3 className="flex justify-center">
         <span className=" bg-indigo-500 relative text-center rounded-full h-9 shadow-md w-content">
           <span className="relative text-white font-bold text-2xl px-3 ">
-            You can order my services below.
+            Order my services below.
           </span>
         </span>
       </h3>
