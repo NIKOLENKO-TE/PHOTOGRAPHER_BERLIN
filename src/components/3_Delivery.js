@@ -12,13 +12,13 @@ const Delivery = () => {
           </span>
         </span>
       </h3>
-      <div className="w-flex h-flex max-w-[1000px]  mx-auto py-2 pl-4 grid md:grid-cols-2 mt-2 bg-white/50 rounded-2xl shadow-xl">
-        <img className="mx-1 py-2 " src={iphone_photo_1} alt="iphone_photo " />
+      <div className="w-flex h-flex max-w-[1000px] mx-auto py-2 pl-4 grid sm:grid-cols-2 mt-2 bg-white/50 rounded-2xl shadow-xl gap-2">
+        <img className="mx-1 ssm:pr-5 py-2 w-auto   flex justify-items-center" src={iphone_photo_1} alt="iphone_photo" />
         <div className="flex-col grid m-1 ">
-          <h1 className="text-center md:text-4xl  sm:text-3xl text-2xl font-bold ml-2 mr-2 pr-2 ">
+          <h1 className="text-center sm:text-3xl md:text-4xl font-bold ml-2 mr-2 pr-2 ">
             Don't miss the opportunity to place your order today
           </h1>
-          <p className="px-3 text-2xl text-justify tracking-tight leading-8">
+          <p className="pr-3 text-2xl text-justify tracking-tight leading-8">
             <img
               className="mx-1 h-[128px] float-left  clear-left "
               src={nikolenkote}

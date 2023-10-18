@@ -33,31 +33,32 @@ const Featured = () => {
 
     return (
         <div className='ssm:h-[500px] md:h-[700px] w-full py-1 px-2 relative group'>
-<Carousel
-    showStatus={false}
-    showThumbs={false}
-    selectedItem={currentIndex}
-    onChange={setCurrentIndex}
-    emulateTouch={true} // Включаем эмуляцию сенсорного ввода
->
-    {sliders.map((sliderItem, slideIndex) => (
-        <div key={slideIndex} className='text-2xl cursor-pointer'>
-            <img
-                className='h-[500px] md:h-[700px] w-full object-cover rounded-2xl cursor-pointer hover:scale-105 ease-out duration-300'
-                src={sliderItem}
-                alt={`Slide ${slideIndex}`}
-            />
-        </div>
-    ))}
-</Carousel>
-
+            <Carousel
+                showStatus={false}
+                showThumbs={false}
+                selectedItem={currentIndex}
+                onChange={setCurrentIndex}
+                emulateTouch={true}
+                infiniteLoop={true}
+                interval={5000} // Устанавливаем интервал в 5000 миллисекунд (5 секунд)
+            >
+                {sliders.map((sliderItem, slideIndex) => (
+                    <div key={slideIndex} className='text-2xl cursor-pointer'>
+                        <img
+                            className='h-[500px] md:h-[700px] w-full object-cover rounded-2xl cursor-pointer hover:scale-105 ease-out duration-300'
+                            src={sliderItem}
+                            alt={`Slide ${slideIndex}`}
+                        />
+                    </div>
+                ))}
+            </Carousel>
             <div className='flex top-4 justify-center py-2'>
                 {sliders.map((sliderItem, slideIndex) => (
                     <div
                         key={slideIndex}
                         onClick={() => moveToNextSlide(slideIndex)}
                         className='text-2xl cursor-pointer'
-                    >                  
+                    >
                     </div>
                 ))}
             </div>
