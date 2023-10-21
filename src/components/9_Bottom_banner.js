@@ -1,57 +1,52 @@
-import React, { useEffect } from 'react';
-import '@splidejs/splide/dist/css/splide.min.css';
-import Splide from '@splidejs/splide';
-
-import featured_photo_0 from './img/Featured/0.jpg';
-import featured_photo_1 from './img/Featured/1.jpg';
-import featured_photo_2 from './img/Featured/2.jpg';
-import featured_photo_3 from './img/Featured/3.jpg';
-import featured_photo_4 from './img/Featured/4.jpg';
-import featured_photo_5 from './img/Featured/5.jpg';
-import featured_photo_6 from './img/Featured/6.jpg';
-import featured_photo_7 from './img/Featured/7.jpg';
-import featured_photo_8 from './img/Featured/8.jpg';
-import featured_photo_9 from './img/Featured/9.jpg';
-
-const featured_photos = [
-  featured_photo_0,
-  featured_photo_1,
-  featured_photo_2,
-  featured_photo_3,
-  featured_photo_4,
-  featured_photo_5,
-  featured_photo_6,
-  featured_photo_7,
-  featured_photo_8,
-  featured_photo_9,
-];
+import React, { useEffect, useState } from "react";
 
 const BottomBanner = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    new Splide('#thumbnail-carousel', {
-      perPage: 3, // Отображать 3 фотографии в карусели
-      height: '300px', // Высота карусели
-      gap: 10, // Расстояние между фотографиями
-      pagination: true, // Отключить пагинацию, если не нужна
-    }).mount();
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      // когда блок должен появиться на экране
+      const triggerPosition = windowHeight * 0.1;
+
+      if (scrollPosition > triggerPosition) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
-    <div className='rounded-2xl pb-5'>
-      <div className="main-photo h-[300px]">
-        <img src={featured_photos[0]} alt={`Featured 0`} />
+    <div className={`z-50 w-full pb-1 ${isVisible ? "" : "hidden"}`}>
+      {<div className="z-50 w-full pb-1 block sm:hidden">
+      <div className="grid max-w-[315px] grid-cols-3 gap-1 p-1 mx-auto bg-white bg-opacity-0 backdrop-filter backdrop-blur-[5px] pb-1 rounded-lg">
+        <button
+          type="button"
+          className="px-5 h-[30px] w-[100px] text-xl font-medium text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none dark:focus:ring-blue-800 border-blue-600 rounded-lg flex items-center justify-center"
+        >
+          <span className="mt-[-2px]">News</span>
+        </button>
+        <button
+          type="button"
+          className="px-5 h-[30px] w-[100px] text-xl font-medium text-white bg-gradient-to-l from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none dark:focus:ring-blue-800 border-blue-600 rounded-lg flex items-center justify-center"
+        >
+          <span className="mt-[-2px]">E-mail</span>
+        </button>
+        <button
+          type="button"
+          className="px-5 h-[30px] w-[100px] text-xl font-medium text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none dark:focus:ring-blue-800 border-blue-600 rounded-lg flex items-center justify-center"
+        >
+          <span className="mt-[-2px]">Call</span>
+        </button>
       </div>
-      <section id="thumbnail-carousel" className="splide">
-        <div className="splide__track">
-          <ul className="splide__list">
-            {featured_photos.map((photo, index) => (
-              <li key={index} className="splide__slide">
-                <img src={photo} alt={`Featured ${index}`} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+    </div>}
     </div>
   );
 };

@@ -21,12 +21,15 @@ function App() {
     <div className="relative">
       <div className="absolute inset-0 blur-sm " style={app_dg_image_style} />
       <div className="relative bg-origin-content ">
-        <TopNav /> 
+        <TopNav />
         <Test />
         <Delivery />
-           {/*   
+
+        <div className="fixed bottom-0 left-0 w-full sm:flex">
+          <BottomBanner />
+        </div>
+        {/*   
         <Featured /> 
-        <BottomBanner /> 
         <TopPicks />
         <Meal />
         <Categories />

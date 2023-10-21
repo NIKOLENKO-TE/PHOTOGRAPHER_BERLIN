@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
-import { BsPerson } from "react-icons/bs";
-import { MdDragIndicator, MdMarkAsUnread } from "react-icons/md";
-import { FaGoogleWallet } from "react-icons/fa";
-import { TbTruckReturn } from "react-icons/tb";
-import { MdHelp, MdOutlineFavorite } from "react-icons/md";
+import {  MdMarkAsUnread } from "react-icons/md";
 import DE from "./img/DE.svg";
 
 const TopNav = () => {
@@ -49,7 +44,7 @@ const TopNav = () => {
           <div className="ssm:w-[160px] sm:w-[180px]">160-5945-127</div>
         </button>
       </div>
-    </div>
+      </div>
   );
 };
 export default TopNav;
