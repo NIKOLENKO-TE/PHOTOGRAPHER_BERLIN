@@ -90,7 +90,7 @@ const Featured = () => {
   }, []);
 
   return (
-    <div className="px-2 bg-white">
+    <div className="px-2 ">
       <section id="thumbnail-carousel" ref={splideRef} className="splide pb-2">
         <div className="splide__track rounded-2xl">
           <ul className="splide__list">

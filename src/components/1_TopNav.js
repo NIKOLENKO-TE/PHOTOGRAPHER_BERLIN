@@ -34,11 +34,11 @@ const TopNav = () => {
         />
       </div>
       <div className="hidden ssm:flex items-center ml-2">
-        <button className="bg-orange-700 hover:bg-orange-800 active:bg-orange-900 focus:outline-none  focus:bg-orange-800 text-white text-xl hidden iphone:flex py-2 rounded-full px-3 mr-2">
+        <button className="bg-orange-700 hover:bg-orange-800 active:bg-orange-900 border-transparent focus:outline-none  focus:bg-orange-800 text-white text-xl hidden iphone:flex py-2 rounded-full px-3 mr-2">
           <MdMarkAsUnread size={30} />
           nikolenkote@gmail.com
         </button>
-        <button className="bg-orange-700 hover:bg-orange-800 active:bg-orange-900 focus:outline-none  focus:bg-orange-800 text-white hidden ssm:flex text-xl py-2 rounded-full">
+        <button className="bg-orange-700 hover:bg-orange-800 active:bg-orange-900 border-transparent focus:outline-none  focus:bg-orange-800 text-white hidden ssm:flex text-xl py-2 rounded-full">
           <FaTelegram size={30}/>
           <div className="w-[180px]">+49-160-5945-127</div>
         </button>

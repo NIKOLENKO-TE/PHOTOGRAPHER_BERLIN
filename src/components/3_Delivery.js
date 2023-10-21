@@ -4,23 +4,25 @@ import nikolenkote from "./img/NIKOLENKOTE.png";
 
 const Delivery = () => {
   return (
-    <div className="w-full dg-white pt-2 px-4">
+    <div className="w-full dg-white pt-2 px-4 pb-5 ">
       <h3 className="flex justify-center">
         <span className=" bg-indigo-500 relative text-center rounded-full h-9 shadow-md w-content">
           <span className="relative text-white font-bold text-2xl px-3 ">
-            Order my services below.
+            Order my services below
           </span>
         </span>
       </h3>
-      <div className="w-flex h-flex max-w-[1000px] mx-auto py-2 pl-4 grid sm:grid-cols-2 mt-2 bg-white/50 rounded-2xl shadow-xl gap-2">
-      <img className="mx-1 ssm:pr-5 py-2 w-auto flex justify-items-center rounded-lg" src={iphone_photo_1} alt="iphone_photo" />      
-        <div className="flex-col grid m-1 ">
-          <h1 className="text-center sm:text-3xl md:text-4xl font-bold ml-2 mr-2 pr-2 ">
+      <div className="w-flex h-flex max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2 mt-2 bg-white/50 rounded-2xl shadow-xl ">
+        <div className="justify-items-center  m-2">
+          <img  src={iphone_photo_1} alt="iphone_photo" />
+        </div>
+        <div className="flex-col grid  m-2">
+          <h1 className="text-center ssm:text-2xl md:text-4xl font-bold ml-2 mr-2 ">
             Don't miss the opportunity to place your order today
           </h1>
-          <p className="pr-3 text-2xl text-justify tracking-tight leading-8">
+          <p className="pr-3 ssm:text-xl sm:text-2xl text-justify tracking-tight leading-8">
             <img
-              className="mx-1 h-[128px] float-left  clear-left "
+              className="mx-1  h-[128px] float-left  clear-left "
               src={nikolenkote}
               alt=" avatar "
             />
@@ -33,7 +35,7 @@ const Delivery = () => {
             washing machine. You can view my work and order my services below.
           </p>
           <div className="flex items-center justify-center py-2">
-            <button className="bg-black hover:bg-blue-800 hover:text-white text-[#00df9a] h-[50px] w-[200px] rounded-xl font-medium ">
+            <button className="bg-black hover:bg-blue-800 border-transparent  hover:text-white text-[#00df9a] h-[50px] w-[200px] rounded-xl font-medium ">
               ORDER TODAY
             </button>
           </div>
