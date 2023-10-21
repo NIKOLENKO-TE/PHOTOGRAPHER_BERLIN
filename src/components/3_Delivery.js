@@ -4,7 +4,7 @@ import nikolenkote from "./img/NIKOLENKOTE.png";
 
 const Delivery = () => {
   return (
-    <div className="w-full dg-white py-7 px-4">
+    <div className="w-full dg-white pt-2 px-4">
       <h3 className="flex justify-center">
         <span className=" bg-indigo-500 relative text-center rounded-full h-9 shadow-md w-content">
           <span className="relative text-white font-bold text-2xl px-3 ">

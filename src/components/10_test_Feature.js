@@ -51,22 +51,14 @@ const Featured = () => {
       perMove: 1,
       gap: 10,
       rewind: true,
-      pagination: {
-        el: ".splide__pagination",
-        perPage: 1,
-        gap: 10,
-        focus: "center",
-        trimSpace: true,
-      },
       arrows: true,
     });
   
     splideInstance.on("mounted", () => {
       splideInstanceRef.current = splideInstance;
-      splideInstance.go(selectedSlide); // Устанавливаем начальный слайд
+      splideInstance.go(selectedSlide);
     });
   
-    // Добавляем обработчик событий 'move'
     splideInstance.on('move', (newIndex) => {
       setSelectedSlide(newIndex);
     });
@@ -98,14 +90,14 @@ const Featured = () => {
   }, []);
 
   return (
-    <div className="p-2">
-      <section id="thumbnail-carousel" ref={splideRef} class="splide pb-2">
-        <div class="splide__track rounded-2xl">
-          <ul class="splide__list">
+    <div className="px-2 bg-white">
+      <section id="thumbnail-carousel" ref={splideRef} className="splide pb-2">
+        <div className="splide__track rounded-2xl">
+          <ul className="splide__list">
             {sliders.map((sliderItem, slideIndex) => (
-              <li key={slideIndex} class="splide__slide">
+              <li key={slideIndex} className="splide__slide">
                 <img
-                  class="h-[700px] w-full object-cover duration-300 ease-out"
+                  className="h-[700px] w-full object-cover duration-300 ease-out"
                   src={sliderItem}
                   alt={`Slide ${slideIndex}`}
                 />
