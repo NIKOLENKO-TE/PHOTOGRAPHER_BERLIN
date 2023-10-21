@@ -42,6 +42,7 @@ const Featured = () => {
 
   const splideRef = useRef(null);
   const previewSplideRef = useRef(null);
+  const [selectedSlide, setSelectedSlide] = useState(0);
   const [splide, setSplide] = useState(null);
 
   useEffect(() => {
@@ -79,14 +80,11 @@ const Featured = () => {
 
     previewSplide.mount();
 
-    // Обработчик для выбора слайда по клику на превью
     previewSplide.on("click", (index) => {
-      if (splide) {
-        console.log('click accepted');
-        splide.go(index);
-      }
+      console.log('click accepted');
+      setSelectedSlide(index);
     });
-  }, [splide]);
+  }, []);
 
   return (
     <div className="p-2">
@@ -108,7 +106,7 @@ const Featured = () => {
       <section
         id="thumbnail-preview"
         ref={previewSplideRef}
-        className="splide "
+        className="splide"
       >
         <div className="splide__track">
           <ul className="splide__list">
@@ -116,7 +114,7 @@ const Featured = () => {
               <li
                 key={previewIndex}
                 className={`splide__slide ${
-                  previewIndex === splide?.index ? "selected" : ""
+                  previewIndex === selectedSlide ? "selected" : ""
                 }`}
               >
                 <img
