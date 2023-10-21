@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState  } from "react";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
-
 import { Splide } from '@splidejs/splide';
 
 import featured_photo_0 from "./img/Featured/0.jpg";
@@ -25,40 +24,73 @@ const Featured = () => {
     featured_photo_6,
     featured_photo_7,
     featured_photo_8,
-    featured_photo_9,
+    featured_photo_9
   ];
-  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const previewImages = [
+    featured_photo_0,
+    featured_photo_1,
+    featured_photo_2,
+    featured_photo_3,
+    featured_photo_4,
+    featured_photo_5,
+    featured_photo_6,
+    featured_photo_7,
+    featured_photo_8,
+    featured_photo_9
+  ];
+
   const splideRef = useRef(null);
+  const previewSplideRef = useRef(null);
+  const [splide, setSplide] = useState(null);
 
   useEffect(() => {
-    const splide = new Splide(splideRef.current, {
-        type: "slide",
+    const splideInstance = new Splide(splideRef.current, {
+      type: "slide",
+      perPage: 1,
+      perMove: 1,
+      gap: 10,
+      rewind: true,
+      pagination: {
+        el: ".splide__pagination",
         perPage: 1,
-        perMove: 1,
         gap: 10,
-        rewind: true,
-        pagination: {
-            el: '.splide__pagination',
-            perPage: 1, // Установите perPage в 10
-            // Установите gap: 10, чтобы точки навигации были ближе друг к другу
-            gap: 1,
-            // Опция "focus" позволяет отображать точки навигации для видимых слайдов
-            focus: 'center',
-            // Опция "trimSpace" удаляет пустое пространство слева и справа от слайдов
-            trimSpace: true,
-        },
-        arrows: true,
+        focus: "center",
+        trimSpace: true,
+      },
+      arrows: true,
     });
 
-    splide.mount();
-}, []);
+    splideInstance.on("mounted", () => {
+      setSplide(splideInstance);
+    });
 
+    splideInstance.mount();
+  }, []);
 
+  useEffect(() => {
+    const previewSplide = new Splide(previewSplideRef.current, {
+      type: "slide",
+      perPage: 6,
+      gap: 10,
+      pagination: false,
+      focus: "center",
+    });
 
+    previewSplide.mount();
+
+    // Обработчик для выбора слайда по клику на превью
+    previewSplide.on("click", (index) => {
+      if (splide) {
+        console.log('click accepted');
+        splide.go(index);
+      }
+    });
+  }, [splide]);
 
   return (
-    <div className="py-1 px-2 relative group cursor-pointer rounded-xl">
-      <section id="thumbnail-carousel" ref={splideRef} className="splide">
+    <div className="p-2">
+      <section id="thumbnail-carousel" ref={splideRef} className="splide pb-2">
         <div className="splide__track rounded-2xl">
           <ul className="splide__list">
             {sliders.map((sliderItem, slideIndex) => (
@@ -67,6 +99,30 @@ const Featured = () => {
                   className="h-[700px] w-full object-cover duration-300 ease-out"
                   src={sliderItem}
                   alt={`Slide ${slideIndex}`}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <section
+        id="thumbnail-preview"
+        ref={previewSplideRef}
+        className="splide "
+      >
+        <div className="splide__track">
+          <ul className="splide__list">
+            {previewImages.map((previewItem, previewIndex) => (
+              <li
+                key={previewIndex}
+                className={`splide__slide ${
+                  previewIndex === splide?.index ? "selected" : ""
+                }`}
+              >
+                <img
+                  className="h-[100px] w-full object-cover rounded-2xl"
+                  src={previewItem}
+                  alt={`Preview ${previewIndex}`}
                 />
               </li>
             ))}
