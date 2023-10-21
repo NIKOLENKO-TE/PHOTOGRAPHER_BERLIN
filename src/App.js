@@ -7,6 +7,7 @@ import Categories from "./components/6_Categories";
 import NewsLetter from "./components/7_NewsLetter";
 import Footer from "./components/8_Footer";
 import BottomBanner from "./components/9_Bottom_banner";
+import Test from "./components/10_test_Feature"
 import app_dg_image from "./components/img/1.jpg";
 
 function App() {
@@ -21,17 +22,17 @@ function App() {
       <div className="absolute inset-0 blur-sm " style={app_dg_image_style} />
       <div className="relative bg-origin-content ">
         <TopNav /> 
-        <Featured />
-
-      <Delivery />
+        <Test />
+        <Delivery />
            {/*   
-               <BottomBanner /> 
-  <TopPicks />
+        <Featured /> 
+        <BottomBanner /> 
+        <TopPicks />
         <Meal />
         <Categories />
         <NewsLetter />
-        <Footer />*/}
-       
+        <Footer />
+           */}
       </div>
     </div>
   );

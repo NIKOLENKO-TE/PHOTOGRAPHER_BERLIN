@@ -13,7 +13,7 @@ const Delivery = () => {
         </span>
       </h3>
       <div className="w-flex h-flex max-w-[1000px] mx-auto py-2 pl-4 grid sm:grid-cols-2 mt-2 bg-white/50 rounded-2xl shadow-xl gap-2">
-        <img className="mx-1 ssm:pr-5 py-2 w-auto   flex justify-items-center" src={iphone_photo_1} alt="iphone_photo" />
+      <img className="mx-1 ssm:pr-5 py-2 w-auto flex justify-items-center rounded-lg" src={iphone_photo_1} alt="iphone_photo" />      
         <div className="flex-col grid m-1 ">
           <h1 className="text-center sm:text-3xl md:text-4xl font-bold ml-2 mr-2 pr-2 ">
             Don't miss the opportunity to place your order today
@@ -22,7 +22,7 @@ const Delivery = () => {
             <img
               className="mx-1 h-[128px] float-left  clear-left "
               src={nikolenkote}
-              alt="Default avatar "
+              alt=" avatar "
             />
             For several years I provided photography services in Ukraine. And
             now don’t miss the opportunity to order my services in Berlin. I
