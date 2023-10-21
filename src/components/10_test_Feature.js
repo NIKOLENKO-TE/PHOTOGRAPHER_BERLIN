@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState  } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
-import { Splide } from '@splidejs/splide';
+import { Splide } from "@splidejs/splide";
 
 import featured_photo_0 from "./img/Featured/0.jpg";
 import featured_photo_1 from "./img/Featured/1.jpg";
@@ -43,7 +43,7 @@ const Featured = () => {
   const splideRef = useRef(null);
   const previewSplideRef = useRef(null);
   const [selectedSlide, setSelectedSlide] = useState(0);
-  const [splide, setSplide] = useState(null);
+  const splideInstanceRef = useRef(null);
 
   useEffect(() => {
     const splideInstance = new Splide(splideRef.current, {
@@ -63,7 +63,8 @@ const Featured = () => {
     });
 
     splideInstance.on("mounted", () => {
-      setSplide(splideInstance);
+      splideInstanceRef.current = splideInstance;
+      splideInstance.go(0); // Устанавливаем начальный слайд
     });
 
     splideInstance.mount();
@@ -78,12 +79,13 @@ const Featured = () => {
       focus: "center",
     });
 
-    previewSplide.mount();
-
     previewSplide.on("click", (index) => {
-      console.log('click accepted');
+      console.log('click')
       setSelectedSlide(index);
+      splideInstanceRef.current.go(index); // Переключаем основной слайд
     });
+
+    previewSplide.mount();
   }, []);
 
   return (
