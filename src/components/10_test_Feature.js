@@ -91,13 +91,13 @@ const Featured = () => {
 
   return (
     <div className="px-2 ">
-      <section id="thumbnail-carousel" ref={splideRef} className="splide pb-2">
-        <div className="splide__track rounded-2xl">
+      <section id="thumbnail-carousel" ref={splideRef} className="splide pb-2 ">
+        <div className="splide__track rounded-2xl ">
           <ul className="splide__list">
             {sliders.map((sliderItem, slideIndex) => (
               <li key={slideIndex} className="splide__slide">
                 <img
-                  className="h-[700px] w-full object-cover duration-300 ease-out"
+                  className="ssm:h-[500px] xl:h-[700px] w-full object-cover duration-300 ease-out "
                   src={sliderItem}
                   alt={`Slide ${slideIndex}`}
                 />
