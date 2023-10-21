@@ -7,25 +7,23 @@ import Categories from "./components/6_Categories";
 import NewsLetter from "./components/7_NewsLetter";
 import Footer from "./components/8_Footer";
 import BottomBanner from "./components/9_Bottom_banner";
-import Test from "./components/10_test_Feature"
-import app_dg_image from "./components/img/1.jpg";
+import dg_image from "./components/img/1.jpg";
 
 function App() {
-  const app_dg_image_style = {
-    backgroundImage: `url(${app_dg_image})`,
+  const dg_image_style = {
+    backgroundImage: `url(${dg_image})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   };
 
   return (
     <div className="relative">
-      <div className="absolute inset-0 blur-sm " style={app_dg_image_style} />
+      <div className="absolute inset-0 blur-sm " style={dg_image_style} />
       <div className="relative bg-origin-content ">
         <TopNav />
-        <Test />
+        <Featured />
         <Delivery />
-
-        <div className="fixed bottom-0 left-0 w-full sm:flex">
+        <div className="fixed bottom-0 w-full ssm:flex ">
           <BottomBanner />
         </div>
         {/*   

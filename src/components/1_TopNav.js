@@ -9,9 +9,6 @@ const TopNav = () => {
   return (
     <div className="max-w-[1520] min-w-[300px] mx-auto flex justify-between items-center p-2 ">
       <div className="flex items-center ">
-        {/* <div onClick={() => setSideNav(!sideNav)} className="cursor-pointer">
-          <MdDragIndicator size={50} />
-        </div> */}
         <div className="bg-gray-200 rounded-full p-1 text-xl md:w-[255px] w-[100px]">
           <div className="justify-left hidden ssm:flex h-[38px] ">
             <h1 className=" text-center justify-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none dark:focus:ring-blue-800 border-blue-600 rounded-full p-1 pl-1 w-[100px]">
