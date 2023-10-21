@@ -44,7 +44,6 @@ const Featured = () => {
   const previewSplideRef = useRef(null);
   const [selectedSlide, setSelectedSlide] = useState(0);
   const splideInstanceRef = useRef(null);
-
   useEffect(() => {
     const splideInstance = new Splide(splideRef.current, {
       type: "slide",
@@ -61,15 +60,20 @@ const Featured = () => {
       },
       arrows: true,
     });
-
+  
     splideInstance.on("mounted", () => {
       splideInstanceRef.current = splideInstance;
-      splideInstance.go(0); // Устанавливаем начальный слайд
+      splideInstance.go(selectedSlide); // Устанавливаем начальный слайд
     });
-
+  
+    // Добавляем обработчик событий 'move'
+    splideInstance.on('move', (newIndex) => {
+      setSelectedSlide(newIndex);
+    });
+  
     splideInstance.mount();
   }, []);
-
+  
   useEffect(() => {
     const previewSplide = new Splide(previewSplideRef.current, {
       type: "slide",
@@ -78,25 +82,30 @@ const Featured = () => {
       pagination: false,
       focus: "center",
     });
-
-    previewSplide.on("click", (index) => {
-      console.log('click')
-      setSelectedSlide(index);
-      splideInstanceRef.current.go(index); // Переключаем основной слайд
+  
+    previewSplide.on("mounted", () => {
+      const slides = previewSplideRef.current.querySelectorAll('.splide__slide');
+  
+      slides.forEach((slide, index) => {
+        slide.addEventListener("click", () => {
+          setSelectedSlide(index);
+          splideInstanceRef.current.go(index); // Переключаем основной слайд
+        });
+      });
     });
-
+  
     previewSplide.mount();
   }, []);
 
   return (
     <div className="p-2">
-      <section id="thumbnail-carousel" ref={splideRef} className="splide pb-2">
-        <div className="splide__track rounded-2xl">
-          <ul className="splide__list">
+      <section id="thumbnail-carousel" ref={splideRef} class="splide pb-2">
+        <div class="splide__track rounded-2xl">
+          <ul class="splide__list">
             {sliders.map((sliderItem, slideIndex) => (
-              <li key={slideIndex} className="splide__slide">
+              <li key={slideIndex} class="splide__slide">
                 <img
-                  className="h-[700px] w-full object-cover duration-300 ease-out"
+                  class="h-[700px] w-full object-cover duration-300 ease-out"
                   src={sliderItem}
                   alt={`Slide ${slideIndex}`}
                 />
