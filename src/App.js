@@ -4,7 +4,6 @@ import AboutMe from "./components/3_About_Me";
 import TopPicks from "./components/4_TopPicks";
 import Meal from "./components/5_Meal";
 import Categories from "./components/6_Categories";
-import NewsLetter from "./components/7_NewsLetter";
 import Footer from "./components/8_Footer";
 import BottomBanner from "./components/9_Bottom_banner";
 import dg_image from "./components/img/1.jpg";
@@ -23,18 +22,17 @@ function App() {
         <TopNav />
         <Featured />
         <AboutMe />
-  
         <div className="fixed bottom-0 w-full ssm:flex ">
-          <BottomBanner />
-        </div>
-        {/*         <TopPicks />
-        <Featured /> 
-        
+        <BottomBanner />
+        </div> 
+        <Footer /> 
+        {/* 
+        <TopPicks />
         <Meal />
-        <Categories />
-        <NewsLetter />
-        <Footer />
-           */}
+        <Categories /> 
+        */}
+       
+           
       </div>
     </div>
   );
