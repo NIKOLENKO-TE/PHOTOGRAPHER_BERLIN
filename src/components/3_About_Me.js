@@ -6,8 +6,8 @@ const Delivery = () => {
   return (
     <div className="w-full dg-white pt-2 px-4 pb-5 ">
       <h3 className="flex justify-center">
-        <span className=" bg-indigo-500 relative text-center rounded-full h-9 shadow-md w-content">
-          <span className="relative text-white font-bold text-2xl px-3 ">
+        <span className="text-white h-[40px] pt-[2px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br dark:focus:ring-blue-800 border-blue-600 shadow-lg shadow-blue-500/50  text-xl flex py-2 rounded-[15px]"
+        > <span className="relative text-white font-bold text-2xl px-3 ">
             Order my services below
           </span>
         </span>
@@ -34,9 +34,9 @@ const Delivery = () => {
             are damaged, scratched, or discolored, even after washing in the
             washing machine. You can view my work and order my services below.
           </p>
-          <div className="flex items-center justify-center py-2">
-            <button className="bg-black hover:bg-blue-800 border-transparent  hover:text-white text-[#00df9a] h-[50px] w-[200px] rounded-xl font-medium ">
-              ORDER TODAY
+          <div className="flex items-center justify-center py-2 ">
+            <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br dark:focus:ring-blue-800 border-blue-600 shadow-lg shadow-blue-500/50  text-xl py-2 mb-2 rounded-[15px] px-3 mr-2"
+        > ORDER TODAY
             </button>
           </div>
         </div>

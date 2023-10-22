@@ -23,11 +23,11 @@ function App() {
         <TopNav />
         <Featured />
         <AboutMe />
-        <TopPicks />
+  
         <div className="fixed bottom-0 w-full ssm:flex ">
           <BottomBanner />
         </div>
-        {/*   
+        {/*         <TopPicks />
         <Featured /> 
         
         <Meal />
