@@ -100,7 +100,7 @@ const Featured = () => {
               return (
                 <li key={slideIndex} className={`splide__slide ${leftShift}`}>
                   <img
-                    className="ssm:h-[500px] xl:h-[700px] w-full object-cover duration-300 ease-out"
+                    className="ssm:h-[440px] xl:h-[700px] w-full object-cover duration-300 ease-out"
                     src={sliderItem}
                     alt={`Slide ${slideIndex}`}
                   />
