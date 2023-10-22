@@ -1,14 +1,13 @@
-import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { MdMarkAsUnread } from "react-icons/md";
-import DE from "./img/DE.svg";
+import DE from "./img/flags/DE.svg"
 
 const TopNav = () => {
   return (
     <div className="mx-auto flex justify-between items-center p-2 ">
       <div className="flex items-center ">
         <div className="bg-white/20 text-white backdrop-blur-[5px] rounded-2xl p-1 text-xl md:w-[255px] w-[94px]">
-          <div className="justify-left hidden ssm:flex h-[38px] ">
+          <div className="hidden ssm:flex h-[38px] ">
             <h1 className="rounded-xl p-1 pl-1 ssm:w-[100px] text-center justify-center text-white bg-gradient-to-r from-blue-500  via-blue-600 to-blue-700 hover:bg-gradient-to-br dark:focus:ring-blue-800 border-blue-600 ">
               TYMOFII
             </h1>
@@ -25,7 +24,7 @@ const TopNav = () => {
           type="text"
           id="searchField"
           placeholder="search photo services on site"
-          style={{ WebkitTextFillColor: 'white', opacity: 0.8 }}
+          style={{ WebkitTextFillColor: 'white', opacity: 0.8, textAlign: "center" }}
         />
       </div>
       <div className="hidden ssm:flex items-center ml-2">
@@ -42,7 +41,7 @@ const TopNav = () => {
             width={42}
             className="rounded-[8px] shadow-md blur-[.2px]"
           />
-          <div>160-5945-127</div>
+          <div> 160-5945-127</div>
         </button>
       </div>
     </div>
