@@ -28,7 +28,7 @@ const TopNav = () => {
       </div>
       <div className="hidden ssm:flex items-center ml-2">
         <button className="text-white bg-gradient-to-l from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br  dark:focus:ring-blue-800 border-blue-600 shadow-lg shadow-blue-500/50 text-xl hidden lg:flex py-2 rounded-[15px] px-3 mr-2">
-          <MdMarkAsUnread size={30} />
+          <MdMarkAsUnread size={28} />
           nikolenkote@gmail.com
         </button>
         <button className="w-[200px] text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br dark:focus:ring-blue-800 border-blue-600 shadow-lg shadow-blue-500/50 text-xl hidden ssm:flex py-2 rounded-[15px] px-3 mr-2 ">
@@ -36,7 +36,7 @@ const TopNav = () => {
             src={DE}
             alt="DE Flag"
             width={42}
-            className="rounded-[8px] shadow-md "
+            className="rounded-[8px] shadow-md blur-[.2px]"
           />
           <div>160-5945-127</div>
         </button>
