@@ -90,17 +90,23 @@ const Featured = () => {
   return (
     <div className="px-2">
       <section id="thumbnail-carousel" ref={splideRef} className="splide pb-2">
-        <div className="splide__track rounded-2xl " >
-          <ul className="splide__list" >
-            {sliders.map((sliderItem, slideIndex) => (
-              <li key={slideIndex} className="splide__slide">
-                <img
-                  className="ssm:h-[500px] xl:h-[700px] w-full object-cover duration-300 ease-out"
-                  src={sliderItem}
-                  alt={`Slide ${slideIndex}`}
-                />
-              </li>
-            ))}
+        <div className="splide__track rounded-2xl">
+          <ul className="splide__list">
+            {sliders.map((sliderItem, slideIndex) => {
+              const photoId = featuredPhotos[slideIndex].id;
+              const isPhotoId4 = photoId === 4;
+              const leftShift = isPhotoId4 ? 'left-shift' : '';
+
+              return (
+                <li key={slideIndex} className={`splide__slide ${leftShift}`}>
+                  <img
+                    className="ssm:h-[500px] xl:h-[700px] w-full object-cover duration-300 ease-out"
+                    src={sliderItem}
+                    alt={`Slide ${slideIndex}`}
+                  />
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
