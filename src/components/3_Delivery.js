@@ -1,6 +1,6 @@
 import React from "react";
 import iphone_photo_1 from "./img/iphones/FC_two_phones_1.png";
-import nikolenkote from "./img/NIKOLENKOTE.png";
+import nikolenkote from "./img/NIKOLENKOTE_PHOTO_BW.png";
 
 const Delivery = () => {
   return (
