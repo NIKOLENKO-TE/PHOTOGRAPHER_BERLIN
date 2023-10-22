@@ -1,42 +1,11 @@
-import React, { useEffect, useRef, useState } from "react"; 
-import "@splidejs/splide/dist/css/themes/splide-default.min.css"; 
-import { Splide } from "@splidejs/splide"; 
-import fp_0 from "./img/Featured/0.jpg"; 
-import fp_1 from "./img/Featured/1.jpg"; 
-import fp_2 from "./img/Featured/2.jpg"; 
-import fp_3 from "./img/Featured/3.jpg"; 
-import fp_4 from "./img/Featured/4.jpg"; 
-import fp_5 from "./img/Featured/5.jpg"; 
-import fp_6 from "./img/Featured/6.jpg"; 
-import fp_7 from "./img/Featured/7.jpg"; 
-import fp_8 from "./img/Featured/8.jpg"; 
-import fp_9 from "./img/Featured/9.jpg"; 
+import React, { useEffect, useRef, useState } from "react";
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+import { Splide } from "@splidejs/splide";
+import { featuredPhotos } from '../data/data';
 
 const Featured = () => {
-  const sliders = [
-    fp_0,
-    fp_1,
-    fp_2,
-    fp_3,
-    fp_4,
-    fp_5,
-    fp_6,
-    fp_7,
-    fp_8,
-    fp_9
-  ];
-  const previewImages = [
-    fp_0,
-    fp_1,
-    fp_2,
-    fp_3,
-    fp_4,
-    fp_5,
-    fp_6,
-    fp_7,
-    fp_8,
-    fp_9
-  ];
+  const sliders = featuredPhotos.map((photo) => photo.img);
+  const previewImages = featuredPhotos.map((photo) => photo.img);
   const splideRef = useRef(null);
   const previewSplideRef = useRef(null);
   const [selectedSlide, setSelectedSlide] = useState(0);

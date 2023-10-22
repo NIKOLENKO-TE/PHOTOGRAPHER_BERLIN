@@ -20,11 +20,11 @@ const Delivery = () => {
           <h1 className="text-center ssm:text-2xl md:text-4xl font-bold ml-2 mr-2 ">
             Don't miss the opportunity to place your order today
           </h1>
-          <p className="pr-3 ssm:text-xl sm:text-2xl text-justify tracking-tight leading-8">
+          <p className="pr-3 ssm:text-xl sm:text-2xl text-justify ">
             <img
-              className="mx-1  h-[128px] float-left  clear-left "
+              className="mx-1  h-[160px] float-left "
               src={nikolenkote}
-              alt=" avatar "
+              alt="My avatar"
             />
             For several years I provided photography services in Ukraine. And
             now don’t miss the opportunity to order my services in Berlin. I

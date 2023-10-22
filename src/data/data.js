@@ -1,3 +1,67 @@
+import fp_0 from "../components/img/Featured/0.jpg"; 
+import fp_1 from "../components/img/Featured/1.jpg"; 
+import fp_2 from "../components/img/Featured/2.jpg"; 
+import fp_3 from "../components/img/Featured/3.jpg"; 
+import fp_4 from "../components/img/Featured/4.jpg"; 
+import fp_5 from "../components/img/Featured/5.jpg"; 
+import fp_6 from "../components/img/Featured/6.jpg"; 
+import fp_7 from "../components/img/Featured/7.jpg"; 
+import fp_8 from "../components/img/Featured/8.jpg"; 
+import fp_9 from "../components/img/Featured/9.jpg"; 
+
+export const featuredPhotos = [
+  {
+    id:0,
+    title: 'featuredPhoto0',
+    img: fp_0,
+  },
+  {
+    id:1,
+    title: 'featuredPhoto1',
+    img: fp_1,
+  },
+  {
+    id:2,
+    title: 'featuredPhoto2',
+    img: fp_2,
+  },
+  {
+    id:3,
+    title: 'featuredPhoto3',
+    img: fp_3
+  },
+  {
+    id:4,
+    title: 'featuredPhoto4',
+    img: fp_4
+  },
+  {
+    id:5,
+    title: 'featuredPhoto5',
+    img: fp_5
+  },
+  {
+    id:6,
+    title: 'featuredPhoto6',
+    img: fp_6
+  },
+  {
+    id:7,
+    title: 'featuredPhoto7',
+    img: fp_7
+  },
+  {
+    id:8,
+    title: 'featuredPhoto8',
+    img: fp_8
+  },
+  {
+    id:9,
+    title: 'featuredPhoto9',
+    img: fp_9
+  },
+]
+
 export const topPicks = [
   {
     id: 1,

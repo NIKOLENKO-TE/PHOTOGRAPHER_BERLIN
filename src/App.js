@@ -1,6 +1,6 @@
 import TopNav from "./components/1_TopNav";
 import Featured from "./components/2_Featured";
-import Delivery from "./components/3_Delivery";
+import AboutMe from "./components/3_About_Me";
 import TopPicks from "./components/4_TopPicks";
 import Meal from "./components/5_Meal";
 import Categories from "./components/6_Categories";
@@ -22,13 +22,14 @@ function App() {
       <div className="relative bg-origin-content ">
         <TopNav />
         <Featured />
-        <Delivery />
+        <AboutMe />
+        <TopPicks />
         <div className="fixed bottom-0 w-full ssm:flex ">
           <BottomBanner />
         </div>
         {/*   
         <Featured /> 
-        <TopPicks />
+        
         <Meal />
         <Categories />
         <NewsLetter />
