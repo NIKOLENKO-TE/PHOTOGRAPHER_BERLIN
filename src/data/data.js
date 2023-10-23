@@ -1,3 +1,4 @@
+import FeaturedCategoryPhoto from "../components/img/Featured/Category1.jpg";
 import fp_0 from "../components/img/Featured/0.jpg"; 
 import fp_1 from "../components/img/Featured/1.jpg"; 
 import fp_2 from "../components/img/Featured/2.jpg"; 
@@ -8,59 +9,113 @@ import fp_6 from "../components/img/Featured/6.jpg";
 import fp_7 from "../components/img/Featured/7.jpg"; 
 import fp_8 from "../components/img/Featured/8.jpg"; 
 import fp_9 from "../components/img/Featured/9.jpg"; 
+import RestoreCategoryPhoto from "../components/img/Restoration/Category2.jpg";
+import RestoreOriginal from "../components/img/Restoration/RestorationOriginal.jpg";
+import RestoreFinal from "../components/img/Restoration/RestorationFinal.jpg";
+
 
 export const featuredPhotos = [
   {
     id:0,
     title: 'featuredPhoto0',
     img: fp_0,
+    categoryPhotos: 1
   },
   {
     id:1,
     title: 'featuredPhoto1',
     img: fp_1,
+    categoryPhotos: 1
   },
   {
     id:2,
     title: 'featuredPhoto2',
     img: fp_2,
+    categoryPhotos: 1
   },
   {
     id:3,
     title: 'featuredPhoto3',
-    img: fp_3
+    img: fp_3,
+    categoryPhotos: 1
   },
   {
     id:4,
     title: 'featuredPhoto4',
-    img: fp_4
+    img: fp_4,
+    categoryPhotos: 1
   },
   {
     id:5,
     title: 'featuredPhoto5',
-    img: fp_5
+    img: fp_5,
+    categoryPhotos: 1
   },
   {
     id:6,
     title: 'featuredPhoto6',
-    img: fp_6
+    img: fp_6,
+    categoryPhotos: 1
   },
   {
     id:7,
     title: 'featuredPhoto7',
-    img: fp_7
+    img: fp_7,
+    categoryPhotos: 1
   },
   {
     id:8,
     title: 'featuredPhoto8',
-    img: fp_8
+    img: fp_8,
+    categoryPhotos: 1
   },
   {
     id:9,
     title: 'featuredPhoto9',
-    img: fp_9
+    img: fp_9,
+    categoryPhotos: 1
+  
   },
 ]
+
+export const restoredPhotos = [
+  {
+    id:0,
+    title: 'RestoreOriginal',
+    img: RestoreOriginal,
+    categoryPhotos: 2
+  },
+  {
+    id:1,
+    title: 'RestoreFinal',
+    img: RestoreFinal,
+    categoryPhotos: 2
+  }
+]
+
+export const categoryPhotos = [
+  {
+    id: 1,
+    name: 'Featured',
+    image: FeaturedCategoryPhoto
+  },
+  {
+    id: 2,
+    name: 'Restoration',
+    image: RestoreCategoryPhoto
+  }
+];
+
+
+
+
+
+
+
+
+
+
+
 
 export const topPicks = [
   {

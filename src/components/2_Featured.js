@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState} from "react";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { Splide } from "@splidejs/splide";
-import { featuredPhotos } from "../data/data";
+import { featuredPhotos, restoredPhotos } from "../data/data";
+import BeforeAfterSlider from 'react-before-after-slider'
 
 const Featured = () => {
   const sliders = featuredPhotos.map((photo) => photo.img);
@@ -122,13 +123,29 @@ const Featured = () => {
       </section>
     );
   };
+ 
+  const ImageComparison = () => {
+    // Используем react-before-after-slider для сравнения изображений
+    return (
+      <BeforeAfterSlider
+        beforeImage={restoredPhotos[0].img} // Изображение до восстановления
+        afterImage={restoredPhotos[1].img}  // Изображение после восстановления
+        width="100%" // Ширина слайдера
+        height="auto" // Высота слайдера
+      />
+    );
+  };
 
-  return (
-    <div className="px-2">
-      <FeaturedPhoto />
-      <FeaturedPhotoThumbnailPreview />
-    </div>
-  );
+
+
+return (
+  <div className="px-2">
+    <ImageComparison /> 
+    <FeaturedPhoto />
+    <FeaturedPhotoThumbnailPreview /> 
+  
+  </div>
+);
 };
 
 export default Featured;

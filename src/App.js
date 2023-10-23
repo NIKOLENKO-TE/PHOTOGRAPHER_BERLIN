@@ -25,8 +25,8 @@ function App() {
         <div className="fixed bottom-0 w-full ssm:flex ">
         <BottomBanner />
         </div> 
-        <Footer /> 
         {/* 
+        <Footer /> 
         <TopPicks />
         <Meal />
         <Categories /> 
