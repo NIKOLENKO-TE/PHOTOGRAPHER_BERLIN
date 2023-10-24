@@ -81,14 +81,18 @@ const Restoration = () => {
           How restoration looks like
         </span>
       </div>
-      <div className="px-2 rounded-2xl flex justify-center p-2  gap-3">
+      <div className="px-2 rounded-2xl flex justify-center p-2 gap-3">
         <ImageRestoration
           beforeImage={restoredPhotos[0].img}
           afterImage={restoredPhotos[1].img}
         />
-        <ImageRestoration
+         <ImageRestoration
           beforeImage={restoredPhotos[2].img}
           afterImage={restoredPhotos[3].img}
+        />
+        <ImageRestoration
+          beforeImage={restoredPhotos[4].img}
+          afterImage={restoredPhotos[5].img}
         />
       </div>
     </div>
