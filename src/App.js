@@ -21,7 +21,11 @@ function App() {
       <div className="absolute inset-0 blur-sm " style={dg_image_style} />
       <div className="relative bg-origin-content ">
         <TopNav />
+<<<<<<< HEAD
          {/* <Featured />
+=======
+        {/* <Featured />
+>>>>>>> 4b8aa61c1719ac9732d15abee409710be5bb1a5a
         <AboutMe /> */}
         <Restoration/>
          {/*<div className="fixed bottom-0 w-full ssm:flex ">
