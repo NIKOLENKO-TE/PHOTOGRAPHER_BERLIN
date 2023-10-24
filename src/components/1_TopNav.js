@@ -7,8 +7,8 @@ const buttonStyle = "rounded-[12px] text-xl text-center justify-center text-whit
 const TopNameButton = () => {
   return (
     <div className="flex h-[42px]">
-      <div className="bg-white/20 backdrop-blur-[5px] rounded-[14px] p-[3px] flex items-center">
-        <button className={`px-0.5 ${buttonStyle}`}>
+      <div className="bg-white/20 backdrop-blur-[5px] rounded-[14px] p-[2px] flex items-center">
+        <button className={`px-1 ${buttonStyle}`}>
           TYMOFII
         </button>
         <div>
