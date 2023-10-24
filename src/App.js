@@ -24,10 +24,10 @@ function App() {
         <Featured />
         <AboutMe /> 
         <Restoration/>
-         {/*<div className="fixed bottom-0 w-full ssm:flex ">
-        <BottomBanner />
+        
+         <div className="fixed bottom-0 w-full ssm:flex "><BottomBanner />
         </div> 
-        <Footer /> 
+        {/*<Footer /> 
         <TopPicks />
         <Meal />
         <Categories /> 

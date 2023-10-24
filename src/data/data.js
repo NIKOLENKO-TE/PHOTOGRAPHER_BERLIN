@@ -16,6 +16,8 @@ import Restore2Original from "../components/img/Restoration/Restoration2Original
 import Restore2Final from "../components/img/Restoration/Restoration2Final.jpg";
 import Restore3Original from "../components/img/Restoration/Restoration3Original.jpg";
 import Restore3Final from "../components/img/Restoration/Restoration3Final.jpg";
+import Restore4Original from "../components/img/Restoration/Restoration4Original.jpg";
+import Restore4Final from "../components/img/Restoration/Restoration4Final.jpg";
 
 
 export const featuredPhotos = [
@@ -117,6 +119,18 @@ export const restoredPhotos = [
     id:3,
     title: 'Restore3Final',
     img: Restore3Final,
+    categoryPhotos: 2
+  },
+  {
+    id:4,
+    title: 'Restore4Original',
+    img: Restore4Original,
+    categoryPhotos: 2
+  },
+  {
+    id:5,
+    title: 'Restore4Final',
+    img: Restore4Final,
     categoryPhotos: 2
   }
 ]

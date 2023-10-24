@@ -29,7 +29,10 @@ const ImageRestoration = ({ beforeImage, afterImage }) => {
       setSliderX(`${(offsetX / container.offsetWidth) * 100}%`);
     }
   };
-
+  const preventRightClick = (e) => {
+    e.preventDefault(); // Предотвратить вызов контекстного меню (правой кнопкой мыши)
+  };
+  
   return (
     <div
       className="relative h-[620px] w-[800px] overflow-hidden object-cover rounded-2xl"
@@ -37,6 +40,7 @@ const ImageRestoration = ({ beforeImage, afterImage }) => {
       onTouchEnd={handleEnd}
       onMouseMove={handleMove}
       onMouseUp={handleEnd}
+      onContextMenu={preventRightClick} 
     >
       <img
         src={beforeImage}
@@ -75,24 +79,29 @@ const ImageRestoration = ({ beforeImage, afterImage }) => {
 
 const Restoration = () => {
   return (
-    <div>
+    <div className="pb-8">
       <div className="flex flex-col items-center justify-center">
         <span className={`px-2 ${buttonStyle}`}>
           How restoration looks like
         </span>
       </div>
       <div className="px-2 rounded-2xl flex justify-center p-2 gap-3">
-        <ImageRestoration
-          beforeImage={restoredPhotos[0].img}
-          afterImage={restoredPhotos[1].img}
-        />
-         <ImageRestoration
+      <ImageRestoration
+      className="hidden ssm:flex"
           beforeImage={restoredPhotos[2].img}
           afterImage={restoredPhotos[3].img}
         />
         <ImageRestoration
+          beforeImage={restoredPhotos[0].img}
+          afterImage={restoredPhotos[1].img}
+        />
+        <ImageRestoration
           beforeImage={restoredPhotos[4].img}
           afterImage={restoredPhotos[5].img}
+        />
+        <ImageRestoration
+          beforeImage={restoredPhotos[6].img}
+          afterImage={restoredPhotos[7].img}
         />
       </div>
     </div>
