@@ -10,8 +10,12 @@ import fp_7 from "../components/img/Featured/7.jpg";
 import fp_8 from "../components/img/Featured/8.jpg"; 
 import fp_9 from "../components/img/Featured/9.jpg"; 
 import RestoreCategoryPhoto from "../components/img/Restoration/Category2.jpg";
-import RestoreOriginal from "../components/img/Restoration/RestorationOriginal.jpg";
-import RestoreFinal from "../components/img/Restoration/RestorationFinal.jpg";
+import Restore1Original from "../components/img/Restoration/Restoration1Original.jpg";
+import Restore1Final from "../components/img/Restoration/Restoration1Final.jpg";
+import Restore2Original from "../components/img/Restoration/Restoration2Original.jpg";
+import Restore2Final from "../components/img/Restoration/Restoration2Final.jpg";
+import Restore3Original from "../components/img/Restoration/Restoration3Original.jpg";
+import Restore3Final from "../components/img/Restoration/Restoration3Final.jpg";
 
 
 export const featuredPhotos = [
@@ -81,17 +85,43 @@ export const featuredPhotos = [
 export const restoredPhotos = [
   {
     id:0,
-    title: 'RestoreOriginal',
-    img: RestoreOriginal,
+    title: 'Restore1Original',
+    img: Restore1Original,
     categoryPhotos: 2
   },
   {
     id:1,
-    title: 'RestoreFinal',
-    img: RestoreFinal,
+    title: 'Restore1Final',
+    img: Restore1Final,
+    categoryPhotos: 2
+  },
+  {
+    id:2,
+    title: 'Restore2Original',
+    img: Restore2Original,
+    categoryPhotos: 2
+  },
+  {
+    id:3,
+    title: 'Restore2Final',
+    img: Restore2Final,
+    categoryPhotos: 2
+  },
+  {
+    id:2,
+    title: 'Restore3Original',
+    img: Restore3Original,
+    categoryPhotos: 2
+  },
+  {
+    id:3,
+    title: 'Restore3Final',
+    img: Restore3Final,
     categoryPhotos: 2
   }
 ]
+
+
 
 export const categoryPhotos = [
   {

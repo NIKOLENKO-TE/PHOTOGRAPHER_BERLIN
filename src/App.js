@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="relative">
-      <div className="absolute inset-0 blur-sm " style={dg_image_style} />
+      <div className="absolute inset-1 blur-sm " style={dg_image_style} />
       <div className="relative bg-origin-content ">
         <TopNav />
         <Featured />
