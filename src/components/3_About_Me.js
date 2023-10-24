@@ -35,7 +35,7 @@ const Delivery = () => {
             washing machine. You can view my work and order my services below.
           </p>
           <div className="flex items-center justify-center py-2 ">
-            <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br dark:focus:ring-blue-800 border-blue-600 shadow-lg shadow-blue-500/50  text-xl py-2 mb-2 rounded-[15px] px-3 mr-2"
+            <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br  border-blue-600 shadow-lg shadow-blue-500/50  text-xl py-2 mb-2 rounded-[15px] px-3 mr-2"
         > ORDER TODAY
             </button>
           </div>
