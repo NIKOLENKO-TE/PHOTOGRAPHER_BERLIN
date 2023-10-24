@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { Splide } from "@splidejs/splide";
-import { featuredPhotos, restoredPhotos } from "../data/data";
+import { featuredPhotos } from "../data/data";
 
 const Featured = () => {
   const sliders = featuredPhotos.map((photo) => photo.img);
