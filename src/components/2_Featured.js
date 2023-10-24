@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { Splide } from "@splidejs/splide";
 import { featuredPhotos, restoredPhotos } from "../data/data";
-import BeforeAfterSlider from 'react-before-after-slider'
 
 const Featured = () => {
   const sliders = featuredPhotos.map((photo) => photo.img);
@@ -103,8 +102,8 @@ const Featured = () => {
     }, []);
     return (
       <section id="thumbnail-preview" ref={previewSplideRef} className="splide">
-        <div className="splide__track">
-          <ul className="splide__list">
+        <div className="splide__track ">
+          <ul className="splide__list ">
             {previewImages.map((previewItem, previewIndex) => (
               <li
                 key={previewIndex}
@@ -112,7 +111,7 @@ const Featured = () => {
                   }`}
               >
                 <img
-                  className="h-[100px] w-full object-cover rounded-2xl"
+                  className="h-[100px] w-full object-cover rounded-2xl "
                   src={previewItem}
                   alt={`Preview ${previewIndex}`}
                 />
@@ -123,29 +122,14 @@ const Featured = () => {
       </section>
     );
   };
- 
-  const ImageComparison = () => {
-    // Используем react-before-after-slider для сравнения изображений
-    return (
-      <BeforeAfterSlider
-        beforeImage={restoredPhotos[0].img} // Изображение до восстановления
-        afterImage={restoredPhotos[1].img}  // Изображение после восстановления
-        width="100%" // Ширина слайдера
-        height="auto" // Высота слайдера
-      />
-    );
-  };
 
-
-
-return (
-  <div className="px-2">
-    <ImageComparison /> 
-    <FeaturedPhoto />
-    <FeaturedPhotoThumbnailPreview /> 
   
-  </div>
-);
+  return (
+    <div className="px-2">
+      <FeaturedPhoto />
+      <FeaturedPhotoThumbnailPreview />
+    </div>
+  );
 };
 
 export default Featured;
