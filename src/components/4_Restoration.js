@@ -53,16 +53,16 @@ const Restoration = () => {
           />
         </div>
         <div
-          id="cursorButton"
+          id="cursorButtonTop"
           className={`relative  ${cursorBGStyle}`}
           style={{ left: `calc(${sliderX} - 32px)`, userSelect: "none" }}
           onMouseDown={handleStart}
           onTouchStart={handleStart}
         >
           <div className={`bottom-[5px] ${cursorStyle}`}></div>
-
-        </div><div
-          id="cursorButton"
+        </div>
+        <div
+          id="cursorButtonBottom"
           className={`relative  ${cursorBGStyle}`}
           style={{ left: `calc(${sliderX} - 32px)`, bottom: "-500px", userSelect: "none" }}
           onMouseDown={handleStart}
