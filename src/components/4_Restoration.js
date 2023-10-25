@@ -30,9 +30,9 @@ const ImageRestoration = ({ beforeImage, afterImage }) => {
     }
   };
   const preventRightClick = (e) => {
-    e.preventDefault(); // Предотвратить вызов контекстного меню (правой кнопкой мыши)
+    e.preventDefault(); 
   };
-  
+
   return (
     <div
       className="relative h-[620px] w-[800px] overflow-hidden object-cover rounded-2xl"
