@@ -69,10 +69,7 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
         onMouseDown={handleStart}
         onTouchStart={handleStart}
       >
-        <div className={`bottom-[5px] ${cursorStyle}`}> 
-        {/* Верхний слайдер блок */}
-        <img src={bgimage} alt="Arrow" className="h-5 w-[px] mt-[5.5px] ml-[4.5px]  pointer-events-none"/>
-        </div>
+        <div className={`bottom-[5px] ${cursorStyle}`}></div>
       </div>
       <div
         id="cursorButtonBottom" // Нижний слайдер блок
@@ -81,10 +78,7 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
         onMouseDown={handleStart}
         onTouchStart={handleStart}
       >
-        <div className={`bottom-[5px] ${cursorStyle}`}>
-       {/* Нижний слайдер блок */}
-       <img src={bgimage} alt="Arrow" className="h-5 w-[px] mt-[5.5px] ml-[4.5px] pointer-events-none"/>
-        </div>
+        <div className={`bottom-[5px] ${cursorStyle}`}></div>
       </div>
     </div>
   );
