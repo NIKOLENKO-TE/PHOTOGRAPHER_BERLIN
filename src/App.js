@@ -7,24 +7,23 @@ import Categories from "./components/6_Categories";
 import Footer from "./components/8_Footer";
 import Restoration from "./components/4_Restoration";
 import BottomBanner from "./components/9_Bottom_banner";
-import dg_image from "./components/img/1.jpg";
+import bg_image from "./components/img/1.jpg";
 
 function App() {
   const dg_image_style = {
-    backgroundImage: `url(${dg_image})`,
+    backgroundImage: `url(${bg_image})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   };
 
   return (
     <div className="relative">
-      <div className="absolute inset-1 blur-sm " style={dg_image_style} />
+      <div className="absolute inset-1 blur-sm m-[-4px]" style={dg_image_style} />
       <div className="relative bg-origin-content ">
         <TopNav />
         <Featured />
         <AboutMe /> 
         <Restoration/>
-        
          <div className="fixed bottom-0 w-full ssm:flex "><BottomBanner />
         </div> 
         {/*<Footer /> 
