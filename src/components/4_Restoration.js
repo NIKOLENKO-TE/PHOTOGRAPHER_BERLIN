@@ -7,9 +7,9 @@ const cursorStyle =
 const cursorBGStyle =
   "bg-white/10 bottom-[-28px] backdrop-blur-[2px] rounded-[14px] h-[40px] w-[70px] rounded-full shadow-xl shadow-black/50";
 const buttonStyle =
-  "h-[40px] text-white text-2xl pt-0.5 justify-center rounded-[15px] font-bold bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ";
+  "h-[40px] text-white text-2xl pt-0.5 justify-center rounded-[15px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ";
 
-  const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
+const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [sliderX, setSliderX] = useState("50%");
   const [isPulsing, setIsPulsing] = useState(false);
@@ -34,16 +34,10 @@ const buttonStyle =
   const preventRightClick = (e) => {
     e.preventDefault();
   };
-  const handleImageClick = () => {
-    setIsPulsing(true);
-    setTimeout(() => {
-      setIsPulsing(false);
-      onClick();
-    }, 500); // Время анимации "animate-ping"
-  };
+
 
   return (
-    <div
+    <div id="restored_images" // Блок обоих фотографий
       className="relative h-[620px] w-[800px] overflow-hidden object-cover rounded-2xl cursor-pointer"
       onTouchMove={handleMove}
       onTouchEnd={handleEnd}
@@ -52,37 +46,42 @@ const buttonStyle =
       onContextMenu={preventRightClick}
       onClick={onClick}
     >
-      <img src={beforeImage} className="absolute h-full object-cover " alt="before" />
+      <img // левое фото
+        src={beforeImage}
+        className="absolute h-full object-cover select-none"
+        alt="before left" />
       <div className="absolute h-full overflow-hidden">
         <img // правое фото
           src={afterImage}
-          className={`h-full object-cover ${isPulsing ? "animate-ping" : ""}`}
-          alt="after"
+          className={`h-full object-cover`}
+          alt="after right"
           style={{
             userSelect: "none",
-            clipPath: `inset(0 0 0 ${sliderX})`,
-            transition: "clipPath 0.5s ease-in-out ", // Добавляем анимацию
-            
+            clipPath: `inset(0 0 0 ${sliderX})`
           }}
         />
       </div>
       <div
-        id="cursorButtonTop"
+        id="cursorButtonTop" // Верхний слайдер блок
         className={`relative select-none ${cursorBGStyle}`}
         style={{ left: `calc(${sliderX} - 34px)`, userSelect: "none" }}
         onMouseDown={handleStart}
         onTouchStart={handleStart}
       >
-        <div className={`bottom-[5px] ${cursorStyle}`}></div>
+        <div className={`bottom-[5px] ${cursorStyle}`}> 
+        {/* Верхний слайдер блок */}
+        </div>
       </div>
       <div
-        id="cursorButtonBottom"
+        id="cursorButtonBottom" // Нижний слайдер блок
         className={`relative select-none ${cursorBGStyle}`}
         style={{ left: `calc(${sliderX} - 34px)`, bottom: "-500px", userSelect: "none" }}
         onMouseDown={handleStart}
         onTouchStart={handleStart}
       >
-        <div className={`bottom-[5px] ${cursorStyle}`}></div>
+        <div className={`bottom-[5px] ${cursorStyle}`}>
+       {/* Нижний слайдер блок */}
+        </div>
       </div>
     </div>
   );
@@ -106,7 +105,7 @@ const Restoration = () => {
     <div className="pb-8">
       <div className="flex flex-col items-center justify-center">
         <span className={`px-2 cursor-pointer ${buttonStyle}`} onClick={handleClick}>
-          PRESS to change photo-example
+          PRESS to change photo
         </span>
       </div>
       <div className="rounded-2xl">
