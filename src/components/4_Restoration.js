@@ -7,8 +7,6 @@ const cursorStyle =
   "absolute flex left-[8px] ml-[105px] h-[30px] w-[60px] cursor-pointer rounded-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-blue-500/50  hover:bg-gradient-to-br ";
 const cursorBGStyle =
   "bg-white/10 top-[10px] ml-[-90px] backdrop-blur-[2px] rounded-[14px] h-[35px] w-[260px] rounded-full shadow-xl shadow-black/50";
-const cursorBGBottomStyle =
-  "bg-white/10 ml-[-2px] backdrop-blur-[2px] rounded-[14px] h-[40px] w-[70px] rounded-full shadow-xl shadow-black/50";
 const buttonStyle =
   "h-[40px] text-white text-2xl pt-0.5 justify-center rounded-[15px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ";
 
@@ -68,7 +66,7 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
 
       <div
   id="cursorButtonTop" // Верхний слайдер блок
-  className={`relative select-none mb-2 ${cursorBGStyle}`}
+  className={`relative select-none mt-[550px] ${cursorBGStyle}`}
   style={{ left: `calc(${sliderX} - 55px)`, userSelect: "none" }}
   onMouseDown={handleStart}
   onTouchStart={handleStart}
@@ -86,7 +84,7 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
     />{/* Верхний синий стрелки */}
   </div>
 </div>
-      <div
+      {/* <div
         id="cursorButtonBottom" // Нижний слайдер блок
         className={`relative select-none mt-[8px] ${cursorBGBottomStyle}`}
         style={{
@@ -97,14 +95,14 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
         onMouseDown={handleStart}
         onTouchStart={handleStart}
       >
-        <div className={`bottom-[5px] left-[-100px] ${cursorStyle}`}>
+        <div className={`bottom-[5px] -ml-[3px] ${cursorStyle}`}>
           <img
             src={arrow}
             alt="Arrow"
             className="h-5 mt-[5.5px] ml-[4.5px] pointer-events-none"
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
