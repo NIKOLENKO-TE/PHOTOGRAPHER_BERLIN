@@ -121,14 +121,15 @@ const Restoration = () => {
           <p className="pr-3 ssm:text-xl md:text-2xl text-justify select-none">
             I offer restoration services for old photographs, film negatives and much more. Restoration is simple, restoration is complex with additional drawing, coloring of photographs, Restoration of photographs damaged by mold and moisture. I offer color correction, adjusting white balance, saturation and contrast, restoring the brightness of colors, reconstructing missing details, transforming your black and white photo into a bright image with beautiful colors. Restoring old photographs is what I am most skilled at. Restoring images that have been torn or damaged by children, weather, nature or animals. Removing stains, scratches and defects. Adjusting sharpness.
           </p>
-          <div id="services_buttons" className="ssm:h-[90px] sm:h-[110px] justify-center  justify-self-auto flex" >
-            <div id="services_buttons_background" className="max-w-[800px]  grid-flow-cols flex justify-between grid-cols-5 mt-2 bg-white/70 rounded-2xl md:gap-5 shadow-xl p-2 ">
-              <div >
+          <div id="services_buttons" className="ssm:h-[90px] sm:h-[110px] flex justify-center items-center">
+            <div id="services_buttons_background" className="w-full max-w-[800px] grid-flow-cols grid justify-between grid-cols-5 mt-2 bg-white/70 rounded-2xl md:gap-5 shadow-xl p-2">
+              <div>
                 <img
-                src={orderRestorePhotos[0].img}
-                alt="Send"
-                className="ssm:h-[60px] sm:h-[80px] mt-[4px] ml-[4px] cursor-pointer"
-              /></div>
+                  src={orderRestorePhotos[0].img}
+                  alt="Send"
+                  className="ssm:h-[60px] sm:h-[80px] mt-[4px] ml-[4px] cursor-pointer"
+                />
+              </div>
               <div ><img
                 src={orderRestorePhotos[1].img}
                 alt="Send"
