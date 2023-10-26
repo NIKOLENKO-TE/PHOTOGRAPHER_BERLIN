@@ -4,7 +4,7 @@ import nikolenkote from "./img/NIKOLENKOTE_PHOTO_BW.png";
 
 const Delivery = () => {
   return (
-    <div className="w-full dg-white pt-2 px-4 pb-2 ">
+    <div className="w-full pt-2 px-4 pb-2 ">
       <h3 className="flex justify-center">
         <span className="text-white h-[40px] pt-[2px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-lg shadow-blue-500/50  text-xl flex py-2 rounded-[15px]"
         > <span className="relative text-white font-bold text-2xl px-3 select-none">
@@ -16,7 +16,7 @@ const Delivery = () => {
         <div className="justify-items-center select-none m-2">
           <img  src={iphone_photo_1} alt="iphone_photo" />
         </div>
-        <div className="flex-col grid  m-2">
+        <div className="flex-col grid m-2">
           <h1 className="text-center ssm:text-2xl md:text-4xl font-bold ml-2 mr-2 select-none">
             Don't miss the opportunity to place your order today
           </h1>
@@ -34,8 +34,8 @@ const Delivery = () => {
             are damaged, scratched, or discolored, even after washing in the
             washing machine. You can view my work and order my services below.
           </p>
-          <div className="flex items-center justify-center py-2 ">
-            <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br  border-blue-600 shadow-lg shadow-blue-500/50  text-xl py-2 mb-2 rounded-[15px] px-3 mr-2"
+          <div className="flex items-center justify-center">
+            <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br  border-blue-600 shadow-lg shadow-blue-500/50  text-xl py-2  rounded-[15px]  mr-2"
         > ORDER TODAY
             </button>
           </div>

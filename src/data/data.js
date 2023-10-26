@@ -18,6 +18,12 @@ import Restore3Original from "../components/img/Restoration/Restoration3Original
 import Restore3Final from "../components/img/Restoration/Restoration3Final.jpg";
 import Restore4Original from "../components/img/Restoration/Restoration4Original.jpg";
 import Restore4Final from "../components/img/Restoration/Restoration4Final.jpg";
+import orderRestorePhotos1Send from "../components/img/Restoration/icons/1.send.png";
+import orderRestorePhotos2Message from "../components/img/Restoration/icons/2.message.png";
+import orderRestorePhotos3Price from "../components/img/Restoration/icons/3.price.png";
+import orderRestorePhotos41Magic from "../components/img/Restoration/icons/4.1.magic.png";
+import orderRestorePhotos42Magic from "../components/img/Restoration/icons/4.2.magic.png";
+import orderRestorePhotos5Delivery from "../components/img/Restoration/icons/5.delivery.png";
 
 
 export const featuredPhotos = [
@@ -135,6 +141,44 @@ export const restoredPhotos = [
   }
 ]
 
+export const orderRestorePhotos = [
+  {
+    id:0,
+    title: 'send',
+    img: orderRestorePhotos1Send,
+    categoryPhotos: 2
+  },
+  {
+    id:1,
+    title: 'message',
+    img: orderRestorePhotos2Message,
+    categoryPhotos: 2
+  },
+  {
+    id:2,
+    title: 'price',
+    img: orderRestorePhotos3Price,
+    categoryPhotos: 2
+  },
+  {
+    id:3,
+    title: 'magic1',
+    img: orderRestorePhotos41Magic,
+    categoryPhotos: 2
+  },
+  {
+    id:4,
+    title: 'magic2',
+    img: orderRestorePhotos42Magic,
+    categoryPhotos: 2
+  },
+  {
+    id:5,
+    title: 'delivery',
+    img: orderRestorePhotos5Delivery,
+    categoryPhotos: 2
+  }
+]
 
 
 export const categoryPhotos = [
