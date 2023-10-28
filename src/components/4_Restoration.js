@@ -11,7 +11,8 @@ const cursorBGStyle =
 const buttonStyle =
   "h-[40px] text-white text-2xl pt-0.5 justify-center rounded-[15px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ";
 
-const ImageRestoration = ({ beforeImage, afterImage, onFileUpload }) => {
+const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
+  const handleClick = onClick;
   const [isDragging, setIsDragging] = useState(false);
   const [sliderX, setSliderX] = useState("50%");
 
@@ -39,19 +40,19 @@ const ImageRestoration = ({ beforeImage, afterImage, onFileUpload }) => {
   return (
     <div
       id="restored_images"
-      className="relative h-[620px] w-[820px] overflow-hidden object-cover rounded-2xl cursor-pointer"
+      className="relative ssm:h-[400px] sm:h-[620px] w-[820px] overflow-hidden object-cover rounded-2xl cursor-pointer"
       onTouchMove={handleMove}
       onTouchEnd={handleEnd}
       onMouseMove={handleMove}
       onMouseUp={handleEnd}
       onContextMenu={preventRightClick}
+      onClick={handleClick}
     >
       <img
         src={beforeImage}
         className="absolute h-full object-cover select-none"
         alt="before left"
       />
-
       <div className="absolute h-full overflow-hidden">
         <img
           src={afterImage}
@@ -60,13 +61,13 @@ const ImageRestoration = ({ beforeImage, afterImage, onFileUpload }) => {
           style={{
             userSelect: "none",
             clipPath: `inset(0 0 0 ${sliderX})`,
+            pointerEvents: "auto",
           }}
         />
       </div>
-
       <div
         id="cursorButtonTop"
-        className={`relative select-none mt-[550px] ${cursorBGStyle}`}
+        className={`relative select-none ssm:mt-[335px] sm:mt-[550px] ${cursorBGStyle}`}
         style={{ left: `calc(${sliderX} - 45px)`, userSelect: "none" }}
         onMouseDown={handleStart}
         onTouchStart={handleStart}
@@ -78,62 +79,60 @@ const ImageRestoration = ({ beforeImage, afterImage, onFileUpload }) => {
         </div>
         <div
           className={`bottom-[2.5px] ml-[97px] border ${cursorStyle}`}
-          onClick={onFileUpload}
         >
           <img
             src={arrow}
-            alt="Arrow"
+            alt="Arrows"
             className="h-5 mt-[4px] ml-[3.5px] pointer-events-none"
           />
         </div>
       </div>
-    </div>
+      </div>
   );
 };
 
 const Restoration = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [currentImages, setCurrentImages] = useState({
+    beforeImage: restoredPhotos[currentIndex].img,
+    afterImage: isHovered
+      ? orderRestorePhotos[4].img
+      : restoredPhotos[currentIndex + 1].img,
+  });
 
   const handleClick = () => {
     const nextIndex = (currentIndex + 2) % restoredPhotos.length;
     setCurrentIndex(nextIndex);
+    setCurrentImages({
+      beforeImage: restoredPhotos[nextIndex].img,
+      afterImage: isHovered
+        ? orderRestorePhotos[4].img
+        : restoredPhotos[nextIndex + 1].img,
+    });
   };
+
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
+
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
-  const currentImages = {
-    beforeImage: restoredPhotos[currentIndex].img,
-    afterImage: isHovered
-      ? orderRestorePhotos[4].img // Replace with the desired image
-      : restoredPhotos[currentIndex + 1].img,
-  };
 
   const handleFileUpload = () => {
-    // Trigger file input click
     document.getElementById("fileInput").click();
-  };
-
-  const handleFileChange = (e) => {
-    // Handle file upload here
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      console.log(selectedFile);
-    }
   };
 
   return (
     <div className="pb-8">
       <div className="flex flex-col items-center justify-center">
-        <span
+        <button
           className={`px-2 cursor-pointer ${buttonStyle}`}
           onClick={handleClick}
         >
           PRESS to change photo
-        </span>
+        </button>
       </div>
       <div className="w-flex h-flex max-w-auto mx-4 grid ssm:grid-cols-1 lg:grid-cols-2 mt-2 bg-white/50 justify-between rounded-2xl shadow-xl p-2 ">
         <div id="IMAGE_RESTORATION" className="flex-col grid m-2  ">
@@ -152,7 +151,7 @@ const Restoration = () => {
             Restoring images that have been torn or damaged by children,
             weather, nature or animals. Removing stains, scratches and defects.
             Adjusting sharpness.
-          </p>
+            </p>
           <div
             id="services_buttons"
             className="ssm:h-[90px] sm:h-[110px] flex justify-center items-center "
@@ -210,7 +209,8 @@ const Restoration = () => {
             <ImageRestoration
               beforeImage={currentImages.beforeImage}
               afterImage={currentImages.afterImage}
-              onFileUpload={handleFileUpload}
+              onClick={handleClick}
+              className="ssm:h-[200px]"
             />
           </div>
         </div>
@@ -219,7 +219,7 @@ const Restoration = () => {
         type="file"
         id="fileInput"
         style={{ display: "none" }}
-        onChange={handleFileChange}
+        onChange={handleFileUpload}
       />
     </div>
   );
