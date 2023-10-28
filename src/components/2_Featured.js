@@ -112,8 +112,8 @@ const Featured = () => {
                 key={previewIndex}
                 className={`splide__slide`}
                 onClick={() => handlePreviewClick(previewIndex)}
-                onContextMenu={(e) => e.preventDefault()} // Это предотвращает контекстное меню
-              >
+                onContextMenu={(e) => e.preventDefault()} 
+                              >
                 <img
                   className="h-[100px] w-full object-cover rounded-2xl"
                   src={previewItem}
