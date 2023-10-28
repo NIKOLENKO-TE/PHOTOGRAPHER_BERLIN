@@ -15,15 +15,12 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
   const handleClick = onClick;
   const [isDragging, setIsDragging] = useState(false);
   const [sliderX, setSliderX] = useState("50%");
-
   const handleStart = () => {
     setIsDragging(true);
   };
-
   const handleEnd = () => {
     setIsDragging(false);
   };
-
   const handleMove = (e) => {
     if (isDragging) {
       const container = e.currentTarget;
@@ -32,11 +29,9 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
       setSliderX(`${(offsetX / container.offsetWidth) * 100}%`);
     }
   };
-
   const preventRightClick = (e) => {
     e.preventDefault();
   };
-
   return (
     <div
       id="restored_images"
@@ -135,8 +130,17 @@ const Restoration = () => {
         </button>
       </div>
       <div className="w-flex h-flex max-w-auto mx-4 grid ssm:grid-cols-1 lg:grid-cols-2 mt-2 bg-white/50 justify-between rounded-2xl shadow-xl p-2 ">
-        <div id="IMAGE_RESTORATION" className="flex-col grid m-2  ">
-          <h1 className="text-center ssm:text-2xl md:text-4xl font-bold ml-2 mr-2 select-none">
+      <div className="px-2 py-auto p-2 " style={{ flex: 1 }}>
+          <div className="flex flex-column justify-center align-center gap-3">
+            <ImageRestoration
+              beforeImage={currentImages.beforeImage}
+              afterImage={currentImages.afterImage}
+              onClick={handleClick}
+            />
+          </div>
+        </div>
+         <div id="IMAGE_RESTORATION" className="flex-col grid m-2 items-center">
+          <h1 className="text-center ssm:text-2xl md:text-4xl font-bold select-none">
             IMAGE RESTORATION
           </h1>
           <p className="pr-3 ssm:text-xl md:text-2xl text-justify select-none">
@@ -204,16 +208,7 @@ const Restoration = () => {
             </div>
           </div>
         </div>
-        <div className="px-2 py-auto p-2 " style={{ flex: 1 }}>
-          <div className="flex flex-column justify-center align-center gap-3">
-            <ImageRestoration
-              beforeImage={currentImages.beforeImage}
-              afterImage={currentImages.afterImage}
-              onClick={handleClick}
-              className="ssm:h-[200px]"
-            />
-          </div>
-        </div>
+       
       </div>
       <input
         type="file"
