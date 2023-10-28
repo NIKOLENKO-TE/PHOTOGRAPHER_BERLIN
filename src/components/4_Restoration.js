@@ -11,7 +11,7 @@ const cursorBGStyle =
 const buttonStyle =
   "h-[40px] text-white text-2xl pt-0.5 justify-center rounded-[15px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ";
 
-const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
+const ImageRestoration = ({ beforeImage, afterImage, onFileUpload }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [sliderX, setSliderX] = useState("50%");
 
@@ -38,23 +38,22 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
 
   return (
     <div
-      id="restored_images" // Блок обоих фотографий
+      id="restored_images"
       className="relative h-[620px] w-[820px] overflow-hidden object-cover rounded-2xl cursor-pointer"
       onTouchMove={handleMove}
       onTouchEnd={handleEnd}
       onMouseMove={handleMove}
       onMouseUp={handleEnd}
       onContextMenu={preventRightClick}
-      onClick={onClick}
     >
-      <img // левое фото
+      <img
         src={beforeImage}
         className="absolute h-full object-cover select-none"
         alt="before left"
       />
 
       <div className="absolute h-full overflow-hidden">
-        <img // правое фото
+        <img
           src={afterImage}
           className={`h-full object-cover `}
           alt="after right"
@@ -66,7 +65,7 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
       </div>
 
       <div
-        id="cursorButtonTop" // слайдер блок
+        id="cursorButtonTop"
         className={`relative select-none mt-[550px] ${cursorBGStyle}`}
         style={{ left: `calc(${sliderX} - 45px)`, userSelect: "none" }}
         onMouseDown={handleStart}
@@ -77,11 +76,14 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
             BEFORE           AFTER
           </span>
         </div>
-        <div className={`bottom-[2.5px] ml-[97px] border ${cursorStyle}`}>
+        <div
+          className={`bottom-[2.5px] ml-[97px] border ${cursorStyle}`}
+          onClick={onFileUpload}
+        >
           <img
             src={arrow}
             alt="Arrow"
-            className="h-5 mt-[4px] ml-[3.5px] pointer-events-none "
+            className="h-5 mt-[4px] ml-[3.5px] pointer-events-none"
           />
         </div>
       </div>
@@ -91,16 +93,36 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
 
 const Restoration = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
-    // Вычисляем следующий индекс, с учетом цикличности
     const nextIndex = (currentIndex + 2) % restoredPhotos.length;
     setCurrentIndex(nextIndex);
   };
-
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
   const currentImages = {
     beforeImage: restoredPhotos[currentIndex].img,
-    afterImage: restoredPhotos[currentIndex + 1].img,
+    afterImage: isHovered
+      ? orderRestorePhotos[4].img // Replace with the desired image
+      : restoredPhotos[currentIndex + 1].img,
+  };
+
+  const handleFileUpload = () => {
+    // Trigger file input click
+    document.getElementById("fileInput").click();
+  };
+
+  const handleFileChange = (e) => {
+    // Handle file upload here
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      console.log(selectedFile);
+    }
   };
 
   return (
@@ -119,37 +141,67 @@ const Restoration = () => {
             IMAGE RESTORATION
           </h1>
           <p className="pr-3 ssm:text-xl md:text-2xl text-justify select-none">
-            I offer restoration services for old photographs, film negatives and much more. Restoration is simple, restoration is complex with additional drawing, coloring of photographs, Restoration of photographs damaged by mold and moisture. I offer color correction, adjusting white balance, saturation and contrast, restoring the brightness of colors, reconstructing missing details, transforming your black and white photo into a bright image with beautiful colors. Restoring old photographs is what I am most skilled at. Restoring images that have been torn or damaged by children, weather, nature or animals. Removing stains, scratches and defects. Adjusting sharpness.
+            I offer restoration services for old photographs, film negatives and
+            much more. Restoration is simple, restoration is complex with
+            additional drawing, coloring of photographs, Restoration of
+            photographs damaged by mold and moisture. I offer color correction,
+            adjusting white balance, saturation and contrast, restoring the
+            brightness of colors, reconstructing missing details, transforming
+            your black and white photo into a bright image with beautiful
+            colors. Restoring old photographs is what I am most skilled at.
+            Restoring images that have been torn or damaged by children,
+            weather, nature or animals. Removing stains, scratches and defects.
+            Adjusting sharpness.
           </p>
-          <div id="services_buttons" className="ssm:h-[90px] sm:h-[110px] flex justify-center items-center">
-            <div id="services_buttons_background" className="w-full max-w-[800px] grid-flow-cols grid justify-between grid-cols-5 mt-2 bg-white/70 rounded-2xl md:gap-5 shadow-xl p-2">
-              <div>
-                <img
-                  src={orderRestorePhotos[0].img}
-                  alt="Send"
-                  className="ssm:h-[60px] sm:h-[80px] mt-[4px] ml-[4px] cursor-pointer"
-                />
-              </div>
-              <div ><img
+          <div
+            id="services_buttons"
+            className="ssm:h-[90px] sm:h-[110px] flex justify-center items-center "
+          >
+            <div
+              id="services_buttons_background"
+              className="w-full max-w-[800px] grid grid-cols-5 bg-white/70 rounded-2xl shadow-xl py-2 ssm:px-2 md:px-5 lg:px-7"
+              style={{ display: 'flex', justifyContent: 'space-between' }}
+            >
+              <img
+                src={orderRestorePhotos[0].img}
+                alt="Send"
+                className="ssm:h-[60px] sm:h-[80px] mt-[3px] cursor-pointer"
+                onClick={handleFileUpload}
+              />
+              <img
                 src={orderRestorePhotos[1].img}
-                alt="Send"
-                className="ssm:h-[60px] sm:h-[80px] mt-[4px] ml-[4px]"
-              /></div>
-              <div ><img
+                alt="Text"
+                className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+              />
+              <img
                 src={orderRestorePhotos[2].img}
-                alt="Send"
-                className="ssm:h-[60px] sm:h-[80px] mt-[4px] ml-[4px]"
-              /></div>
-              <div ><img
-                src={orderRestorePhotos[3].img}
-                alt="Send"
-                className="ssm:h-[60px] sm:h-[80px] mt-[4px] ml-[4px]"
-              /></div>
-              <div ><img
+                alt="Price"
+                className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+              />
+              <div
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+              >
+                {isHovered ? (
+                  <img
+                    src={orderRestorePhotos[4].img} 
+                    alt="Alternate"
+                    className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+                  />
+                ) : (
+                  <img
+                    src={orderRestorePhotos[3].img}
+                    alt="Send"
+                    className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+                  />
+                )}
+              </div>
+              <img
                 src={orderRestorePhotos[5].img}
-                alt="Send"
-                className="ssm:h-[60px] sm:h-[80px] mt-[4px] ml-[4px]"
-              /></div>
+                alt="Shipping"
+                className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+              />
             </div>
           </div>
         </div>
@@ -158,12 +210,17 @@ const Restoration = () => {
             <ImageRestoration
               beforeImage={currentImages.beforeImage}
               afterImage={currentImages.afterImage}
-              onClick={handleClick}
+              onFileUpload={handleFileUpload}
             />
           </div>
         </div>
-
       </div>
+      <input
+        type="file"
+        id="fileInput"
+        style={{ display: "none" }}
+        onChange={handleFileChange}
+      />
     </div>
   );
 };
