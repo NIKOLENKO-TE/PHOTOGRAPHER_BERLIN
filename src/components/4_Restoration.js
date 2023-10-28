@@ -129,8 +129,8 @@ const Restoration = () => {
           PRESS to change photo
         </button>
       </div>
-      <div className="w-flex h-flex max-w-auto mx-4 grid ssm:grid-cols-1 lg:grid-cols-2 mt-2 bg-white/50 justify-between rounded-2xl shadow-xl p-2 ">
-      <div className="px-2 py-auto p-2 " style={{ flex: 1 }}>
+      <div className="w-flex h-flex max-w-auto mt-2 ssm:mx-2 md:mx-4 grid ssm:grid-cols-1 lg:grid-cols-2  bg-white/50 justify-between rounded-2xl shadow-xl p-2 ">
+      <div className="ssm:md-1 md:px-2 py-auto sm:p-1 md:p-2 " style={{ flex: 1 }}>
           <div className="flex flex-column justify-center align-center gap-3">
             <ImageRestoration
               beforeImage={currentImages.beforeImage}
