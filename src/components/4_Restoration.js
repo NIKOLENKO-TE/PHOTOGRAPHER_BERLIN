@@ -82,7 +82,7 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
           />
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
@@ -130,7 +130,7 @@ const Restoration = () => {
         </button>
       </div>
       <div className="w-flex h-flex max-w-auto mt-2 ssm:mx-2 md:mx-4 grid ssm:grid-cols-1 lg:grid-cols-2  bg-white/50 justify-between rounded-2xl shadow-xl p-2 ">
-      <div className="ssm:md-1 md:px-2 py-auto sm:p-1 md:p-2 " style={{ flex: 1 }}>
+        <div className="ssm:md-1 md:px-2 py-auto sm:p-1 md:p-2 " style={{ flex: 1 }}>
           <div className="flex flex-column justify-center align-center gap-3">
             <ImageRestoration
               beforeImage={currentImages.beforeImage}
@@ -139,7 +139,7 @@ const Restoration = () => {
             />
           </div>
         </div>
-         <div id="IMAGE_RESTORATION" className="flex-col grid m-2 items-center">
+        <div id="IMAGE_RESTORATION" className="flex-col grid m-2 items-center">
           <h1 className="text-center ssm:text-2xl md:text-4xl font-bold select-none">
             IMAGE RESTORATION
           </h1>
@@ -155,7 +155,7 @@ const Restoration = () => {
             Restoring images that have been torn or damaged by children,
             weather, nature or animals. Removing stains, scratches and defects.
             Adjusting sharpness.
-            </p>
+          </p>
           <div
             id="services_buttons"
             className="ssm:h-[90px] sm:h-[110px] flex justify-center items-center "
@@ -188,7 +188,7 @@ const Restoration = () => {
               >
                 {isHovered ? (
                   <img
-                    src={orderRestorePhotos[4].img} 
+                    src={orderRestorePhotos[4].img}
                     alt="Alternate"
                     className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
                   />
@@ -208,7 +208,7 @@ const Restoration = () => {
             </div>
           </div>
         </div>
-       
+
       </div>
       <input
         type="file"
