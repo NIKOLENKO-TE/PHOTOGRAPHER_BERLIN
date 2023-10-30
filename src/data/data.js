@@ -20,6 +20,8 @@ import Restore4Original from "../components/img/Restoration/Restoration4Original
 import Restore4Final from "../components/img/Restoration/Restoration4Final.jpg";
 import Restore5Original from "../components/img/Restoration/Restoration5Original.jpg";
 import Restore5Final from "../components/img/Restoration/Restoration5Final.jpg";
+import Restore6Original from "../components/img/Restoration/Restoration6Original.jpg";
+import Restore6Final from "../components/img/Restoration/Restoration6Final.jpg";
 import orderRestorePhotos1Send from "../components/img/Restoration/icons/1.send.png";
 import orderRestorePhotos2Message from "../components/img/Restoration/icons/2.message.png";
 import orderRestorePhotos3Price from "../components/img/Restoration/icons/3.price.png";
@@ -151,6 +153,19 @@ export const restoredPhotos = [
     id:7,
     title: 'Restore5Final',
     img: Restore5Final,
+    categoryPhotos: 2
+  }
+  ,
+  {
+    id:8,
+    title: 'Restore6Original',
+    img: Restore6Original,
+    categoryPhotos: 2
+  },
+  {
+    id:9,
+    title: 'Restore6Final',
+    img: Restore6Final,
     categoryPhotos: 2
   }
 ]
