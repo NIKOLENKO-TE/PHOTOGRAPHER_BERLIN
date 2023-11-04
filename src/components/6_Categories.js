@@ -44,7 +44,7 @@ const Categories = () => {
             <SplideSlide key={item.id}>
               <div key={item.id} className="flex justify-center">
                 <div className="absolute top-1">
-                  <span className="text-white flex w-[fit-content] text-2xl backdrop-blur-[5px] bg-white/20 cursor-pointer whitespace-nowrap place-content-stretch rounded-[13px] px-2 shadow-md pb-1">
+                  <span className="text-white flex w-[fit-content] ssm:text-xl md:text-2xl backdrop-blur-[5px] bg-white/20 cursor-pointer whitespace-nowrap place-content-stretch rounded-[13px] px-2 shadow-md pb-1">
                     <p>{item.title}</p>
                   </span>
                 </div>
