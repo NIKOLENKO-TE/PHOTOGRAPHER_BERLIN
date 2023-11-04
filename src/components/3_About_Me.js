@@ -17,7 +17,7 @@ const Delivery = () => {
           <img  src={iphone_photo_1} alt="iphone_photo" />
         </div>
         <div className="flex-col grid m-2">
-          <h1 className="text-center ssm:text-2xl md:text-4xl font-bold ml-2 mr-2 select-none">
+          <h1 className="text-center ssm:text-2xl md:text-4xl font-bold ml-2 mr-2 select-none pb-2">
             Don't miss the opportunity to place your order today
           </h1>
           <p className="pr-3 ssm:text-xl sm:text-2xl text-justify select-none">

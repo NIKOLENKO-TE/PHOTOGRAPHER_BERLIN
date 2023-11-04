@@ -35,7 +35,7 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
   return (
     <div
       id="restored_images"
-      className="relative ssm:h-[400px] sm:h-[620px] w-[820px] overflow-hidden object-cover rounded-2xl cursor-pointer"
+      className="relative ssm:h-[440px] sm:h-[620px] w-[820px] overflow-hidden object-cover rounded-2xl cursor-pointer"
       onTouchMove={handleMove}
       onTouchEnd={handleEnd}
       onMouseMove={handleMove}
@@ -120,7 +120,7 @@ const Restoration = () => {
   };
 
   return (
-    <div className="pb-8">
+    <div className="pb-2">
       <div className="flex flex-col items-center justify-center">
         <button
           className={`px-2 cursor-pointer ${buttonStyle}`}
@@ -130,8 +130,8 @@ const Restoration = () => {
         </button>
       </div>
       <div className="w-flex h-flex max-w-auto mt-2 ssm:mx-2 md:mx-4 grid ssm:grid-cols-1 lg:grid-cols-2  bg-white/50 justify-between rounded-2xl shadow-xl p-2 ">
-        <div className="ssm:md-1 md:px-2 py-auto sm:p-1 md:p-2 " style={{ flex: 1 }}>
-          <div className="flex flex-column justify-center align-center gap-3">
+        <div className="min-w-[250px] ssm:md-1 md:px-2 py-auto sm:p-1 md:p-2 " style={{ flex: 1 }}>
+          <div className=" flex flex-column justify-center align-center gap-3">
             <ImageRestoration
               beforeImage={currentImages.beforeImage}
               afterImage={currentImages.afterImage}
@@ -162,48 +162,48 @@ const Restoration = () => {
           >
             <div
               id="services_buttons_background"
-              className="w-full max-w-[800px] grid grid-cols-5 bg-white/70 rounded-2xl shadow-xl py-2 ssm:px-2 md:px-5 lg:px-7"
+              className=" w-full max-w-[800px] grid grid-cols-5 bg-white/70 rounded-2xl shadow-xl py-2 ssm:px-2 md:px-5 lg:px-7"
               style={{ display: 'flex', justifyContent: 'space-between' }}
             >
               <img
                 src={orderRestorePhotos[0].img}
                 alt="Send"
-                className="ssm:h-[60px] sm:h-[80px] mt-[3px] cursor-pointer"
+                className="ssm:h-[60px] h-[80px] mt-[3px] cursor-pointer"
                 onClick={handleFileUpload}
               />
               <img
                 src={orderRestorePhotos[1].img}
                 alt="Text"
-                className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+                className="ssm:h-[60px] h-[80px] mt-[3px]"
               />
               <img
                 src={orderRestorePhotos[2].img}
                 alt="Price"
-                className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+                className="ssm:h-[60px] h-[80px] mt-[3px]"
               />
               <div
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+                className="ssm:h-[60px] h-[80px] mt-[3px]"
               >
                 {isHovered ? (
                   <img
                     src={orderRestorePhotos[4].img}
                     alt="Alternate"
-                    className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+                    className="ssm:h-[60px] h-[80px] mt-[3px]"
                   />
                 ) : (
                   <img
                     src={orderRestorePhotos[3].img}
                     alt="Send"
-                    className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+                    className="ssm:h-[60px] h-[80px] mt-[3px]"
                   />
                 )}
               </div>
               <img
                 src={orderRestorePhotos[5].img}
                 alt="Shipping"
-                className="ssm:h-[60px] sm:h-[80px] mt-[3px]"
+                className="ssm:h-[60px] h-[80px] mt-[3px]"
               />
             </div>
           </div>

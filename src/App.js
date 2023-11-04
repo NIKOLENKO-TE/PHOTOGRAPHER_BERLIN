@@ -1,7 +1,6 @@
 import TopNav from "./components/1_TopNav";
 import Featured from "./components/2_Featured";
 import AboutMe from "./components/3_About_Me";
-import TopPicks from "./components/7_TopPicks";
 import Meal from "./components/5_Meal";
 import Categories from "./components/6_Categories";
 import Footer from "./components/8_Footer";
@@ -24,15 +23,13 @@ function App() {
         <Featured />
         <AboutMe /> 
         <Restoration/>
-         <div className="fixed bottom-0 w-full ssm:flex "><BottomBanner />
+        <Categories />
+        <div className="fixed bottom-0 w-full ssm:flex "><BottomBanner />
         </div> 
-        {/*<Footer /> 
-        <TopPicks />
+        {/*
+        <Footer /> 
         <Meal />
-        <Categories /> 
         */}
-       
-           
       </div>
     </div>
   );
