@@ -57,7 +57,7 @@ import { useTranslation } from "react-i18next";
   };
 
   const TopPhoneButton = () => {
-    const phoneNumber = "1605945127"; // Замените на свой номер телефона
+    const phoneNumber = "+491605945127";
   
     const handlePhoneClick = () => {
       window.location.href = `tel:${phoneNumber}`;

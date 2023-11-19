@@ -1,9 +1,7 @@
 //SetLanguage.tsx
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Listbox, Transition } from "@headlessui/react";
-
 import enFlag from "../img/svg/enFlag.svg";
 import deFlag from "../img/svg/deFlag.svg";
 import uaFlag from "../img/svg/uaFlag.svg";
@@ -22,17 +20,30 @@ const SetLanguage: React.FC<SetLanguageProps> = ({
   };
 
   const { i18n } = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(() => {
+    const savedLanguage = localStorage.getItem("selectedLanguage");
+    return savedLanguage || (i18n.language?.split("-")[0] as string) || "ua";
+  });
 
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    i18n.language?.split("-")[0] || "ua"
-  );
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("selectedLanguage");
+    if (savedLanguage) {
+      setSelectedLanguage(savedLanguage);
+      i18n.changeLanguage(savedLanguage);
+    }
+  }, []);
+
   const languageInfo = locales[selectedLanguage as keyof typeof locales];
 
+  const handleSelectLanguage = (language: string) => {
+    setSelectedLanguage(language);
+    localStorage.setItem("selectedLanguage", language);
+    onSelectLanguage(language);
+    i18n.changeLanguage(language);
+  };
+
   return (
-    <Listbox
-      value={selectedLanguage}
-      onChange={(language) => setSelectedLanguage(language)}
-    >
+    <Listbox value={selectedLanguage} onChange={handleSelectLanguage}>
       {({ open }) => (
         <div className="relative inline-block text-center">
           <Listbox.Button className="inline-flex justify-center ssm:h-[38px] md:h-[40px] xl:h-[42px] w-full rounded-[12px] ssm:text-[16px]  md:text-[18px] xl:text-[20px] text-white whitespace-nowrap place-content-stretch bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br border-blue-600 shadow-lg shadow-blue-500/50 mr-1">
@@ -64,10 +75,7 @@ const SetLanguage: React.FC<SetLanguageProps> = ({
                           ? "bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br border-blue-600 shadow-lg shadow-blue-500/50 text-white"
                           : "text-black"
                       } cursor-pointer select-none relative pl-3 flex items-center rounded-[6px] h-[40px]`}
-                      onClick={() => {
-                        onSelectLanguage(locale);
-                        i18n.changeLanguage(locale);
-                      }}
+                      onClick={() => handleSelectLanguage(locale)}
                     >
                       <img
                         src={locales[locale as keyof typeof locales].flag}
@@ -75,7 +83,6 @@ const SetLanguage: React.FC<SetLanguageProps> = ({
                         className="w-[35px] mr-2 shadow-md shadow-black/20"
                       />
                       {locales[locale as keyof typeof locales].title}
-                      {selected}
                     </div>
                   )}
                 </Listbox.Option>

@@ -26,7 +26,6 @@ const BottomBanner = () => {
 
   const bannerStyle = {
     zIndex: 50,
-    // width: "100%",
     paddingBottom: "1rem",
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? "translateY(0)" : "translateY(10px)",
@@ -55,11 +54,12 @@ const BottomBanner = () => {
             <span className="mt-[-2px]">E-mail</span>
           </button>
           <button
-            type="button"
-            className="px-5 h-[30px] w-[100px] text-xl font-medium text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none dark:focus:ring-blue-800 border-blue-600 rounded-lg flex items-center justify-center"
-          >
-            <span className="mt-[-2px]">Call</span>
-          </button>
+  type="button"
+  className="px-5 h-[30px] w-[100px] text-xl font-medium text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none dark:focus:ring-blue-800 border-blue-600 rounded-lg flex items-center justify-center"
+  onClick={() => window.location.href = 'tel:+491605945127'} 
+>
+  <span className="mt-[-2px]">Call</span>
+</button>
         </div>
       </div>
   );
