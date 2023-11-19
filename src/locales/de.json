@@ -1,8 +1,34 @@
-{	"TopSearch": {
-	"placeholder_search": "Suchen sie auf der website nach fotodiensten"
-},
-"TopNameButton": {
-	"my_name": "TYMOFII",
-	"my_profession": "FOTOGRAF"
-}
+{
+  "TopSearch": {
+    "placeholder_search": "Suchen sie auf der website nach fotodiensten"
+  },
+  "TopNameButton": {
+    "my_name": "TYMOFII",
+    "my_profession": "FOTOGRAF"
+  },
+  "Delivery": {
+    "order_services": "Bestellen Sie unten meine Dienste",
+    "opportunity_text": "Verpassen Sie nicht die Gelegenheit, noch heute Ihre Bestellung aufzugeben",
+    "about_me_text": "Mehrere Jahre lang habe ich Fotodienstleistungen in der Ukraine erbracht. Und jetzt verpassen Sie nicht die Gelegenheit, meine Dienste in Berlin zu bestellen. Ich biete Dienstleistungen im Bereich Reportage und künstlerische Fotografie an. Sie müssen nur ein Studio auswählen. Ich verfüge auch über umfangreiche Erfahrung in der Fotorestaurierung. Ich kann Ihre beschädigten, zerkratzten oder verfärbten Fotos und Negative restaurieren, auch wenn diese in der Waschmaschine gewaschen wurden. Unten können Sie meine Arbeit ansehen und meine Dienstleistungen bestellen.",
+    "order_button_text": "BESTELLEN SIE HEUTE"
+  },
+  "ImageRestoration": {
+    "before_after_text": "BEFORE           AFTER"
+  },
+  "Restoration": {
+    "change_photo_text": "DRÜCKEN Sie, um das Foto zu ändern",
+    "restoration_text": "BILDRESTAURIERUNG",
+    "restoration_full_text": "Ich biete Restaurierungsdienste für alte Fotos, Filmnegative und vieles mehr an. Die Restaurierung ist einfach, die Restaurierung ist komplex mit zusätzlicher Zeichnung, Kolorierung von Fotos, Restaurierung von Fotos, die durch Schimmel und Feuchtigkeit beschädigt wurden. Ich biete Farbkorrektur an, passe den Weißabgleich, die Sättigung und den Kontrast an, stelle die Helligkeit der Farben wieder her, rekonstruiere fehlende Details und verwandle Ihr Schwarzweißfoto in ein helles Bild mit wunderschönen Farben. Das Restaurieren alter Fotos ist mein Spezialgebiet. Wiederherstellung von Bildern, die durch Kinder, Wetter, Natur oder Tiere zerrissen oder beschädigt wurden. Entfernen von Flecken, Kratzern und Mängeln. Schärfe anpassen."
+   },
+   "Categories": {
+     "select_text": "Fotokategorie auswählen",
+     "Weddings": "Hochzeiten",
+     "Flowers": "Blumen",
+     "Photosessions": "Fotosessions",
+     "Children's parties": "Kinderfeste",
+     "Restorations": "Restaurierungen",
+     "Humanitarian AID": "Humanitäre Hilfe",
+     "War medicine": "Kriegsmedizin"
+  }
+
 }

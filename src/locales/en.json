@@ -1,8 +1,34 @@
-{	"TopSearch": {
-		"placeholder_search": "Search photo services on site"
-	},
-	"TopNameButton": {
-		"my_name": "TYMOFII",
-		"my_profession": "PHOTOGRAPHER"
-	}
+{
+  "TopSearch": {
+    "placeholder_search": "Search photo services on site"
+  },
+  "TopNameButton": {
+    "my_name": "TYMOFII",
+    "my_profession": "PHOTOGRAPHER"
+  },
+  "Delivery": {
+    "order_services": "Order my services below",
+    "opportunity_text": "Don't miss the opportunity to place your order today",
+    "about_me_text": "For several years I provided photography services in Ukraine. And now don't miss the opportunity to order my services in Berlin. I provide reportage and artistic photography services. You just need to choose a studio. I also have extensive experience in photo restoration. I can restore your damaged, scratched, or discolored photographs and negatives, even if they have been washed in the washing machine. You can view my work and order my services below.",
+    "order_button_text": "ORDER TODAY"
+  },
+  "ImageRestoration": {
+    "before_after_text": "BEFORE           AFTER"
+  },
+  "Restoration": {
+    "change_photo_text": "PRESS to change photo",
+    "restoration_text": "IMAGE RESTORATION",
+    "restoration_full_text": "I offer restoration services for old photographs, film negatives and much more. Restoration is simple, restoration is complex with additional drawing, coloring of photographs, Restoration of photographs damaged by mold and moisture. I offer color correction, adjusting white balance, saturation and contrast, restoring the brightness of colors, reconstructing missing details, transforming your black and white photo into a bright image with beautiful colors. Restoring old photographs is what I am most skilled at. Restoring images that have been torn or damaged by children, weather, nature or animals. Removing stains, scratches and defects. Adjusting sharpness."
+   },
+   "Categories": {
+     "select_text": "Select photo category",
+     "Weddings": "Weddings",
+     "Flowers": "Flowers",
+     "Photosessions": "Photosessions",
+     "Children's parties": "Children's parties",
+     "Restorations": "Restorations",
+     "Humanitarian AID": "Humanitarian AID",
+     "War medicine": "War medicine"
+  }
+
 }

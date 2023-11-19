@@ -4,8 +4,10 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { categoryPhotos } from "../data/data";
 
 import "@splidejs/react-splide/css";
+import { useTranslation } from "react-i18next";
 
-const Categories = () => {
+const Categories  : React.FC = (): JSX.Element => {
+  const { t } = useTranslation('Categories');
   const isXl = useMediaQuery({ minWidth: 1240 });
   const isLg = useMediaQuery({ minWidth: 1024 });
   const isMd = useMediaQuery({ minWidth: 768 });
@@ -27,7 +29,7 @@ const Categories = () => {
       <h3 className="flex justify-center">
         <span className="text-white h-[40px] pt-[2px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-lg shadow-blue-500/50  text-xl flex py-2 rounded-[15px]">
           <span className="relative text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:mt-0.5 px-3 select-none">
-            Select photo category
+          {t('select_text')}
           </span>
         </span>
       </h3>
@@ -45,7 +47,7 @@ const Categories = () => {
               <div key={item.id} className="flex justify-center">
                 <div className="absolute top-1">
                   <span className="text-white flex w-[fit-content] ssm:text-xl md:text-2xl backdrop-blur-[5px] bg-white/20 cursor-pointer whitespace-nowrap place-content-stretch rounded-[13px] px-2 shadow-md ssm:pb-0 md:pb-1">
-                    <p>{item.title}</p>
+                    <p>{t(item.title)}</p>
                   </span>
                 </div>
                 <img

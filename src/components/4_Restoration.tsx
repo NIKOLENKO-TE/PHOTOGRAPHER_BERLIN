@@ -3,6 +3,7 @@ import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { restoredPhotos } from "../data/data";
 import { orderRestorePhotos } from "../data/data";
 import arrow from "./img/arrow.png";
+import { useTranslation } from "react-i18next";
 
 const cursorStyle =
   "absolute flex left-[8px] ml-[105px] h-[30px] w-[60px] cursor-pointer rounded-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-blue-500/50  hover:bg-gradient-to-br ";
@@ -11,7 +12,8 @@ const cursorBGStyle =
 const buttonStyle =
   "h-[40px] text-white text-2xl pt-0.5 justify-center rounded-[15px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ";
 
-const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
+const ImageRestoration : React.FC =  ({ beforeImage, afterImage, onClick }): JSX.Element =>  {
+  const { t } = useTranslation('ImageRestoration');
   const handleClick = onClick;
   const [isDragging, setIsDragging] = useState(false);
   const [sliderX, setSliderX] = useState("50%");
@@ -69,7 +71,7 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
       >
         <div className="flex">
           <span className="ml-[10px] my-[-2px] text-white text-[25px]">
-            BEFORE           AFTER
+          {t('before_after_text')}
           </span>
         </div>
         <div
@@ -86,7 +88,8 @@ const ImageRestoration = ({ beforeImage, afterImage, onClick }) => {
   );
 };
 
-const Restoration = () => {
+const Restoration : React.FC = (): JSX.Element => {
+  const { t } = useTranslation('Restoration');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [currentImages, setCurrentImages] = useState({
@@ -126,7 +129,7 @@ const Restoration = () => {
           className={`px-2 cursor-pointer ${buttonStyle}`}
           onClick={handleClick}
         >
-          PRESS to change photo
+          {t('change_photo_text')}
         </button>
       </div>
       <div className="w-flex h-flex max-w-auto mt-2 ssm:mx-2 md:mx-4 grid ssm:grid-cols-1 lg:grid-cols-2  bg-white/50 justify-between rounded-2xl shadow-xl p-2 ">
@@ -141,20 +144,10 @@ const Restoration = () => {
         </div>
         <div id="IMAGE_RESTORATION" className="flex-col grid m-2 items-center">
           <h1 className="text-center ssm:text-2xl md:text-4xl font-bold select-none">
-            IMAGE RESTORATION
+          {t('restoration_text')}
           </h1>
           <p className="pr-3 ssm:text-xl md:text-2xl text-justify select-none">
-            I offer restoration services for old photographs, film negatives and
-            much more. Restoration is simple, restoration is complex with
-            additional drawing, coloring of photographs, Restoration of
-            photographs damaged by mold and moisture. I offer color correction,
-            adjusting white balance, saturation and contrast, restoring the
-            brightness of colors, reconstructing missing details, transforming
-            your black and white photo into a bright image with beautiful
-            colors. Restoring old photographs is what I am most skilled at.
-            Restoring images that have been torn or damaged by children,
-            weather, nature or animals. Removing stains, scratches and defects.
-            Adjusting sharpness.
+          {t('restoration_full_text')}
           </p>
           <div
             id="services_buttons"

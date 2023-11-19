@@ -219,7 +219,7 @@ export const categoryPhotos = [
   },
   {
     id: 4,
-    title: "Childrens parties",
+    title: "Children's parties",
     img: category_childrens_parties,
   },
   {
