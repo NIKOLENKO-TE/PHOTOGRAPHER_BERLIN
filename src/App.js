@@ -1,11 +1,11 @@
-import TopNav from "./components/1_TopNav";
-import Featured from "./components/2_Featured";
-import AboutMe from "./components/3_About_Me";
-import Meal from "./components/5_Meal";
-import Categories from "./components/6_Categories";
-import Footer from "./components/8_Footer";
-import Restoration from "./components/4_Restoration";
-import BottomBanner from "./components/9_Bottom_banner";
+import TopNav from "./components/1_TopNav.tsx";
+import Featured from "./components/2_Featured.tsx";
+import AboutMe from "./components/3_About_Me.tsx";
+import Meal from "./components/5_Meal.tsx";
+import Categories from "./components/6_Categories.tsx";
+import Footer from "./components/8_Footer.tsx";
+import Restoration from "./components/4_Restoration.tsx";
+import BottomBanner from "./components/9_Bottom_banner.tsx";
 import bg_image from "./components/img/1.jpg";
 
 function App() {

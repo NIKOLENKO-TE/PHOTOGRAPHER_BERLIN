@@ -1,0 +1,17 @@
+//tsconfig.node.json
+{
+	"compilerOptions": {
+		"jsx": "react",
+		"composite": true,
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"allowSyntheticDefaultImports": true,
+		"lib": ["dom", "esnext"]
+	},
+	"files": [
+		"src/locales/en.json",
+		"src/locales/de.json",
+		"src/locales/ru.json",
+		"src/components/img/svg/language_icon.svg"
+	  ]
+}
