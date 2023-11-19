@@ -10,12 +10,13 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .use(LanguageDetector) // add browser language detection
   .init({
+    lng: localStorage.getItem('selectedLanguage') || 'ua', // выбор языка по умолчанию который будет автоматически подключаться на новом устройстве
     resources: {
       en: require('./locales/en.json'), // Use require to import JSON files
       de: require('./locales/de.json'),
       ua: require('./locales/ua.json'),
     },
-    fallbackLng: 'en', // set fallback language in case a translation is missing
+    fallbackLng: 'ua', // set fallback language in case a translation is missing
     detection: {
       order: ['localStorage', 'navigator'], // order in which to detect language
     },

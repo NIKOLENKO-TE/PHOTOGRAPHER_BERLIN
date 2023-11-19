@@ -6,7 +6,6 @@ import { PiPhoneCallFill } from "react-icons/pi";
 import SetLanguage from "./SetLanguage/SetLanguage";
 import { useTranslation } from "react-i18next";
 
-
   const buttonStyle =
     "rounded-[12px] ssm:text-[16px] md:text-[18px] xl:text-[20px] text-center justify-center text-white whitespace-nowrap place-content-stretch bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br border-blue-600 shadow-lg shadow-blue-500/50 ";
   const buttonStyleName =
@@ -58,8 +57,14 @@ import { useTranslation } from "react-i18next";
   };
 
   const TopPhoneButton = () => {
+    const phoneNumber = "1605945127"; // Замените на свой номер телефона
+  
+    const handlePhoneClick = () => {
+      window.location.href = `tel:${phoneNumber}`;
+    };
+  
     return (
-      <button className={` hidden ssm:flex ${buttonStyle} `}>
+      <button className={`hidden ssm:flex ${buttonStyle}`} onClick={handlePhoneClick}>
         <PiPhoneCallFill className="ssm:h-[26px] md:h-[28px] xl:h-[30px] ssm:w-[26px] md:w-[28px] xl:w-[30px] sm:ml-[-15px] mt-[2px]" />
         <span className="mr-[-12px]  ssm:hidden sm:flex ssm:mt-[2px] md:mt-[2px]">
           160-5945-127
@@ -69,8 +74,7 @@ import { useTranslation } from "react-i18next";
   };
 
   const TopNav = () => {
-    const [selectedLanguage, setSelectedLanguage] = useState("en");
-  
+    const [selectedLanguage, setSelectedLanguage] = useState("ua");
     const handleSelectLanguage = (language: string) => {
       setSelectedLanguage(language);
     };
