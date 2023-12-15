@@ -19,7 +19,7 @@ function App() {
     <div className="relative">
       <div className="absolute inset-1 blur-sm m-[-4px]" style={dg_image_style} />
       <div className="relative bg-origin-content ">
-        <TopNav />
+        <Footer /> <TopNav />
         <Featured />
         <AboutMe /> 
         <Restoration/>
@@ -27,7 +27,7 @@ function App() {
         <div className="fixed bottom-0 w-full ssm:flex "><BottomBanner />
         </div> 
         {/*
-        <Footer /> 
+        
         <Meal />
         */}
       </div>

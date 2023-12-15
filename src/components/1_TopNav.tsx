@@ -15,7 +15,9 @@ import { useTranslation } from "react-i18next";
     const { t } = useTranslation('TopNameButton');
     return (
       <div className="bg-white/20 backdrop-blur-[5px] rounded-[14px] p-[2px] flex items-center ">
-        <button className={`px-1 ${buttonStyleName} `}>{t('my_name')}</button>
+        <button id="name_button" className={`px-1 ${buttonStyleName} `}>
+          {t('my_name')}
+        </button>
         <div>
           <span className="hidden m-[2px] md:flex text-white text-xl">
           {t('my_profession')}
@@ -58,7 +60,6 @@ import { useTranslation } from "react-i18next";
 
   const TopPhoneButton = () => {
     const phoneNumber = "+491605945127";
-  
     const handlePhoneClick = () => {
       window.location.href = `tel:${phoneNumber}`;
     };
