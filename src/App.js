@@ -19,11 +19,11 @@ function App() {
     <div className="relative">
       <div className="absolute inset-1 blur-sm m-[-4px]" style={dg_image_style} />
       <div className="relative bg-origin-content ">
-        <Footer /> <TopNav />
+       <TopNav />
         <Featured />
         <AboutMe /> 
         <Restoration/>
-        <Categories />
+        <Categories /> <Footer />
         <div className="fixed bottom-0 w-full ssm:flex "><BottomBanner />
         </div> 
         {/*

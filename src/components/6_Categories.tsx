@@ -26,14 +26,14 @@ const Categories  : React.FC = (): JSX.Element => {
 
   return (
     <div>
-      <h3 className="flex justify-center">
+      <h3 className="flex justify-center mx-2">
         <span className="text-white h-[40px] pt-[2px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-lg shadow-blue-500/50  text-xl flex py-2 rounded-[15px]">
-          <span className="relative text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:mt-0.5 px-3 select-none">
+          <span className="relative text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:mt-0.5 px-3 select-none m-2">
           {t('select_text')}
           </span>
         </span>
       </h3>
-      <div className="flex w-full m-auto py-2 px-2 pb-8">
+      <div className="flex w-full m-auto py-2 px-2">
         <Splide
           options={{
             perPage: perPage,

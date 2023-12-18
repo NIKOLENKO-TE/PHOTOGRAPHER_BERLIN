@@ -6,13 +6,13 @@ import { useTranslation } from "react-i18next";
 const Delivery : React.FC = (): JSX.Element => {
   const { t } = useTranslation('Delivery');
   return (
-    <div className="w-full pt-2 ssm:px-2 md:px-4 pb-2 ">
-      <h3 className="flex justify-center">
-        <span className="text-white h-[40px] pt-[2px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-lg shadow-blue-500/50  text-xl flex py-2 rounded-[15px]"
+    <div className="w-full ssm:px-2 md:px-4 py-2">
+      <h1 className="flex justify-center">
+        <span className="text-white h-[40px] pt-[2px] bg-gradient-to-r  from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-lg shadow-blue-500/50  text-xl flex py-2 rounded-[15px]"
         > <span className="relative text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:mt-0.5 px-3 select-none">
            {t('order_services')}</span>
         </span>
-      </h3>
+      </h1>
       <div className="w-flex h-flex max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2 mt-2 bg-white/50 rounded-2xl shadow-xl ">
         <div className="justify-items-center select-none m-2">
           <img  src={iphone_photo_1} alt="iphone_photo" />

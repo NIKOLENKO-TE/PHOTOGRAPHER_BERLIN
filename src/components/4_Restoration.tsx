@@ -143,9 +143,9 @@ const Restoration : React.FC = (): JSX.Element => {
           </div>
         </div>
         <div id="IMAGE_RESTORATION" className="flex-col grid m-2 items-center">
-          <h1 className="text-center ssm:text-2xl md:text-4xl font-bold select-none">
+          <h2 className="text-center ssm:text-2xl md:text-4xl font-bold select-none">
           {t('restoration_text')}
-          </h1>
+          </h2>
           <p className="pr-3 ssm:text-xl md:text-2xl text-justify select-none">
           {t('restoration_full_text')}
           </p>
