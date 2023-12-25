@@ -13,7 +13,7 @@ const Delivery : React.FC = (): JSX.Element => {
            {t('order_services')}</span>
         </span>
       </h1>
-      <div className="w-flex h-flex max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2 mt-2 bg-white/50 rounded-2xl shadow-xl ">
+      <div className="bg-white bg-opacity-30 backdrop-blur-[10px] w-flex h-flex justify-items-center max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2 mt-2  rounded-2xl shadow-xl ">
         <div className="justify-items-center select-none m-2">
           <img  src={iphone_photo_1} alt="iphone_photo" />
         </div>

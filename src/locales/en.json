@@ -29,6 +29,22 @@
      "Restorations": "Restorations",
      "Humanitarian AID": "Humanitarian AID",
      "War medicine": "War medicine"
-  }
-
+  },
+  "NikolenkoTEBlockModal": {
+    "validation.modal.name.required": "Name is required",
+    "validation.modal.email.required": "Email is required",
+    "validation.modal.email.invalid":"Email is invalid",
+    "validation.modal.file.type.invalid":"Invalid file type",
+    "validation.modal.message.required":"Message is required",
+    "button.modal.cancel":"Cancel",
+    "button.modal.send":"Send",
+    "text.modal.name":"Enter your name",
+    "text.modal.email":"Enter your email",
+    "text.modal.message":"Enter your message",
+    "text.modal.send.message":"Send me a message",
+    "text.modal.attach.photo":"Attach your photos",
+    "text.modal.click.upload.1":"Click to upload ",
+    "text.modal.click.upload.2":"or  drag and drop",
+    "text.modal.click.upload.3":"Acceptable file formats are SVG, PNG, JPG, BMP or GIF"
+   }
 }

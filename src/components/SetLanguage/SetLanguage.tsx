@@ -14,9 +14,9 @@ const SetLanguage: React.FC<SetLanguageProps> = ({
   onSelectLanguage,
 }): JSX.Element => {
   const locales = {
-    ua: { title: "Українська", flag: uaFlag },
-    en: { title: "English", flag: enFlag },
-    de: { title: "Deutsch", flag: deFlag },
+    ua: { title: "UA", flag: uaFlag },
+    en: { title: "EN", flag: enFlag },
+    de: { title: "DE", flag: deFlag },
   };
 
   const { i18n } = useTranslation();
@@ -31,7 +31,7 @@ const SetLanguage: React.FC<SetLanguageProps> = ({
       setSelectedLanguage(savedLanguage);
       i18n.changeLanguage(savedLanguage);
     }
-  }, []);
+  }, [i18n]);
 
   const languageInfo = locales[selectedLanguage as keyof typeof locales];
 
@@ -64,7 +64,7 @@ const SetLanguage: React.FC<SetLanguageProps> = ({
           >
             <Listbox.Options
               static
-              className="absolute z-10 mt-2 shadow-md bg-white/40 backdrop-blur-[2px] ring-1 ring-black ring-opacity-10 focus:outline-2 rounded-[8px] w-[145px]"
+              className="absolute z-10 mt-2 shadow-md bg-white bg-opacity-30 backdrop-blur-[4px] ring-1 ring-black ring-opacity-10 focus:outline-2 rounded-[8px] w-[85px]"
             >
               {Object.keys(locales).map((locale) => (
                 <Listbox.Option key={locale} value={locale}>
