@@ -1,3 +1,4 @@
+//1_TopNav.tsx
 import React, { useState } from "react";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { PiPhoneCallFill } from "react-icons/pi";
@@ -8,7 +9,7 @@ const buttonStyle =
   "rounded-[12px] ssm:text-[16px] md:text-[18px] xl:text-[20px] text-center justify-center text-white whitespace-nowrap place-content-stretch bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br border-blue-600 shadow-lg shadow-blue-500/50 ";
 const buttonStyleName =
   "rounded-[12px] ssm:text-[17px] md:text-[19px] xl:text-[21px] text-center justify-center text-white whitespace-nowrap place-content-stretch bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br border-blue-600 shadow-lg shadow-blue-500/50 ";
-  const buttonStyleSearch =
+const buttonStyleSearch =
   "p-2.5 ssm:h-[38px] md:h-[40px] xl:h-[42px]  rounded-r-[15px] rounded-l-[3px]  whitespace-nowrap place-content-stretch bg-gradient-to-l from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br border-blue-600 shadow-lg shadow-blue-500/50 ";
 
 const TopNameButton: React.FC = (): JSX.Element => {
@@ -16,10 +17,7 @@ const TopNameButton: React.FC = (): JSX.Element => {
 
   return (
     <div className="z-50 bg-white bg-opacity-20 backdrop-blur-[10px] rounded-[14px] p-[2px] flex items-center">
-      <button
-        id="name_button"
-        className={`px-1 ${buttonStyleName}`}
-      >
+      <button id="name_button" className={`px-1 ${buttonStyleName}`}>
         {t("my_name")}
       </button>
       <div>
@@ -48,10 +46,7 @@ const TopSearch: React.FC = (): JSX.Element => {
           }}
         />
         <div className="absolute top-[0px] right-0 ">
-          <button
-            type="submit"
-            className={` ${buttonStyleSearch}`}
-          >
+          <button type="submit" className={` ${buttonStyleSearch}`}>
             <svg
               className="w-4 h-4"
               aria-hidden="true"
@@ -105,7 +100,8 @@ const TopPhoneButton = () => {
     </button>
   );
 };
-
+const TopNavStyle =
+  "flex justify-between items-center ssm:px-1.5 md:px-2 ssm:py-1 md:py-1.5 gap-1.5";
 const TopNav = () => {
   const [, setSelectedLanguage] = useState("en");
   const handleSelectLanguage = (language: string) => {
@@ -113,10 +109,10 @@ const TopNav = () => {
   };
 
   return (
-    <div className="flex justify-between items-center ssm:px-1.5 md:px-2 ssm:py-1 md:py-1.5 gap-1.5">
+    <div id="topNav" className={TopNavStyle}>
       <TopNameButton />
       <TopSearch />
-      <SetLanguage onSelectLanguage={handleSelectLanguage}/>
+      <SetLanguage onSelectLanguage={handleSelectLanguage} />
       <TopMailButton />
       <TopPhoneButton />
     </div>

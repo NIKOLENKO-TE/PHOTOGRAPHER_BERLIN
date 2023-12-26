@@ -1,3 +1,4 @@
+//4_Restoration.tsx
 import React, { useState } from "react";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { restoredPhotos } from "../data/data";
@@ -11,8 +12,13 @@ const cursorBGStyle =
   "bg-white/1 top-[10px] ml-[-90px] backdrop-blur-[40px] rounded-[14px] h-[35px] w-[250px] rounded-xl shadow-xl shadow-black/50";
 const buttonStyle =
   "h-[40px] text-white text-2xl pt-0.5 justify-center rounded-[15px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ";
+interface ImageRestorationProps {
+  beforeImage: string;
+  afterImage: string;
+  onClick: () => void;
+}
 
-const ImageRestoration: React.FC = ({
+const ImageRestoration: React.FC<ImageRestorationProps> = ({
   beforeImage,
   afterImage,
   onClick,
@@ -45,7 +51,7 @@ const ImageRestoration: React.FC = ({
 
   return (
     <div
-      id="restored_images"
+      id="before_container"
       className="relative ssm:h-[440px] sm:h-[620px] w-[820px] overflow-hidden object-cover rounded-2xl cursor-pointer"
       onTouchMove={handleMove}
       onTouchEnd={handleEnd}
@@ -55,15 +61,17 @@ const ImageRestoration: React.FC = ({
       onClick={handleClick}
     >
       <img
+        id="beforeImage"
         src={beforeImage}
         className="absolute h-full object-cover select-none"
-        alt="before left"
+        alt="before"
       />
-      <div className="absolute h-full overflow-hidden">
+      <div id="after_container" className="absolute h-full overflow-hidden">
         <img
+          id="afterImage"
           src={afterImage}
           className={`h-full object-cover `}
-          alt="after right"
+          alt="after"
           style={{
             userSelect: "none",
             clipPath: `inset(0 0 0 ${sliderX})`,
@@ -72,7 +80,7 @@ const ImageRestoration: React.FC = ({
         />
       </div>
       <div
-        id="cursorButtonTop"
+        id="slider_before_after"
         className={`relative select-none ssm:mt-[335px] sm:mt-[550px] ${cursorBGStyle}`}
         style={{ left: `calc(${sliderX} - 45px)`, userSelect: "none" }}
         onMouseDown={handleStart}
@@ -116,7 +124,15 @@ const Restoration: React.FC = (): JSX.Element => {
         : restoredPhotos[nextIndex + 1].img,
     });
   };
-  const PaginationDots: React.FC = ({ count, activeIndex }) => {
+
+  interface PaginationDotsProps {
+    count: number;
+    activeIndex: number;
+  }
+  const PaginationDots: React.FC<PaginationDotsProps> = ({
+    count,
+    activeIndex,
+  }) => {
     const dots = Array(Math.ceil(count / 2)).fill(null);
 
     return (
@@ -124,10 +140,10 @@ const Restoration: React.FC = (): JSX.Element => {
         {dots.map((_, index) => (
           <div
             key={index}
-            className={`w-4 h-4 mx-1 rounded-full ${
+            className={`w-5 h-3 mx-1 rounded-full ${
               Math.floor(activeIndex / 2) === index
-                ? "bg-blue-500"
-                : "bg-gray-300"
+                ? "bg-blue-700 bg-opacity-90 backdrop-blur-[2px]"
+                : "bg-white bg-opacity-40 backdrop-blur-[2px]"
             }`}
           ></div>
         ))}
@@ -257,7 +273,7 @@ const Restoration: React.FC = (): JSX.Element => {
     <PaginationDots count={restoredPhotos.length} activeIndex={currentIndex} />
   );
   const imageRestorationBlock = (
-    <div className="grid grid-cols-1">
+    <div className="grid grid-cols-1 ">
       <div className="flex flex-column justify-center ">
         <ImageRestoration
           beforeImage={currentImages.beforeImage}
@@ -265,7 +281,7 @@ const Restoration: React.FC = (): JSX.Element => {
           onClick={handleClick}
         />
       </div>
-      <div className="relative top-[-37px]">{paginationDots}</div>
+      <div className="relative top-[-32px] -mb-7">{paginationDots}</div>
     </div>
   );
   const restorationTextTitle = (
@@ -287,17 +303,17 @@ const Restoration: React.FC = (): JSX.Element => {
     </button>
   );
   return (
-    <div className="pb-2">
+    <div className="pb-2 -mx-2">
       <div className="flex flex-col items-center justify-center">
         {buttonChangePhotoTitle}
       </div>
       <div
         id="container_main"
-        className="w-flex h-flex max-w-auto mt-2 ssm:mx-2 md:mx-4 grid ssm:grid-cols-1 lg:grid-cols-2 bg-white bg-opacity-30 backdrop-blur-[10px]  justify-between rounded-2xl shadow-xl p-2 "
+        className="p-2 mt-2 ssm:mx-2 md:mx-4 grid ssm:grid-cols-1 lg:grid-cols-2 bg-white bg-opacity-30 backdrop-blur-[10px] rounded-2xl shadow-xl "
       >
         <div
           id="container_left"
-          className="min-w-[250px] ssm:md-1 md:px-2 py-auto sm:p-1 md:p-2"
+          className="min-w-[250px] ssm:md-1 md:px-2 sm:p-1 md:p-2 "
         >
           {imageRestorationBlock}
         </div>

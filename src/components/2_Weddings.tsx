@@ -1,15 +1,16 @@
+//2_Weddings.tsx
 import { useEffect, useRef, useState } from "react";
-import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { Splide } from "@splidejs/splide";
-import { featuredPhotos } from "../data/data";
+import { weddingPhotos } from "../data/data";
+import { useTranslation } from "react-i18next";
 
 const Featured = () => {
-  const sliders = featuredPhotos.map((photo: { img: any; }) => photo.img);
+  const { t } = useTranslation("Weddings");
+  const sliders = weddingPhotos.map((photo: { img: any }) => photo.img);
   const splideRef = useRef<HTMLDivElement | null>(null);
-  const previewSplideRef = useRef<HTMLDivElement | null>(null); 
+  const previewSplideRef = useRef<HTMLDivElement | null>(null);
   const [selectedSlide, setSelectedSlide] = useState(0);
   const splideInstanceRef = useRef<Splide | null>(null);
-
   const getPerPageValue = () => {
     if (window.innerWidth < 640) {
       return 3;
@@ -23,7 +24,6 @@ const Featured = () => {
       return 8;
     }
   };
-
   useEffect(() => {
     if (splideRef.current) {
       const splideInstance = new Splide(splideRef.current, {
@@ -48,9 +48,8 @@ const Featured = () => {
       };
     }
   }, [selectedSlide]);
-
   useEffect(() => {
-    if (previewSplideRef.current) { 
+    if (previewSplideRef.current) {
       const previewSplide = new Splide(previewSplideRef.current, {
         type: "slide",
         perPage: getPerPageValue(),
@@ -61,12 +60,20 @@ const Featured = () => {
       });
 
       previewSplide.on("mounted", () => {
-        const slides = previewSplideRef.current!.querySelectorAll(".splide__slide"); 
-        slides.forEach((slide: { addEventListener: (arg0: string, arg1: () => void) => void; }, index: number) => {
-          slide.addEventListener("click", () => {
-            handlePreviewClick(index);
-          });
-        });
+        const slides =
+          previewSplideRef.current!.querySelectorAll(".splide__slide");
+        slides.forEach(
+          (
+            slide: {
+              addEventListener: (arg0: string, arg1: () => void) => void;
+            },
+            index: number
+          ) => {
+            slide.addEventListener("click", () => {
+              handlePreviewClick(index);
+            });
+          }
+        );
       });
 
       previewSplide.mount();
@@ -86,37 +93,54 @@ const Featured = () => {
       };
     }
   }, [selectedSlide]);
-
   const handlePreviewClick = (index: number) => {
     setSelectedSlide(index);
   };
-
-  return (
-    <div className="px-2">
-      <section id="thumbnail-carousel" ref={splideRef} className="splide pb-2">
-        <div className="splide__track rounded-2xl">
-          <ul className="splide__list">
-            {sliders.map((sliderItem: string | undefined, slideIndex: number) => (
-              <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()}>
-                <img
-                  className="ssm:h-[440px] xl:h-[700px] w-full object-cover duration-300 ease-out"
-                  src={sliderItem}
-                  alt={`Slide ${slideIndex}`}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-      <section id="thumbnail-preview" ref={previewSplideRef} className="splide">
-        <div className="splide__track">
-          <ul className="splide__list">
-            {sliders.map((previewItem: string | undefined, previewIndex: number) => (
+  const WeddingsTitle = (
+    <h3 className="flex justify-center pb-2">
+      <span className="text-white h-[40px] pt-[1px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-lg shadow-blue-500/50  text-xl flex rounded-[15px]">
+        <span className="relative text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:mt-0.5  select-none m-4">
+          {t("weddings")}
+        </span>
+      </span>
+    </h3>
+  );
+  const ThumbnailCarousel = (
+    <section id="thumbnail_carousel" ref={splideRef} className="splide pb-2">
+      <div className="splide__track rounded-2xl">
+        <ul className="splide__list">
+          {sliders.map((sliderItem: string | undefined, slideIndex: number) => (
+            <li
+              key={slideIndex}
+              className={`splide__slide`}
+              onContextMenu={(e) => e.preventDefault()}
+            >
+              <img
+                className="ssm:h-[440px] xl:h-[700px] w-full object-cover duration-300 ease-out"
+                src={sliderItem}
+                alt={`Slide ${slideIndex}`}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+  const ThumbnailCarouselPreview = (
+    <section
+      id="thumbnail_carousel_preview"
+      ref={previewSplideRef}
+      className="splide"
+    >
+      <div className="splide__track">
+        <ul className="splide__list">
+          {sliders.map(
+            (previewItem: string | undefined, previewIndex: number) => (
               <li
                 key={previewIndex}
                 className={`splide__slide`}
                 onClick={() => handlePreviewClick(previewIndex)}
-                onContextMenu={(e) => e.preventDefault()} 
+                onContextMenu={(e) => e.preventDefault()}
               >
                 <img
                   className="h-[100px] w-full object-cover rounded-2xl"
@@ -124,10 +148,19 @@ const Featured = () => {
                   alt={`Preview ${previewIndex}`}
                 />
               </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+            )
+          )}
+        </ul>
+      </div>
+    </section>
+  );
+  const CarouselBackgroundStyle = "px-2 py-2 mx-2 my-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
+
+  return (
+    <div className={CarouselBackgroundStyle}>
+      {WeddingsTitle}
+      {ThumbnailCarousel}
+      {ThumbnailCarouselPreview}
     </div>
   );
 };

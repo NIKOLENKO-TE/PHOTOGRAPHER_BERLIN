@@ -33,6 +33,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
           "image/svg+xml",
           "image/png",
           "image/jpeg",
+          "image/jpg",
           "image/bmp",
           "image/gif",
         ];
@@ -117,7 +118,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   const ModalContainerLeft = (
     <div id="modal_container_left">
       <h2 className="whitespace-nowrap text-white text-2xl px-5 pb-1 inline-block bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-xl flex-nowrap mb-2">
-      {t("text.modal.send.message")}
+        {t("text.modal.send.message")}
       </h2>
 
       <div className="relative mb-3">
@@ -236,7 +237,10 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
                     />
                   </svg>
                   <p className="mb-2 text-sm text-gray-500 ">
-                    <span className="font-semibold"> {t("text.modal.click.upload.1")}</span> 
+                    <span className="font-semibold">
+                      {" "}
+                      {t("text.modal.click.upload.1")}
+                    </span>
                     {t("text.modal.click.upload.2")}
                   </p>
                   <p className="text-xs text-gray-500 ">
@@ -289,30 +293,23 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
       </div>
     </div>
   );
+  const modal1plus1Style =
+    "grid grid-cols-1 md:grid-cols-2 gap-4 justify-self-center h-full max-w-screen overflow-y-auto";
+  const modalShadowStyle =
+    "overflow-auto fixed -top-2 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-sm backdrop-brightness-50 z-50";
+  const modalContainerStyle =
+    "w-full lg:!max-w-[700px] shadow-2xl p-4 rounded-xl bg-white bg-opacity-50 backdrop-blur-sm fixed top-10 left-1/2 transform -translate-x-1/2 w-calc(100%-20px) max-w-calc(100%-20px)";
 
   return (
     showModal && (
       <div
         id="modal_shadow"
-        className="overflow-auto fixed -top-2 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-sm backdrop-brightness-50 z-50"
+        className={modalShadowStyle}
         onClick={handleBackdropClick}
       >
-        <div
-          className="lg:!max-w-[700px] shadow-2xl p-4 rounded-xl bg-white bg-opacity-50 backdrop-blur-sm"
-          style={{
-            position: "fixed",
-            top: "10px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "calc(100% - 20px)",
-            maxWidth: "calc(100% - 20px)",
-          }}
-        >
+        <div id="modal_container" className={modalContainerStyle}>
           <form onSubmit={formik.handleSubmit}>
-            <div
-              id="modal_container"
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-self-center h-full max-w-screen overflow-y-auto"
-            >
+            <div className={modal1plus1Style}>
               {ModalContainerLeft}
               {ModalContainerRight}
             </div>

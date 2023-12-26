@@ -114,17 +114,24 @@ const MailToMe = () => {
     </div>
   );
 };
+const FooterStyle = "flex flex-wrap justify-around my-2";
+const NikolenkoTEBlockStyle =
+  "flex-shrink-0 w-full mt-2 sm:w-[48%] md:w-[40%] lg:w-[30%]";
+const SocialMediaStyle =
+  "flex-shrink-0 w-full mt-2 sm:w-[52%] md:w-[60%] lg:w-[40%]";
+const MailToMeStyle =
+  "flex-shrink-0 w-full mt-2 mb-[20px] sm:w-[80%] md:w-[80%] lg:w-[30%]";
 
 const Footer = () => {
   return (
-    <div className="flex flex-wrap justify-around my-2 ">
-      <div className="flex-shrink-0 w-full mt-2 sm:w-[48%] md:w-[40%] lg:w-[30%]">
+    <div id="footer" className={FooterStyle}>
+      <div id="nikolenkoTEBlock" className={NikolenkoTEBlockStyle}>
         <NikolenkoTEBlock />
       </div>
-      <div className="flex-shrink-0 w-full mt-2 sm:w-[52%] md:w-[60%] lg:w-[40%]">
+      <div id="socialMedia" className={SocialMediaStyle}>
         <SocialMedia />
       </div>
-      <div className="flex-shrink-0 w-full mt-2 mb-[20px] sm:w-[80%] md:w-[80%] lg:w-[30%]">
+      <div id="mailToMe" className={MailToMeStyle}>
         <MailToMe />
       </div>
     </div>

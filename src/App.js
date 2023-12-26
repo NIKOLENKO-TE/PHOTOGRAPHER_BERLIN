@@ -33,14 +33,14 @@ function App() {
   };
 
   return (
-    <div className="relative" style={{ overflow: "hidden"}}>
+    <div className="relative" style={{ overflow: "hidden" }}>
       <div className="parallax-bg " style={dg_image_style} />
       <div className="relative bg-origin-content ">
-        <TopNav />
-        <Weddings />
-        <AboutMe />
-        <Restoration />
+        <TopNav /> 
         <Categories />
+        <Weddings />
+        <Restoration />
+        <AboutMe />
         <Footer />
         <div className="fixed bottom-0 w-full ssm:flex z-49">
           <BottomBanner />
