@@ -12,12 +12,22 @@
     "about_me_text": "Mehrere Jahre lang habe ich Fotodienstleistungen in der Ukraine erbracht. Und jetzt verpassen Sie nicht die Gelegenheit, meine Dienste in Berlin zu bestellen. Ich biete Dienstleistungen im Bereich Reportage und künstlerische Fotografie an. Sie müssen nur ein Studio auswählen. Ich verfüge auch über umfangreiche Erfahrung in der Fotorestaurierung. Ich kann Ihre beschädigten, zerkratzten oder verfärbten Fotos und Negative restaurieren, auch wenn diese in der Waschmaschine gewaschen wurden. Unten können Sie meine Arbeit ansehen und meine Dienstleistungen bestellen.",
     "order_button_text": "BESTELLEN SIE HEUTE"
   },
+  "Weddings": {
+    "weddings": "HOCHZEITEN"
+  },
+  "Flowers": {
+    "flowers_title": "BLUMEN und EHERINGE"
+  },
+  "Childrens": {
+    "childrens_title": "Fotosessions für Kinder"
+  },
   "ImageRestoration": {
     "before_after_text": "BEFORE           AFTER"
   },
   "Restoration": {
+    "restoration_title": "FOTORESTAURIERUNG",
     "change_photo_text": "DRÜCKEN Sie, um das Foto zu ändern",
-    "restoration_text": "BILDRESTAURIERUNG",
+    "restoration_text_caps": "BILDRESTAURIERUNG",
     "restoration_full_text": "Ich biete Restaurierungsdienste für alte Fotos, Filmnegative und vieles mehr an. Die Restaurierung ist einfach, die Restaurierung ist komplex mit zusätzlicher Zeichnung, Kolorierung von Fotos, Restaurierung von Fotos, die durch Schimmel und Feuchtigkeit beschädigt wurden. Ich biete Farbkorrektur an, passe den Weißabgleich, die Sättigung und den Kontrast an, stelle die Helligkeit der Farben wieder her, rekonstruiere fehlende Details und verwandle Ihr Schwarzweißfoto in ein helles Bild mit wunderschönen Farben. Das Restaurieren alter Fotos ist mein Spezialgebiet. Wiederherstellung von Bildern, die durch Kinder, Wetter, Natur oder Tiere zerrissen oder beschädigt wurden. Entfernen von Flecken, Kratzern und Mängeln. Schärfe anpassen."
    },
    "Categories": {
@@ -28,7 +38,8 @@
      "Children's parties": "Kinderfeste",
      "Restorations": "Restaurierungen",
      "Humanitarian AID": "Humanitäre Hilfe",
-     "War medicine": "Kriegsmedizin"
+     "War medicine": "Kriegsmedizin",
+     "About me": "Über mich"
   },
   "NikolenkoTEBlockModal": {
     "validation.modal.name.required": "Name ist erforderlich",
@@ -46,5 +57,14 @@
     "text.modal.click.upload.1":"Klicken Sie zum Hochladen ",
     "text.modal.click.upload.2":"oder per Drag & Drop",
     "text.modal.click.upload.3":"Akzeptable Dateiformate sind SVG, PNG, JPG, BMP oder GIF"
-   }
+   },
+   "Footer": {
+    "nikolenko_te": "NIKOLENKO Tymofii",
+    "photographer": "FOTOGRAF",
+    "message_button": "Nachricht schreiben",
+    "social_media": "Sozialen Medien",
+    "follow_my_social": "Sie können meine Neuigkeiten in den sozialen Netzwerken verfolgen. Abonniere jetzt?",
+    "follow_my_news": "Verfolgen Sie mich",
+    "notify_me_button": "Benachrichtige"
+  }
 }

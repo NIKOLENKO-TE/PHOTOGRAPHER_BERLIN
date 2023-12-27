@@ -13,41 +13,60 @@
     "order_button_text": "ЗАМОВ СЬОГОДНІ"
   },
   "Weddings": {
-    "weddings": "Весілля"
+    "weddings": "ВЕСIЛЛЯ"
+  },
+  "Flowers": {
+    "flowers_title": "КВIТИ та ОБРУЧКИ"
+  }, 
+  "Childrens": {
+    "childrens_title": "Дитячі Фотосесії"
   },
   "ImageRestoration": {
     "before_after_text": "BEFORE           AFTER"
   },
   "Restoration": {
+    "restoration_title": "РЕСТАВРАЦІЯ ФОТО",
     "change_photo_text": "НАТИСНІТЬ для зміни фото",
-    "restoration_text": "РЕСТАВРАЦІЯ ЗОБРАЖЕННЯ",
+    "restoration_text_caps": "РЕСТАВРАЦІЯ ЗОБРАЖЕННЯ",
     "restoration_full_text": "Пропоную послуги з реставрації старих фотографій, негативів плівки та багато іншого. Реставрація проста, реставрація складна з домальовуванням, розмальовування фотографій. Реставрація фотографій пошкоджених цвіллю та вологою. Пропоную корекцію кольору, налаштування балансу білого, насиченості та контрастності, відновлення яскравості кольорів, реконструкцію відсутніх деталей, перетворення вашого чорно-білого фото в яскраве зображення з красивими кольорами. Реставрація старих фотографій — це те, у чому я найбільше вмію. Відновлення зображень, які були порвані або пошкоджені дітьми, погодою, природою чи тваринами. Видалення вiд плям, подряпин і дефектів. Регулювання різкості."
-   },
-   "Categories": {
-     "select_text": "Оберіть категорію фото",
-     "Weddings": "Весілля",
-     "Flowers": "Квіти",
-     "Photosessions": "Фотосесії",
-     "Children's parties": "Дитячі вечірки",
-     "Restorations": "Реставрації",
-     "Humanitarian AID": "Гуманітарна допомога",
-     "War medicine": "Військова медицина"
+  },
+  "Categories": {
+    "select_text": "Оберіть категорію фото",
+    "Weddings": "Весілля",
+    "Flowers": "Квіти",
+    "Photosessions": "Фотосесії",
+    "Children's parties": "Дитячі",
+    "Children": "Дитячі",
+    "Restorations": "Реставрації",
+    "Humanitarian AID": "Гумдопомога",
+    "AID": "Гумдопомога",
+    "War medicine": "Госпiталь",
+    "About me": "Про мене"
   },
   "NikolenkoTEBlockModal": {
     "validation.modal.name.required": "Необхідно вказати ім'я",
     "validation.modal.email.required": "Необхідно вказати Email",
-    "validation.modal.email.invalid":"Адреса електронної пошти недійсна",
-    "validation.modal.file.type.invalid":"Неприпустимий тип файлу",
-    "validation.modal.message.required":"Необхідне надати повідомлення",
-    "button.modal.cancel":"Скасувати",
-    "button.modal.send":"Надіслати",
-    "text.modal.name":"Введіть Ваше ім'я",
-    "text.modal.email":"Введіть адресу електронної пошти",
-    "text.modal.message":"Залиште ваше повідомлення",
-    "text.modal.send.message":"Надішліть повідомлення",
-    "text.modal.attach.photo":"Прикріпіть  фотографії",
-    "text.modal.click.upload.1":"Натисніть, щоб завантажити ",
-    "text.modal.click.upload.2":"або перетягніть і вiдпустіть",
-    "text.modal.click.upload.3":"Допустимі формати файлів: SVG, PNG, JPG, BMP або GIF"
-   }
+    "validation.modal.email.invalid": "Адреса електронної пошти недійсна",
+    "validation.modal.file.type.invalid": "Неприпустимий тип файлу",
+    "validation.modal.message.required": "Необхідне надати повідомлення",
+    "button.modal.cancel": "Скасувати",
+    "button.modal.send": "Надіслати",
+    "text.modal.name": "Введіть Ваше ім'я",
+    "text.modal.email": "Введіть адресу електронної пошти",
+    "text.modal.message": "Залиште ваше повідомлення",
+    "text.modal.send.message": "Надішліть повідомлення",
+    "text.modal.attach.photo": "Прикріпіть  фотографії",
+    "text.modal.click.upload.1": "Натисніть, щоб завантажити ",
+    "text.modal.click.upload.2": "або перетягніть і вiдпустіть",
+    "text.modal.click.upload.3": "Допустимі формати файлів: SVG, PNG, JPG, BMP або GIF"
+  },
+  "Footer": {
+    "nikolenko_te": "НИКОЛЕНКО Тимофій",
+    "photographer": "ФОТОГРАФ",
+    "message_button": "Написати",
+    "social_media": "Соціальні мережі",
+    "follow_my_social": "Ви можете стежити за моїми новинами в соціальних мережах.",
+    "follow_my_news": "Слідкуйте за мною",
+    "notify_me_button": "Підписатись"
+  }
 }

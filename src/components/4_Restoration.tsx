@@ -1,17 +1,16 @@
 //4_Restoration.tsx
 import React, { useState } from "react";
-import "@splidejs/splide/dist/css/themes/splide-default.min.css";
-import { restoredPhotos } from "../data/data";
-import { orderRestorePhotos } from "../data/data";
-import arrow from "./img/arrow.png";
 import { useTranslation } from "react-i18next";
+import { restoredPhotos, orderRestorePhotos } from "../data/data";
+import arrow from "./img/arrow.png";
 
-const cursorStyle =
-  "absolute flex left-[8px] ml-[105px] h-[30px] w-[60px] cursor-pointer rounded-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-blue-500/50  hover:bg-gradient-to-br ";
-const cursorBGStyle =
-  "bg-white/1 top-[10px] ml-[-90px] backdrop-blur-[40px] rounded-[14px] h-[35px] w-[250px] rounded-xl shadow-xl shadow-black/50";
-const buttonStyle =
-  "h-[40px] text-white text-2xl pt-0.5 justify-center rounded-[15px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ";
+const button_title_style =
+  "ssm:-mt-3 sm:-mt-1 md:-mt-0 w-full justify-center ssm:h-[29px] sm:h-[31px] md:h-[38px] ssm:text-[22px] md:text-[26px] xl:text-[30px] flex text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[13px] md:rounded-[15px]";
+const arrows_style =
+  "absolute flex left-[8px] ml-[105px] h-[30px] w-[60px] cursor-pointer rounded-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-blue-500/50 hover:bg-gradient-to-br";
+const before_after_style =
+  "top-[10px] ml-[-90px] backdrop-blur-[40px] rounded-[14px] h-[35px] w-[250px] rounded-[55px] shadow-xl shadow-black/50 ";
+
 interface ImageRestorationProps {
   beforeImage: string;
   afterImage: string;
@@ -81,7 +80,7 @@ const ImageRestoration: React.FC<ImageRestorationProps> = ({
       </div>
       <div
         id="slider_before_after"
-        className={`relative select-none ssm:mt-[335px] sm:mt-[550px] ${cursorBGStyle}`}
+        className={`relative select-none ssm:mt-[365px] sm:mt-[550px] ${before_after_style}`}
         style={{ left: `calc(${sliderX} - 45px)`, userSelect: "none" }}
         onMouseDown={handleStart}
         onTouchStart={handleStart}
@@ -91,7 +90,7 @@ const ImageRestoration: React.FC<ImageRestorationProps> = ({
             {t("before_after_text")}
           </span>
         </div>
-        <div className={`bottom-[2.5px] ml-[97px] border ${cursorStyle}`}>
+        <div className={`bottom-[2.5px] ml-[97px] border ${arrows_style}`}>
           <img
             src={arrow}
             alt="Arrows"
@@ -113,7 +112,6 @@ const Restoration: React.FC = (): JSX.Element => {
       ? orderRestorePhotos[4].img
       : restoredPhotos[currentIndex + 1].img,
   });
-
   const handleClick = () => {
     const nextIndex = (currentIndex + 2) % restoredPhotos.length;
     setCurrentIndex(nextIndex);
@@ -124,7 +122,6 @@ const Restoration: React.FC = (): JSX.Element => {
         : restoredPhotos[nextIndex + 1].img,
     });
   };
-
   interface PaginationDotsProps {
     count: number;
     activeIndex: number;
@@ -153,11 +150,9 @@ const Restoration: React.FC = (): JSX.Element => {
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
-
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
-
   const handleFileUpload = () => {
     document.getElementById("fileInput")?.click();
   };
@@ -272,21 +267,9 @@ const Restoration: React.FC = (): JSX.Element => {
   const paginationDots = (
     <PaginationDots count={restoredPhotos.length} activeIndex={currentIndex} />
   );
-  const imageRestorationBlock = (
-    <div className="grid grid-cols-1 ">
-      <div className="flex flex-column justify-center ">
-        <ImageRestoration
-          beforeImage={currentImages.beforeImage}
-          afterImage={currentImages.afterImage}
-          onClick={handleClick}
-        />
-      </div>
-      <div className="relative top-[-32px] -mb-7">{paginationDots}</div>
-    </div>
-  );
   const restorationTextTitle = (
     <h2 className="text-center ssm:text-2xl md:text-4xl font-bold select-none">
-      {t("restoration_text")}
+      {t("restoration_text_caps")}
     </h2>
   );
   const restorationTextFull = (
@@ -296,35 +279,48 @@ const Restoration: React.FC = (): JSX.Element => {
   );
   const buttonChangePhotoTitle = (
     <button
-      className={`px-2 cursor-pointer ${buttonStyle}`}
+      id="button_change_photo_example"
+      className={`cursor-pointer items-center  ${button_title_style}`}
       onClick={handleClick}
     >
-      {t("change_photo_text")}
+      {t("restoration_title")}
     </button>
   );
-  return (
-    <div className="pb-2 -mx-2">
-      <div className="flex flex-col items-center justify-center">
-        {buttonChangePhotoTitle}
-      </div>
-      <div
-        id="container_main"
-        className="p-2 mt-2 ssm:mx-2 md:mx-4 grid ssm:grid-cols-1 lg:grid-cols-2 bg-white bg-opacity-30 backdrop-blur-[10px] rounded-2xl shadow-xl "
-      >
-        <div
-          id="container_left"
-          className="min-w-[250px] ssm:md-1 md:px-2 sm:p-1 md:p-2 "
-        >
-          {imageRestorationBlock}
+  const imageRestorationBlockLeft = (
+    <div id="container_left" className="min-w-[250px] pt-2">
+      <div className="grid grid-cols-1 ">
+        <div className="flex flex-column justify-center">
+          <ImageRestoration
+            beforeImage={currentImages.beforeImage}
+            afterImage={currentImages.afterImage}
+            onClick={handleClick}
+          />
         </div>
-        <div id="container_right" className="flex-col grid m-2 items-center">
-          {restorationTextTitle}
-          {restorationTextFull}
-          {orderStepsIcons}
-          {orderSteps}
-        </div>
+        <div className="relative top-[-32px] -mb-7">{paginationDots}</div>
       </div>
+    </div>
+  );
+  const imageRestorationBlockRight = (
+    <div id="container_right" className="flex-col grid m-2 items-center">
+      {restorationTextTitle}
+      {restorationTextFull}
+      {orderStepsIcons}
+      {orderSteps}
       {inputFile}
+    </div>
+  );
+
+  const image_restoration_background_style =
+    "p-2 ssm:pt-5 sm:pt-3 md:pt-2 ssm:mx-2                                     bg-white bg-opacity-30 backdrop-blur-[10px] rounded-2xl shadow-xl";
+  const image_restoration_container_style =
+    "grid ssm:grid-cols-1 lg:grid-cols-2 ";
+  return (
+    <div className={image_restoration_background_style}>
+      {buttonChangePhotoTitle}
+      <div className={image_restoration_container_style}>
+        {imageRestorationBlockLeft}
+        {imageRestorationBlockRight}
+      </div>
     </div>
   );
 };

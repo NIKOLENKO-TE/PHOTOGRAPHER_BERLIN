@@ -8,12 +8,14 @@ import {
   FaInstagramSquare,
   FaTwitterSquare,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const NikolenkoTEBlock = () => {
+  const { t } = useTranslation("Footer");
   const [showModal, setShowModal] = useState(false);
 
   const handleButtonClick = () => {
-    setShowModal(!showModal);
+    setShowModal(true);
   };
 
   return (
@@ -26,17 +28,19 @@ const NikolenkoTEBlock = () => {
       <div className="text-center space-y-2 sm:text-center ">
         <div className="space-y-0.5">
           <p className="text-lg text-black font-semibold whitespace-nowrap">
-            NIKOLENKO Tymofii
+            {t("nikolenko_te")}
           </p>
-          <p className="text-slate-500 font-medium whitespace-nowrap">
-            Photographer
+          <p className="text-white font-medium whitespace-nowrap">
+            {t("photographer")}
           </p>
         </div>
         <button
+         data-te-toggle="modal"
+         data-te-target="#exampleModal"
           className="shadow-lg px-4 py-1 whitespace-nowrap text-md bg-gradient-to-l from-cyan-500 to-blue-500 font-semibold rounded-full border border-purple-200 text-white hover:bg-purple-600"
           onClick={handleButtonClick}
         >
-          Write a message
+          {t("message_button")}
         </button>
         <NikolenkoTEBlockModal
           key={showModal ? "modal-open" : "modal-closed"}
@@ -49,6 +53,7 @@ const NikolenkoTEBlock = () => {
 };
 
 const SocialMedia = () => {
+  const { t } = useTranslation("Footer");
   return (
     <div
       id="social_media_container"
@@ -62,11 +67,9 @@ const SocialMedia = () => {
           id="social_media_title"
           className="shadow-lg px-5 pb-1 inline-block text-2xl bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-2xl flex-nowrap mb-2"
         >
-          Social media
+          {t("social_media")}
         </h1>
-        <p id="social_media_text">
-          You can follow my news on social networks. Subscribe now?
-        </p>
+        <p id="social_media_text">{t("follow_my_social")}</p>
         <div
           id="social_media_icons"
           className="flex justify-between md:w-[100%] my-1 "
@@ -82,6 +85,7 @@ const SocialMedia = () => {
 };
 
 const MailToMe = () => {
+  const { t } = useTranslation("Footer");
   return (
     <div className="row ms-2 ssm:me-2 lg:ml-0 ">
       <div className="text-white bg-white bg-opacity-30 backdrop-blur-[10px] h-[150px] px-4 py-2  rounded-xl flex flex-col lg:flex-row justify-center items-center flex-wrap">
@@ -90,7 +94,7 @@ const MailToMe = () => {
             id="follow_me_title"
             className="shadow-lg px-5 pb-1 flex xl:mt-4 text-2xl whitespace-nowrap bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-2xl flex-nowrap"
           >
-            <h1>Follow my news</h1>
+            <h1>{t("follow_my_news")}</h1>
           </div>
           <div
             id="follow_me_input_plus_button"
@@ -104,9 +108,10 @@ const MailToMe = () => {
             />
             <button
               id="follow_me_notify_button"
-              className="h-[30px] whitespace-nowrap  rounded-md bg-gradient-to-l from-cyan-500 to-blue-500 font-semibold border border-purple-200 hover:bg-purple-600"
+              className="h-[30px] whitespace-nowrap px-2 rounded-md bg-gradient-to-l from-cyan-500 to-blue-500 font-semibold border border-purple-200 hover:bg-purple-600"
             >
-              <p className="mt-[-3px]">Notify me</p>
+              <p className="mt-[-3px]">
+                {t("notify_me_button")}</p>
             </button>
           </div>
         </div>
@@ -116,7 +121,7 @@ const MailToMe = () => {
 };
 const FooterStyle = "flex flex-wrap justify-around my-2";
 const NikolenkoTEBlockStyle =
-  "flex-shrink-0 w-full mt-2 sm:w-[48%] md:w-[40%] lg:w-[30%]";
+  "flex-shrink-0 w-full mt-2 sm:w-[48%] md:w-[40%] lg:w-[30%] ";
 const SocialMediaStyle =
   "flex-shrink-0 w-full mt-2 sm:w-[52%] md:w-[60%] lg:w-[40%]";
 const MailToMeStyle =

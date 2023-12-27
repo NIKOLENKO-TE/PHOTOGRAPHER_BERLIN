@@ -7,11 +7,10 @@ import { useTranslation } from "react-i18next";
 const AboutMe: React.FC = (): JSX.Element => {
   const { t } = useTranslation("AboutMe");
   const AboutMeTitle = (
-    <h1 className="flex justify-center">
-      <span className="text-white h-[40px] pt-[2px] bg-gradient-to-r  from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-lg shadow-blue-500/50  text-xl flex py-2 rounded-[15px]">
-        {" "}
-        <span className="relative text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:mt-0.5 px-3 select-none">
-          {t("order_services")}
+    <h1 className="flex justify-center ssm:pb-1 md:pb-2 ssm:-mt-1 md:mt-0">
+    <span className="w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[13px] md:rounded-[15px]">
+      <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4">
+        {t("order_services")}
         </span>
       </span>
     </h1>
@@ -43,7 +42,7 @@ const AboutMe: React.FC = (): JSX.Element => {
   return (
     <div className="w-full ssm:px-2 md:px-4 py-2">
       {AboutMeTitle}
-      <div className="bg-white bg-opacity-30 backdrop-blur-[10px] w-flex h-flex justify-items-center max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2 mt-2  rounded-2xl shadow-xl ">
+      <div className="bg-white bg-opacity-30 backdrop-blur-[10px] w-flex h-flex justify-items-center max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2   rounded-2xl shadow-xl ">
         {AboutMeIphone}
         <div className="flex-col grid m-2">
           {AboutMeTextTitle}

@@ -10,32 +10,34 @@ const Categories: React.FC = (): JSX.Element => {
   const { t } = useTranslation("Categories");
   const isXl = useMediaQuery({ minWidth: 1240 });
   const isLg = useMediaQuery({ minWidth: 1024 });
-  const isMd = useMediaQuery({ minWidth: 768 });
-  const isSd = useMediaQuery({ maxWidth: 767 });
+  const isMd = useMediaQuery({ minWidth: 667 });
+  const isSd = useMediaQuery({ maxWidth: 666 });
 
-  let perPage = 5;
+  let perPage = 7;
   if (isXl) {
-    perPage = 5;
+    perPage = 6;
   } else if (isLg) {
-    perPage = 4;
+    perPage = 5;
   } else if (isMd) {
     perPage = 3;
   } else if (isSd) {
     perPage = 2;
   }
+
   const CategoriesBackgroundStyle =
     "mx-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
   const categoriesTitle = (
-    <h3 className="flex justify-center pt-2">
-      <span className="text-white h-[40px] pt-[1px] bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700  border-blue-600 shadow-lg shadow-blue-500/50  text-xl flex py-2 rounded-[15px]">
-        <span className="relative text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:mt-0.5  select-none m-4">
+    <h3 className="flex justify-center ssm:px-1.5 ssm:pt-1.5  ">
+      <span className="w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[12px] md:rounded-[15px]">
+        <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4">
           {t("select_text")}
         </span>
       </span>
     </h3>
   );
+
   const categoriesPreview = (
-    <div className="flex w-full m-auto py-2 px-2">
+    <div className="flex w-full ssm:p-1.5 md:p-2">
       <Splide
         options={{
           perPage: perPage,
@@ -44,28 +46,26 @@ const Categories: React.FC = (): JSX.Element => {
           arrows: true,
         }}
       >
-        {categoryPhotos.map(
-          (item: {
-            id: React.Key | null | undefined;
-            title: any;
-            img: string | undefined;
-          }) => (
-            <SplideSlide key={item.id}>
-              <div key={item.id} className="flex justify-center">
-                <div className="absolute top-1">
-                  <span className="text-white flex w-[fit-content] ssm:text-xl md:text-2xl backdrop-blur-[5px] bg-white/20 cursor-pointer whitespace-nowrap place-content-stretch rounded-[13px] px-2 shadow-md ssm:pb-0 md:pb-1">
-                    <p>{t(item.title)}</p>
-                  </span>
-                </div>
-                <img
-                  className="w-full object-cover rounded-2xl cursor-pointer"
-                  src={item.img}
-                  alt={item.title}
-                />
+        {categoryPhotos.map((item) => (
+          <SplideSlide key={item.id}>
+            <div className="flex justify-center">
+              <div className="absolute top-1">
+                <span className="px-2 items-center ssm:text-[22px] md:text-[24px] xl:text-[28px] text-white flex bg-white bg-opacity-20 backdrop-blur-[5px] cursor-pointer whitespace-nowrap ssm:rounded-[10px] md:rounded-[13px] shadow-md">
+                  <p className="-mt-1">
+                    {window.innerWidth >= 1500
+                      ? t(item.title)
+                      : t(item.shortTitle ?? item.title)}
+                  </p>
+                </span>
               </div>
-            </SplideSlide>
-          )
-        )}
+              <img
+                className="w-full object-cover rounded-2xl cursor-pointer"
+                src={item.img}
+                alt={item.title}
+              />
+            </div>
+          </SplideSlide>
+        ))}
       </Splide>
     </div>
   );

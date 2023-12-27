@@ -6,6 +6,8 @@ import Categories from "./components/6_Categories.tsx";
 import Footer from "./components/8_Footer.tsx";
 import Restoration from "./components/4_Restoration.tsx";
 import BottomBanner from "./components/9_Bottom_banner.tsx";
+import Flowers from "./components/Flowers.tsx";
+import Childrens from "./components/Childrens.tsx";
 import bg_image from "./components/img/1.jpg";
 
 function App() {
@@ -26,7 +28,7 @@ function App() {
     backgroundImage: `url(${bg_image})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "bottom", // Shift the background image to the top
+    backgroundPosition: "bottom",
     position: "absolute",
     inset: "-5px",
     filter: "blur(7px)"
@@ -39,6 +41,8 @@ function App() {
         <TopNav /> 
         <Categories />
         <Weddings />
+        <Flowers />
+        <Childrens />
         <Restoration />
         <AboutMe />
         <Footer />

@@ -51,25 +51,17 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
     },
     validationSchema,
     onSubmit: (values) => {
-      // Handle form submission
       console.log(values);
     },
   });
 
-  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const closeModalBackgroundClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       setShowModal(false);
-      if (document.body) {
-        document.body.style.overflow = "unset";
-      }
     }
   };
-
   const handleCancelClick = () => {
     setShowModal(false);
-    if (document.body) {
-      document.body.style.overflow = "unset";
-    }
   };
 
   const handleSendClick = () => {
@@ -91,7 +83,6 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
     })
       .then((response) => {
         if (response.ok) {
-          // Data successfully sent
           setShowModal(false);
           setFiles([]);
           setFileNames([]);
@@ -100,7 +91,6 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
         }
       })
       .catch((error) => {
-        // Handle errors
         console.error("Error sending data to server:", error);
       });
   };
@@ -117,7 +107,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
 
   const ModalContainerLeft = (
     <div id="modal_container_left">
-      <h2 className="whitespace-nowrap text-white text-2xl px-5 pb-1 inline-block bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-xl flex-nowrap mb-2">
+      <h2 className="whitespace-nowrap text-white text-2xl px-3 pb-1 inline-block bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-xl flex-nowrap mb-2">
         {t("text.modal.send.message")}
       </h2>
 
@@ -173,9 +163,9 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
           {t("text.modal.email")}
         </label>
       </div>
-      <div className="relative ">
+      <div className="relative">
         <textarea
-          className="peer  block h-[120px] w-full rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]"
+          className="peer block h-full w-full rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]"
           id="input_message"
           name="message"
           placeholder={t("text.modal.message")}
@@ -186,7 +176,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
         />
         {formik.touched.message && formik.errors.message ? (
           <div
-            className="text-white mt-2 text-bold bg-gradient-to-l w-full rounded-xl flex-nowrap shadow-xl"
+            className="text-white mt-2 text-bold bg-gradient-to-l w-full rounded-xl flex-nowrap"
             style={{ backgroundColor: "rgba(255, 0, 0, 0.238)" }}
           >
             {formik.errors.message}
@@ -204,11 +194,32 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
 
   const ModalContainerRight = (
     <div id="modal_container_right">
-      <div className="flex flex-col justify-between h-full">
+      <div className="flex flex-col justify-between h-full ">
+        <button
+          id="button_close"
+          type="button"
+          className="fixed -right-3 top-1 box-content border-none text-black hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none z-49"
+          data-te-modal-dismiss
+          aria-label="Close"
+          onTouchStart={handleCancelClick}
+          onClick={handleCancelClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+            strokeWidth="1"
+            stroke="currentColor"
+            className="h-7 w-7 bg-white bg-transparent/20 rounded-[6px] opacity-50"
+          >
+            <path d="M5 15L15 5M5 5l10 10" className="cross-style " />
+          </svg>
+        </button>
+
         <div id="modal_container_right_file_title" className="">
           <label
             id="message_file_input"
-            className="whitespace-nowrap text-white text-2xl px-5 pb-1 inline-block bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-xl flex-nowrap mb-2"
+            className="whitespace-nowrap text-white text-2xl px-3 pb-1 inline-block bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-xl flex-nowrap mb-2"
           >
             {t("text.modal.attach.photo")}
           </label>
@@ -222,7 +233,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
               <div className="h-auto md:h-[180px] flex flex-col items-center justify-center">
                 <div className="flex flex-col items-center justify-center">
                   <svg
-                    className="w-8 h-8 mb-4 text-gray-500 "
+                    className="w-8 h-8 mb-1 text-gray-500 "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -236,9 +247,8 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
                       d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                     />
                   </svg>
-                  <p className="mb-2 text-sm text-gray-500 ">
+                  <p className="mb-2 text-sm text-gray-500">
                     <span className="font-semibold">
-                      {" "}
                       {t("text.modal.click.upload.1")}
                     </span>
                     {t("text.modal.click.upload.2")}
@@ -276,6 +286,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
             <button
               id="file_input_button_cancel"
               className="text-white text-xl h-[30px] whitespace-nowrap rounded-md border border-purple-200 bg-gradient-to-l from-purple-500 to-pink-500 hover:bg-gradient-to-l"
+              onTouchStart={handleCancelClick}
               onClick={handleCancelClick}
             >
               <p className="mt-[-5px]">{t("button.modal.cancel")}</p>
@@ -284,6 +295,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
               id="file_input_button_send"
               type="submit"
               className="text-white text-xl h-[30px] whitespace-nowrap rounded-md border border-purple-200 bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl"
+              onTouchStart={handleSendClick}
               onClick={handleSendClick}
             >
               <p className="mt-[-5px]">{t("button.modal.send")}</p>
@@ -294,26 +306,30 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
     </div>
   );
   const modal1plus1Style =
-    "grid grid-cols-1 md:grid-cols-2 gap-4 justify-self-center h-full max-w-screen overflow-y-auto";
-  const modalShadowStyle =
-    "overflow-auto fixed -top-2 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-sm backdrop-brightness-50 z-50";
+    "flex flex-col justify-center items-between ssm:grid ssm:grid-cols-1 ssm:gap-4 ssm:justify-self-center ssm:max grid p-2 grid-cols-1 sm:grid-cols-2 gap-4 justify-self-center max-h-screen overflow-y-auto overflow-x-auto";
   const modalContainerStyle =
-    "w-full lg:!max-w-[700px] shadow-2xl p-4 rounded-xl bg-white bg-opacity-50 backdrop-blur-sm fixed top-10 left-1/2 transform -translate-x-1/2 w-calc(100%-20px) max-w-calc(100%-20px)";
+    "z-50 ssm:w-screen ssm:h-screen sm:w-full md:h-full flex items-center justify-center shadow-2xl p-4 bg-white bg-opacity-10 backdrop-blur-[15px] fixed top-0 left-0";
 
   return (
     showModal && (
-      <div
-        id="modal_shadow"
-        className={modalShadowStyle}
-        onClick={handleBackdropClick}
-      >
-        <div id="modal_container" className={modalContainerStyle}>
-          <form onSubmit={formik.handleSubmit}>
-            <div className={modal1plus1Style}>
-              {ModalContainerLeft}
-              {ModalContainerRight}
-            </div>
-          </form>
+      <div data-te-modal-init id="modal_shadow" role="dialog" aria-modal="true">
+        <div
+          data-te-modal-dialog-ref
+          className="pointer-events-auto"
+          onClick={closeModalBackgroundClick}
+        >
+          <div
+            id="modal_container"
+            className={modalContainerStyle}
+            onClick={closeModalBackgroundClick}
+          >
+            <form onSubmit={formik.handleSubmit}>
+              <div className={modal1plus1Style} data-te-modal-body-ref>
+                {ModalContainerLeft}
+                {ModalContainerRight}
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     )
