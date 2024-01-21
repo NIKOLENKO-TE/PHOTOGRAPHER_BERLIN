@@ -1,16 +1,24 @@
 //3_About_Me.tsx
 import React from "react";
+import { useState } from "react";
+import NikolenkoTEBlockModal from "./8_Footer_Modal";
 import iphone_photo_1 from "./img/iphones/FC_two_phones_1.png";
 import nikolenkote from "./img/NIKOLENKOTE_PHOTO_BW.png";
 import { useTranslation } from "react-i18next";
 
 const AboutMe: React.FC = (): JSX.Element => {
   const { t } = useTranslation("AboutMe");
+  const [showModal, setShowModal] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowModal(true);
+  };
+
   const AboutMeTitle = (
     <h1 className="flex justify-center ssm:pb-1 md:pb-2 ssm:-mt-1 md:mt-0">
-    <span className="w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[13px] md:rounded-[15px]">
-      <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4">
-        {t("order_services")}
+      <span className="w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[13px] md:rounded-[15px]">
+        <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4">
+          {t("order_services")}
         </span>
       </span>
     </h1>
@@ -34,15 +42,18 @@ const AboutMe: React.FC = (): JSX.Element => {
   );
   const aboutMeOrderButton = (
     <div className="flex items-center justify-center">
-      <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br  border-blue-600 shadow-lg shadow-blue-500/50  text-xl py-2  rounded-[15px]  mr-2">
+      <button
+        onClick={handleButtonClick}
+        className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br  border-blue-600 shadow-lg shadow-blue-500/50 text-xl py-2 rounded-[15px]  mr-2"
+      >
         {t("order_button_text")}
       </button>
     </div>
   );
   return (
-    <div className="w-full ssm:px-2 md:px-4 py-2">
+    <div className="w-full ssm:px-2 md:px-2 py-2">
       {AboutMeTitle}
-      <div className="bg-white bg-opacity-30 backdrop-blur-[10px] w-flex h-flex justify-items-center max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2   rounded-2xl shadow-xl ">
+      <div className="bg-white bg-opacity-30 backdrop-blur-[10px] w-flex h-flex justify-items-center max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2  rounded-2xl shadow-xl ">
         {AboutMeIphone}
         <div className="flex-col grid m-2">
           {AboutMeTextTitle}
@@ -53,6 +64,11 @@ const AboutMe: React.FC = (): JSX.Element => {
           {aboutMeOrderButton}
         </div>
       </div>
+      <NikolenkoTEBlockModal
+        key={showModal ? "modal-open" : "modal-closed"}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   );
 };

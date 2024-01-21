@@ -6,10 +6,10 @@ import { useTranslation } from "react-i18next";
 
 const Featured = () => {
   const { t } = useTranslation("Weddings");
-  const sliders = weddingPhotos.map((photo: { img: any }) => photo.img);
+  const sliders = weddingPhotos.map((photo: { id: number; title: string; img: string; } | undefined) => photo?.img);
   const splideRef = useRef<HTMLDivElement | null>(null);
   const previewSplideRef = useRef<HTMLDivElement | null>(null);
-  const [selectedSlide, setSelectedSlide] = useState(0);
+  const [selectedSlide] = useState(0);
   const splideInstanceRef = useRef<Splide | null>(null);
   const getPerPageValue = () => {
     if (window.innerWidth < 640) {
@@ -53,7 +53,7 @@ const Featured = () => {
       const previewSplide = new Splide(previewSplideRef.current, {
         type: "slide",
         perPage: getPerPageValue(),
-        gap: 10,
+        gap: 5,
         rewind: true,
         pagination: false,
         focus: "center",
@@ -94,7 +94,9 @@ const Featured = () => {
     }
   }, [selectedSlide]);
   const handlePreviewClick = (index: number) => {
-    setSelectedSlide(index);
+    if (splideInstanceRef.current) {
+      splideInstanceRef.current.go(index);
+    }
   };
   const WeddingsTitle = (
     <h3 className="flex justify-center mb-1">

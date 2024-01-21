@@ -1,5 +1,5 @@
 //4_Restoration.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { restoredPhotos, orderRestorePhotos } from "../data/data";
 import arrow from "./img/arrow.png";
@@ -156,103 +156,176 @@ const Restoration: React.FC = (): JSX.Element => {
   const handleFileUpload = () => {
     document.getElementById("fileInput")?.click();
   };
-  const orderSteps = (
-    <div id="order_steps">
-      <ol className="flex items-center w-full text-sm font-medium text-center text-black sm:text-base">
-        <li className="flex w-full items-center sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden ssm:after:inline-block after:mx-6 xl:after:mx-10">
-          <span className="flex items-center after:content-['/'] ssm:after:hidden after:mx-2 after:text-black">
-            <svg
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-            </svg>
-            Load <span className="hidden sm:inline-flex ssm:ms-2">photo</span>
-          </span>
-        </li>
-        <li className="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden ssm:after:inline-block after:mx-6 xl:after:mx-10">
-          <span className="flex items-center after:content-['/'] ssm:after:hidden after:mx-2 after:text-black">
-            <svg
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-            </svg>
-            Write{" "}
-            <span className="hidden sm:inline-flex ssm:ms-2">message</span>
-          </span>
-        </li>
-        <li className="flex items-center">
-          <svg
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-          </svg>
-          Get <span className="hidden ssm:inline-flex ssm:ms-2">result</span>
-        </li>
-      </ol>
-    </div>
-  );
+  const OrderSteps = () => {
+    const [progress, setProgress] = useState(0);
+    const [label, setLabel] = useState("Place order");
+
+    const stepPositions: { [key: string]: { left: string; transform: string; }[] } = {
+      sm: [
+        { left: "0%", transform: "translateX(1%)" },
+        { left: "25%", transform: "translateX(17%)" },
+        { left: "50%", transform: "translateX(30%)" },
+        { left: "75%", transform: "translateX(58%)" },
+        { left: "100%", transform: "translateX(75%)" },
+      ],
+      md: [
+        { left: "0%", transform: "translateX(1%)" },
+        { left: "25%", transform: "translateX(20%)" },
+        { left: "50%", transform: "translateX(35%)" },
+        { left: "75%", transform: "translateX(64%)" },
+        { left: "100%", transform: "translateX(82%)" },
+      ],
+      lg: [
+        { left: "0%", transform: "translateX(1%)" },
+        { left: "25%", transform: "translateX(22%)" },
+        { left: "50%", transform: "translateX(40%)" },
+        { left: "75%", transform: "translateX(67%)" },
+        { left: "100%", transform: "translateX(88%)" },
+      ],
+      xl: [
+        { left: "0%", transform: "translateX(1%)" },
+        { left: "25%", transform: "translateX(23%)" },
+        { left: "50%", transform: "translateX(36%)" },
+        { left: "75%", transform: "translateX(61%)" },
+        { left: "100%", transform: "translateX(81%)" },
+      ],
+      xxl: [
+        { left: "0%", transform: "translateX(1%)" },
+        { left: "25%", transform: "translateX(23%)" },
+        { left: "50%", transform: "translateX(40%)" },
+        { left: "75%", transform: "translateX(64%)" },
+        { left: "100%", transform: "translateX(85%)" },
+      ],
+      xxxl: [
+        { left: "0%", transform: "translateX(1%)" },
+        { left: "25%", transform: "translateX(24%)" },
+        { left: "50%", transform: "translateX(42%)" },
+        { left: "75%", transform: "translateX(67%)" },
+        { left: "100%", transform: "translateX(88%)" },
+      ],
+    };
+
+    const screenSizeOptions = {
+      sm: 550,
+      md: 700,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1500,
+      xxxl: Infinity,
+    };
+    let screenSize = "ssm";
+    for (const [size, width] of Object.entries(screenSizeOptions)) {
+      if (window.innerWidth <= width) {
+        screenSize = size;
+        break;
+      }
+    }
+    const textPosition = stepPositions[screenSize][Math.floor(progress / 25)];
+    useEffect(() => {
+      const timer = setInterval(() => {
+        if (progress < 100) {
+          setProgress(progress + 25);
+          switch (progress) {
+            case 0:
+              setLabel("Text me");
+              break;
+            case 25:
+              setLabel("Make payment");
+              break;
+            case 50:
+              setLabel("See result");
+              break;
+            case 75:
+              setLabel("Get result");
+              break;
+            default:
+              break;
+          }
+        } else {
+          setProgress(0); // Reset progress to 0
+          setLabel("Place order"); // Reset label to "Start 1"
+        }
+      }, 2000);
+
+      return () => {
+        clearInterval(timer);
+      };
+    }, [progress]);
+
+    return (
+      <div className="pb-1 md:-mx-3 lg:-mx-5">
+        <div className="text-lg font-medium -pt-1" style={textPosition}>
+          {label}
+        </div>
+        <div className="w-full h-6 px-1 bg-blue-200 flex items-center justify-left rounded-full shadow-sm">
+          <div
+            className="h-4 bg-blue-600 rounded-full shadow-xl"
+            style={{
+              width: `${progress}%`,
+              transition: "width 0.5s ease-in-out", // Add CSS transition
+            }}
+          ></div>
+        </div>
+      </div>
+    );
+  };
+
   const orderStepsIcons = (
     <div
       id="services_buttons"
-      className="ssm:h-[90px] sm:h-[110px] flex justify-center items-center "
+      className="ssm:h-[120px] sm:h-[120px] flex justify-center items-center "
     >
-      <div
-        id="services_buttons_background"
-        className=" w-full max-w-[800px] grid grid-cols-5 bg-white/70 rounded-2xl shadow-xl py-2 ssm:px-2 md:px-5 lg:px-7"
-        style={{ display: "flex", justifyContent: "space-between" }}
-      >
-        <img
-          src={orderRestorePhotos[0].img}
-          alt="Send"
-          className="ssm:h-[60px] h-[80px] mt-[3px] cursor-pointer"
-          onClick={handleFileUpload}
-        />
-        <img
-          src={orderRestorePhotos[1].img}
-          alt="Text"
-          className="ssm:h-[60px] h-[80px] mt-[3px]"
-        />
-        <img
-          src={orderRestorePhotos[2].img}
-          alt="Price"
-          className="ssm:h-[60px] h-[80px] mt-[3px]"
-        />
+      <div className=" w-full max-w-[800px] grid grid-row-2 bg-white/70 rounded-2xl shadow-xl py-1 ssm:px-2 md:px-5 lg:px-7">
         <div
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="ssm:h-[60px] h-[80px] mt-[3px]"
+          id="services_buttons_background"
+          className="row"
+          style={{ display: "flex", justifyContent: "space-between" }}
         >
-          {isHovered ? (
-            <img
-              src={orderRestorePhotos[4].img}
-              alt="Alternate"
-              className="ssm:h-[60px] h-[80px] mt-[3px]"
-            />
-          ) : (
-            <img
-              src={orderRestorePhotos[3].img}
-              alt="Send"
-              className="ssm:h-[60px] h-[80px] mt-[3px]"
-            />
-          )}
+          <img
+            src={orderRestorePhotos[0].img}
+            alt="Send"
+            className="ssm:h-[60px] h-[80px] mt-[3px] cursor-pointer"
+            onClick={handleFileUpload}
+          />
+          <img
+            src={orderRestorePhotos[1].img}
+            alt="Text"
+            className="ssm:h-[60px] h-[80px] mt-[3px]"
+          />
+          <img
+            src={orderRestorePhotos[2].img}
+            alt="Price"
+            className="ssm:h-[60px] h-[80px] mt-[3px]"
+          />
+          <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="ssm:h-[60px] h-[80px] mt-[3px]"
+          >
+            {isHovered ? (
+              <img
+                src={orderRestorePhotos[4].img}
+                alt="Alternate"
+                className="ssm:h-[60px] h-[80px] mt-[3px]"
+              />
+            ) : (
+              <img
+                src={orderRestorePhotos[3].img}
+                alt="Send"
+                className="ssm:h-[60px] h-[80px] mt-[3px]"
+              />
+            )}
+          </div>
+          <img
+            src={orderRestorePhotos[5].img}
+            alt="Shipping"
+            className="ssm:h-[60px] h-[80px] mt-[3px]"
+          />
         </div>
-        <img
-          src={orderRestorePhotos[5].img}
-          alt="Shipping"
-          className="ssm:h-[60px] h-[80px] mt-[3px]"
-        />
+        <div className="row">
+          {" "}
+          <OrderSteps />
+        </div>
       </div>
     </div>
   );
@@ -273,7 +346,7 @@ const Restoration: React.FC = (): JSX.Element => {
     </h2>
   );
   const restorationTextFull = (
-    <p className="pr-3 ssm:text-xl md:text-2xl text-justify select-none">
+    <p className="pr-3 pb-2 ssm:text-xl md:text-2xl text-justify select-none">
       {t("restoration_full_text")}
     </p>
   );
@@ -305,13 +378,12 @@ const Restoration: React.FC = (): JSX.Element => {
       {restorationTextTitle}
       {restorationTextFull}
       {orderStepsIcons}
-      {orderSteps}
       {inputFile}
     </div>
   );
 
   const image_restoration_background_style =
-    "p-2 ssm:pt-5 sm:pt-3 md:pt-2 ssm:mx-2                                     bg-white bg-opacity-30 backdrop-blur-[10px] rounded-2xl shadow-xl";
+    "p-2 ssm:pt-5 sm:pt-3 md:pt-2 ssm:mx-2 bg-white bg-opacity-30 backdrop-blur-[10px] rounded-2xl shadow-xl";
   const image_restoration_container_style =
     "grid ssm:grid-cols-1 lg:grid-cols-2 ";
   return (

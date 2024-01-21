@@ -1,6 +1,6 @@
 //8_Footer_Modal.tsx
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
@@ -8,27 +8,142 @@ import { useTranslation } from "react-i18next";
 type NikolenkoTEBlockModalProps = {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   showModal,
   setShowModal,
+  style = {},
+  
 }) => {
+  useEffect(() => {
+    const body = document.body;
+    const disableScroll = () => {
+      body.style.overflow = "hidden";
+    };
+    const enableScroll = () => {
+      body.style.overflow = "auto";
+    };
+    if (showModal) {
+      disableScroll();
+    } else {
+      enableScroll();
+    }
+    return () => {
+      enableScroll();
+    };
+  }, [showModal]);
+
   const [files, setFiles] = useState<File[]>([]);
   const [fileNames, setFileNames] = useState<string[]>([]);
   const { t } = useTranslation("NikolenkoTEBlockModal");
-
   const validationSchema = Yup.object({
     name: Yup.string().required(t("validation.modal.name.required")),
     email: Yup.string()
-      .email(t("validation.modal.email.invalid"))
-      .required(t("validation.modal.email.required")),
+      .required(t("validation.modal.email.required"))
+      .test(
+        "email-validation",
+        t("validation.modal.email.invalid"),
+        function (value) {
+          const errors: Yup.ValidationError[] = [];
+
+          if (!/^[^@]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}[^@]*$/.test(value)) {
+            errors.push(
+              new Yup.ValidationError(
+                t("validation.modal.email.invalid"),
+                value,
+                "email"
+              )
+            );
+          }
+
+          if (!/@/.test(value)) {
+            errors.push(
+              new Yup.ValidationError(
+                t("validation.modal.email.invalid.at"),
+                value,
+                "email"
+              )
+            );
+          }
+          if (!/\./.test(value)) {
+            errors.push(
+              new Yup.ValidationError(
+                t("validation.modal.email.invalid.dot"),
+                value,
+                "email"
+              )
+            );
+          }
+          if (value.length < 3) {
+            errors.push(
+              new Yup.ValidationError(
+                t("validation.modal.email.invalid.user"),
+                value,
+                "email"
+              )
+            );
+          }
+          if (/\s/.test(value)) {
+            errors.push(
+              new Yup.ValidationError(
+                t("validation.modal.email.invalid.space"),
+                value,
+                "email"
+              )
+            );
+          }
+
+          if (/[,:;"№!#%$%*()=+{}[\]/?~^&<>]/.test(value)) {
+            errors.push(
+              new Yup.ValidationError(
+                t("validation.modal.email.invalid.spec.characters"),
+                value,
+                "email"
+              )
+            );
+          }
+
+          if (!/^[a-zA-Z0-9.@_-]+$/.test(value)) {
+            errors.push(
+              new Yup.ValidationError(
+                t("validation.modal.email.invalid.layout"),
+                value,
+                "email"
+              )
+            );
+          }
+
+          if (!/^[^@]+@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,63})$/.test(value)) {
+            errors.push(
+              new Yup.ValidationError(
+                t("validation.modal.email.invalid.domain"),
+                value,
+                "email"
+              )
+            );
+          }
+
+          if (errors.length > 0) {
+            const validationError = new Yup.ValidationError(
+              errors.map((error) => `${error.message}`).join(", "),
+              value,
+              "email"
+            );
+            throw validationError;
+          }
+
+          return true;
+        }
+      ),
     message: Yup.string().required(t("validation.modal.message.required")),
     files: Yup.array().test(
       "fileType",
       t("validation.modal.file.type.invalid"),
-      (value) => {
-        if (!value || value.length === 0) return true; // Allow empty array
+      function (value) {
+        if (!value || value.length === 0) return true;
         const allowedTypes = [
           "image/svg+xml",
           "image/png",
@@ -55,11 +170,6 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
     },
   });
 
-  const closeModalBackgroundClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.target === event.currentTarget) {
-      setShowModal(false);
-    }
-  };
   const handleCancelClick = () => {
     setShowModal(false);
   };
@@ -104,35 +214,46 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
       formik.setFieldValue("files", selectedFiles);
     }
   };
+  const input_name_email_message_style =
+    "peer block h-[58px] w-full rounded-md border border-solid border-neutral-300 bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:shadow-te-primary focus:outline-none peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]";
+  const validation_error_message_style =
+    "w-auto px-2 pb-1 text-white mt-1 text-bold bg-red-600 bg-opacity-60 rounded-xl whitespace-wrap";
+  const input_text_placeholder_style =
+    "pointer-events-none absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-neutral-500 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none ";
+  const modal_label_style =
+    "whitespace-nowrap text-white text-2xl px-3 pb-1 flex-nowrap mb-2 text-center bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-xl";
+  const button_cancel_style =
+    "text-white text-xl h-[35px] whitespace-nowrap rounded-md border border-purple-200 bg-gradient-to-l from-purple-500 to-pink-500 hover:bg-gradient-to-l";
+  const button_send_style =
+    "text-white text-xl h-[35px] whitespace-nowrap rounded-md border border-purple-200 bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl";
+  const file_attach_background_style =
+    "flex flex-col items-center justify-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 py-4";
+  const close_button_style =
+    "fixed -right-3 top-1 box-content border-none text-black hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none z-49";
 
   const ModalContainerLeft = (
     <div id="modal_container_left">
-      <h2 className="whitespace-nowrap text-white text-2xl px-3 pb-1 inline-block bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-xl flex-nowrap mb-2">
-        {t("text.modal.send.message")}
-      </h2>
+      <h2 className={modal_label_style}>{t("text.modal.send.message")}</h2>
 
       <div className="relative mb-3">
         <input
           type="text"
-          className="peer block h-[58px] w-full rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:shadow-te-primary focus:outline-none peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]"
           id="input_name"
           name="name"
+          className={input_name_email_message_style}
           placeholder={t("text.modal.name")}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.name}
         />
         {formik.touched.name && formik.errors.name ? (
-          <div
-            className="text-white mt-2  text-bold bg-gradient-to-l w-full rounded-xl flex-nowrap shadow-sm mb-2"
-            style={{ backgroundColor: "rgba(255, 0, 0, 0.238)" }}
-          >
+          <div className={validation_error_message_style}>
             {formik.errors.name}
           </div>
         ) : null}
         <label
-          htmlFor="input_name"
-          className="pointer-events-none absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-neutral-500 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none "
+          id="input_name_placeholder"
+          className={input_text_placeholder_style}
         >
           {t("text.modal.name")}
         </label>
@@ -140,34 +261,41 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
       <div className="relative mb-3">
         <input
           type="email"
-          className="peer  block h-[58px] w-full rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]"
           id="input_email"
           name="email"
+          form="novalidate"
+          className={input_name_email_message_style}
           placeholder={t("text.modal.email")}
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-        {formik.touched.email && formik.errors.email ? (
-          <div
-            className="text-white mt-2 text-bold bg-gradient-to-l w-full rounded-xl flex-nowrap shadow-sm mb-2"
-            style={{ backgroundColor: "rgba(255, 0, 0, 0.238)" }}
-          >
-            {formik.errors.email}
+        {formik.touched.email && formik.errors.email && (
+          <div className={validation_error_message_style}>
+            {Array.isArray(formik.errors.email) ? (
+              formik.errors.email.map((error, index) => (
+                <span key={index}>
+                  {error}
+                  <br />
+                </span>
+              ))
+            ) : (
+              <span>{formik.errors.email}</span>
+            )}
           </div>
-        ) : null}
+        )}
         <label
-          id="input_email_label"
-          className="pointer-events-none absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-neutral-500 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none "
+          id="input_email_placeholder"
+          className={input_text_placeholder_style}
         >
           {t("text.modal.email")}
         </label>
       </div>
       <div className="relative">
         <textarea
-          className="peer block h-full w-full rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]"
-          id="input_message"
+          id="input_message_area"
           name="message"
+          className={input_name_email_message_style}
           placeholder={t("text.modal.message")}
           value={formik.values.message}
           onChange={formik.handleChange}
@@ -175,16 +303,13 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
           style={{ whiteSpace: "normal" }}
         />
         {formik.touched.message && formik.errors.message ? (
-          <div
-            className="text-white mt-2 text-bold bg-gradient-to-l w-full rounded-xl flex-nowrap"
-            style={{ backgroundColor: "rgba(255, 0, 0, 0.238)" }}
-          >
+          <div className={validation_error_message_style}>
             {formik.errors.message}
           </div>
         ) : null}
         <label
-          htmlFor="input_message_here"
-          className="pointer-events-none absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-neutral-500 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none"
+          id="input_message_placeholder"
+          className={input_text_placeholder_style}
         >
           {t("text.modal.message")}
         </label>
@@ -197,8 +322,8 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
       <div className="flex flex-col justify-between h-full ">
         <button
           id="button_close"
-          type="button"
-          className="fixed -right-3 top-1 box-content border-none text-black hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none z-49"
+          type="submit"
+          className={close_button_style}
           data-te-modal-dismiss
           aria-label="Close"
           onTouchStart={handleCancelClick}
@@ -217,18 +342,15 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
         </button>
 
         <div id="modal_container_right_file_title" className="">
-          <label
-            id="message_file_input"
-            className="whitespace-nowrap text-white text-2xl px-3 pb-1 inline-block bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-xl flex-nowrap mb-2"
-          >
+          <h3 id="message_file_input" className={modal_label_style}>
             {t("text.modal.attach.photo")}
-          </label>
+          </h3>
         </div>
         <div id="modal_container_right_file_input" className=" ">
           <div id="file_input_container" className="">
             <label
               id="dropzone-file-label"
-              className="flex flex-col items-center justify-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 py-4"
+              className={file_attach_background_style}
             >
               <div className="h-auto md:h-[180px] flex flex-col items-center justify-center">
                 <div className="flex flex-col items-center justify-center">
@@ -273,19 +395,16 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
             )}
           </div>
           {formik.touched.files && formik.errors.files ? (
-            <div
-              className="text-white -mt-0 mb-2 text-bold bg-gradient-to-l w-full rounded-xl flex-nowrap shadow-sm"
-              style={{ backgroundColor: "rgba(255, 0, 0, 0.238)" }}
-            >
+            <div className={validation_error_message_style}>
               {formik.errors.files}
             </div>
           ) : null}
         </div>
-        <div id="modal_container_right_file_buttons" className="">
+        <div id="modal_container_right_file_buttons">
           <div className="grid grid-cols-2 gap-2 pt-4 ">
             <button
               id="file_input_button_cancel"
-              className="text-white text-xl h-[30px] whitespace-nowrap rounded-md border border-purple-200 bg-gradient-to-l from-purple-500 to-pink-500 hover:bg-gradient-to-l"
+              className={button_cancel_style}
               onTouchStart={handleCancelClick}
               onClick={handleCancelClick}
             >
@@ -294,7 +413,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
             <button
               id="file_input_button_send"
               type="submit"
-              className="text-white text-xl h-[30px] whitespace-nowrap rounded-md border border-purple-200 bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl"
+              className={button_send_style}
               onTouchStart={handleSendClick}
               onClick={handleSendClick}
             >
@@ -306,22 +425,18 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
     </div>
   );
   const modal1plus1Style =
-    "flex flex-col justify-center items-between ssm:grid ssm:grid-cols-1 ssm:gap-4 ssm:justify-self-center ssm:max grid p-2 grid-cols-1 sm:grid-cols-2 gap-4 justify-self-center max-h-screen overflow-y-auto overflow-x-auto";
+    "flex flex-col justify-center items-between ssm:grid ssm:grid-cols-1 ssm:gap-4 ssm:justify-self-center ssm:max grid pt-5 pb-10 grid-cols-1 sm:grid-cols-2 gap-4 justify-self-center max-h-screen overflow-y-auto overflow-x-auto";
   const modalContainerStyle =
-    "z-50 ssm:w-screen ssm:h-screen sm:w-full md:h-full flex items-center justify-center shadow-2xl p-4 bg-white bg-opacity-10 backdrop-blur-[15px] fixed top-0 left-0";
-
+    "z-50 w-screen h-screen flex items-center justify-center shadow-2xl p-4 bg-white bg-opacity-10 backdrop-blur-[15px] fixed top-0 left-0 ";
   return (
     showModal && (
       <div data-te-modal-init id="modal_shadow" role="dialog" aria-modal="true">
-        <div
-          data-te-modal-dialog-ref
-          className="pointer-events-auto"
-          onClick={closeModalBackgroundClick}
-        >
+        <div data-te-modal-dialog-ref>
           <div
             id="modal_container"
+            style={style}
             className={modalContainerStyle}
-            onClick={closeModalBackgroundClick}
+
           >
             <form onSubmit={formik.handleSubmit}>
               <div className={modal1plus1Style} data-te-modal-body-ref>

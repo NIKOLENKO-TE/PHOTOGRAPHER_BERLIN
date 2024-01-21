@@ -1,7 +1,8 @@
 //1_TopNav.tsx
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { PiPhoneCallFill } from "react-icons/pi";
+import NikolenkoTEBlockModal from "./8_Footer_Modal";
 import SetLanguage from "./SetLanguage/SetLanguage";
 import { useTranslation } from "react-i18next";
 
@@ -12,12 +13,18 @@ const buttonStyleName =
 const buttonStyleSearch =
   "p-2.5 ssm:h-[38px] md:h-[40px] xl:h-[42px]  rounded-r-[15px] rounded-l-[3px]  whitespace-nowrap place-content-stretch bg-gradient-to-l from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br border-blue-600 shadow-lg shadow-blue-500/50 ";
 
-const TopNameButton: React.FC = (): JSX.Element => {
+const TopNameButton: React.FC<{ onClick: () => void }> = (
+  props
+): JSX.Element => {
   const { t } = useTranslation("TopNameButton");
 
   return (
     <div className="z-50 bg-white bg-opacity-20 backdrop-blur-[10px] rounded-[14px] p-[2px] flex items-center">
-      <button id="name_button" className={`px-1 ${buttonStyleName}`}>
+      <button
+        id="name_button"
+        className={`px-1 ${buttonStyleName}`}
+        onClick={props.onClick}
+      >
         {t("my_name")}
       </button>
       <div>
@@ -31,6 +38,7 @@ const TopNameButton: React.FC = (): JSX.Element => {
 
 const TopSearch: React.FC = (): JSX.Element => {
   const { t } = useTranslation("TopSearch");
+
   return (
     <div className="relative  bg-white bg-opacity-20 backdrop-blur-[5px] text-white ssm:h-[38px] md:h-[40px] xl:h-[42px] rounded-[15px] px-2 w-full ">
       <div className="flex-grow">
@@ -69,9 +77,14 @@ const TopSearch: React.FC = (): JSX.Element => {
   );
 };
 
-const TopMailButton = () => {
+const TopMailButton: React.FC<{ onClick: () => void }> = (
+  props
+): JSX.Element => {
   return (
-    <button className={`px-2 hidden sm:flex ${buttonStyle}`}>
+    <button
+      className={`px-2 hidden sm:flex ${buttonStyle}`}
+      onClick={props.onClick}
+    >
       <MdMarkEmailUnread className="ssm:h-[26px] md:h-[28px] xl:h-[30px] ssm:w-[26px] md:w-[28px] xl:w-[30px] mt-[1px] ml-[-2px]" />
       <span className="ml-1 ssm:mt-[4px] sm:mt-[0px] md:mt-[0px] xl:mt-[-1px]">
         nikolenkote@gmail.com
@@ -82,6 +95,7 @@ const TopMailButton = () => {
 
 const TopPhoneButton = () => {
   const phoneNumber = "+491605945127";
+
   const handlePhoneClick = () => {
     if (window.location && window.location.href) {
       window.location.href = `tel:${phoneNumber}`;
@@ -100,21 +114,34 @@ const TopPhoneButton = () => {
     </button>
   );
 };
+
 const TopNavStyle =
   "flex justify-between items-center ssm:px-1.5 md:px-2 ssm:py-1 md:py-1.5 gap-1.5";
-const TopNav = () => {
+
+const TopNav: React.FC = (): JSX.Element => {
   const [, setSelectedLanguage] = useState("en");
   const handleSelectLanguage = (language: string) => {
     setSelectedLanguage(language);
   };
+  const [showModal, setShowModal] = useState(false);
+  const handleNameButtonClick = () => {
+    setShowModal(true);
+    document.body.style.overflow = "hidden";
+  };
 
+ 
   return (
     <div id="topNav" className={TopNavStyle}>
-      <TopNameButton />
+      <TopNameButton onClick={handleNameButtonClick} />
       <TopSearch />
       <SetLanguage onSelectLanguage={handleSelectLanguage} />
-      <TopMailButton />
+      <TopMailButton onClick={handleNameButtonClick} />
       <TopPhoneButton />
+      <NikolenkoTEBlockModal
+        key={showModal ? "modal-open" : "modal-closed"}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   );
 };

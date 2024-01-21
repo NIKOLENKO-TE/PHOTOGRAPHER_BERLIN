@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+// App.tsx
+import React, { useEffect, useRef } from "react";
 import TopNav from "./components/1_TopNav.tsx";
 import Weddings from "./components/2_Weddings.tsx";
 import AboutMe from "./components/3_About_Me.tsx";
@@ -11,6 +12,39 @@ import Childrens from "./components/Childrens.tsx";
 import bg_image from "./components/img/1.jpg";
 
 function App() {
+  const weddingRef = useRef(null);
+  const flowersRef = useRef(null);
+  const childrensRef = useRef(null);
+  const restorationRef = useRef(null);
+  const aboutMeRef = useRef(null);
+
+  const scrollToBlock = (index) => {
+    let targetRef;
+    switch (index) {
+      case 1:
+        targetRef = weddingRef;
+        break;
+      case 2:
+        targetRef = flowersRef;
+        break;
+      case 3:
+        targetRef = childrensRef;
+        break;
+      case 4:
+        targetRef = restorationRef;
+        break;
+      case 8:
+        targetRef = aboutMeRef;
+        break;
+      default:
+        break;
+    }
+
+    if (targetRef && targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const parallaxBg = document.querySelector(".parallax-bg");
@@ -38,13 +72,13 @@ function App() {
     <div className="relative" style={{ overflow: "hidden" }}>
       <div className="parallax-bg " style={dg_image_style} />
       <div className="relative bg-origin-content ">
-        <TopNav /> 
-        <Categories />
-        <Weddings />
-        <Flowers />
-        <Childrens />
-        <Restoration />
-        <AboutMe />
+        <TopNav />
+        <Categories scrollToBlock={scrollToBlock} />
+        <Weddings ref={weddingRef} />
+        <Flowers ref={flowersRef} />
+        <Childrens ref={childrensRef} />
+        <Restoration ref={restorationRef} />
+        <AboutMe ref={aboutMeRef} />
         <Footer />
         <div className="fixed bottom-0 w-full ssm:flex z-49">
           <BottomBanner />
