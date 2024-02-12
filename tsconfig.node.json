@@ -10,7 +10,7 @@
   "files": [
     "src/locales/en.json",
     "src/locales/de.json",
-    "src/locales/ru.json",
+    "src/locales/ua.json",
     "src/components/img/svg/language_icon.svg"
   ]
 }
