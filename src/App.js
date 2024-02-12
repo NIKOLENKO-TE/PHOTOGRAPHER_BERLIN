@@ -1,12 +1,12 @@
 // App.tsx
 import React, { useEffect, useRef } from "react";
-import TopNav from "./components/1_TopNav.tsx";
-import Weddings from "./components/2_Weddings.tsx";
-import AboutMe from "./components/3_About_Me.tsx";
-import Categories from "./components/6_Categories.tsx";
-import Footer from "./components/8_Footer.tsx";
-import Restoration from "./components/4_Restoration.tsx";
-import BottomBanner from "./components/9_Bottom_banner.tsx";
+import TopNav from "./components/TopNav.tsx";
+import Weddings from "./components/Weddings.tsx";
+import AboutMe from "./components/About_Me.tsx";
+import Categories from "./components/Categories.tsx";
+import Footer from "./components/Footer.tsx";
+import Restoration from "./components/Restoration.tsx";
+import BottomBanner from "./components/Bottom_banner.tsx";
 import Flowers from "./components/Flowers.tsx";
 import Childrens from "./components/Childrens.tsx";
 import bg_image from "./components/img/1.jpg";

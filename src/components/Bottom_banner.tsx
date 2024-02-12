@@ -1,6 +1,6 @@
-//9_Bottom_banner.tsx
+//Bottom_banner.tsx
 import { useEffect, useState } from "react";
-import NikolenkoTEBlockModal from "./8_Footer_Modal";
+import NikolenkoTEBlockModal from "./Modal";
 
 const BottomBanner = () => {
   const [showModal, setShowModal] = useState(false);

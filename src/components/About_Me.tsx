@@ -1,10 +1,11 @@
 //3_About_Me.tsx
 import React from "react";
 import { useState } from "react";
-import NikolenkoTEBlockModal from "./8_Footer_Modal";
+import NikolenkoTEBlockModal from "./Modal";
 import iphone_photo_1 from "./img/iphones/FC_two_phones_1.png";
 import nikolenkote from "./img/NIKOLENKOTE_PHOTO_BW.png";
 import { useTranslation } from "react-i18next";
+import { Element } from "react-scroll";
 
 const AboutMe: React.FC = (): JSX.Element => {
   const { t } = useTranslation("AboutMe");
@@ -52,6 +53,7 @@ const AboutMe: React.FC = (): JSX.Element => {
   );
   return (
     <div className="w-full ssm:px-2 md:px-2 py-2">
+      <Element name={`category${7}`}></Element>
       {AboutMeTitle}
       <div className="bg-white bg-opacity-30 backdrop-blur-[10px] w-flex h-flex justify-items-center max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2  rounded-2xl shadow-xl ">
         {AboutMeIphone}

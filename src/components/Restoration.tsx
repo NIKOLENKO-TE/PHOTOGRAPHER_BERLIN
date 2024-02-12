@@ -1,7 +1,12 @@
-//4_Restoration.tsx
+//Restoration.tsx
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { restoredPhotos, orderRestorePhotos } from "../data/data";
+import { Element } from "react-scroll";
+import {
+  restoredPhotos,
+  orderRestorePhotos,
+  categoryPhotos,
+} from "../data/data";
 import arrow from "./img/arrow.png";
 
 const button_title_style =
@@ -160,7 +165,9 @@ const Restoration: React.FC = (): JSX.Element => {
     const [progress, setProgress] = useState(0);
     const [label, setLabel] = useState("Place order");
 
-    const stepPositions: { [key: string]: { left: string; transform: string; }[] } = {
+    const stepPositions: {
+      [key: string]: { left: string; transform: string }[];
+    } = {
       sm: [
         { left: "0%", transform: "translateX(1%)" },
         { left: "25%", transform: "translateX(17%)" },
@@ -262,7 +269,7 @@ const Restoration: React.FC = (): JSX.Element => {
             className="h-4 bg-blue-600 rounded-full shadow-xl"
             style={{
               width: `${progress}%`,
-              transition: "width 0.5s ease-in-out", // Add CSS transition
+              transition: "width 0.5s ease-in-out",
             }}
           ></div>
         </div>
@@ -388,6 +395,7 @@ const Restoration: React.FC = (): JSX.Element => {
     "grid ssm:grid-cols-1 lg:grid-cols-2 ";
   return (
     <div className={image_restoration_background_style}>
+      <Element name={`category${3}`}></Element>
       {buttonChangePhotoTitle}
       <div className={image_restoration_container_style}>
         {imageRestorationBlockLeft}

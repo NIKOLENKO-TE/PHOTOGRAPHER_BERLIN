@@ -1,9 +1,9 @@
-//8_Footer_Modal.tsx
+//Modal.tsx
 import React from "react";
 import { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
+import * as Yup from "yup";
 
 type NikolenkoTEBlockModalProps = {
   showModal: boolean;

@@ -1,19 +1,13 @@
-// 6_Categories.tsx
-
-import React, {
-  useEffect,
-  useRef,
-  useCallback,
-  forwardRef,
-} from "react";
+// Categories.tsx
+import { useRef, forwardRef } from "react";
 import "@splidejs/react-splide/css";
 import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { categoryPhotos } from "../data/data";
+import { Link } from 'react-scroll';
 
-const Categories = forwardRef<HTMLDivElement, { scrollToBlock: (index: number) => void }>(({ scrollToBlock }, ref) => {
-
+const Categories = forwardRef<HTMLDivElement>((_, ref) => {
   const { t } = useTranslation("Categories");
   const isXl = useMediaQuery({ minWidth: 1240 });
   const isLg = useMediaQuery({ minWidth: 1024 });
@@ -34,38 +28,6 @@ const Categories = forwardRef<HTMLDivElement, { scrollToBlock: (index: number) =
   const categoryRefs = useRef<Array<HTMLDivElement | null>>(
     Array.from({ length: categoryPhotos.length }, () => null)
   );
-
-  const clickHandler = useCallback(
-    (index: number) => {
-      console.log(`Category chosen: ${index}`);
-      scrollToBlock(index + 1);
-    },
-    [scrollToBlock]
-  );
-  useEffect(() => {
-    const attachEventListeners = () => {
-      categoryRefs.current.forEach((ref, index) => {
-        if (ref) {
-          ref.addEventListener("click", () => clickHandler(index));
-        }
-      });
-    };
-
-    const detachEventListeners = () => {
-      categoryRefs.current.forEach((ref, index) => {
-        if (ref) {
-          ref.removeEventListener("click", () => clickHandler(index));
-        }
-      });
-    };
-
-    attachEventListeners();
-
-    return () => {
-      detachEventListeners();
-    };
-  }, [clickHandler]);
-
 
   const CategoriesBackgroundStyle =
     "mx-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
@@ -92,25 +54,27 @@ const Categories = forwardRef<HTMLDivElement, { scrollToBlock: (index: number) =
       >
         {categoryPhotos.map((item, index) => (
           <SplideSlide key={item.id}>
-            <div
-              className="flex justify-center"
-              ref={(element) => (categoryRefs.current[index] = element)}
-            >
-              <div className="absolute top-1">
-                <span className="px-2 items-center ssm:text-[22px] md:text-[24px] xl:text-[28px] text-white flex bg-white bg-opacity-20 backdrop-blur-[5px] cursor-pointer whitespace-nowrap ssm:rounded-[10px] md:rounded-[13px] shadow-md">
-                  <p className="-mt-1">
-                    {window.innerWidth >= 1500
-                      ? t(item.title)
-                      : t(item.shortTitle ?? item.title)}
-                  </p>
-                </span>
-              </div>
-              <img
-                className="w-full object-cover rounded-2xl cursor-pointer"
-                src={item.img}
-                alt={item.title}
-              />
-            </div>
+            <Link to={`category${index}`} smooth={true} duration={1500} offset={-13}>
+              <div
+                className="flex justify-center"
+                ref={(element) => (categoryRefs.current[index] = element)}
+              >
+                <div className="absolute top-1">
+                  <span className="px-2 items-center ssm:text-[22px] md:text-[24px] xl:text-[28px] text-white flex bg-white bg-opacity-20 backdrop-blur-[5px] cursor-pointer whitespace-nowrap ssm:rounded-[10px] md:rounded-[13px] shadow-md">
+                    <p className="-mt-1">
+                      {window.innerWidth >= 1500
+                        ? t(item.title)
+                        : t(item.shortTitle ?? item.title)}
+                    </p>
+                  </span>
+                </div>
+                <img
+                  className="w-full object-cover rounded-2xl cursor-pointer"
+                  src={item.img}
+                  alt={item.title}
+                />
+              </div>{" "}
+            </Link>
           </SplideSlide>
         ))}
       </Splide>

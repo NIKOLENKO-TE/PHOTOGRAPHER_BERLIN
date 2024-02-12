@@ -1,8 +1,9 @@
 //Childrens.tsx
 import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
-import { childrensPhotos } from "../data/data";
+import { categories, categoryPhotos, childrensPhotos } from "../data/data";
 import { useTranslation } from "react-i18next";
+import { Element } from "react-scroll";
 
 const Childrens = () => {
   const { t } = useTranslation("Childrens");
@@ -172,6 +173,7 @@ const Childrens = () => {
 
   return (
     <div className={CarouselBackgroundStyle}>
+      <Element name={`category${2}`}></Element>
       {ChildrensTitle}
       {ThumbnailCarousel}
       {ThumbnailCarouselPreview}
