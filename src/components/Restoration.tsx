@@ -5,7 +5,6 @@ import { Element } from "react-scroll";
 import {
   restoredPhotos,
   orderRestorePhotos,
-  categoryPhotos,
 } from "../data/data";
 import arrow from "./img/arrow.png";
 

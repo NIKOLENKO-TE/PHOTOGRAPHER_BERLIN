@@ -1,7 +1,7 @@
 //Weddings.tsx
 import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
-import { categoryPhotos, weddingPhotos } from "../data/data";
+import { weddingPhotos } from "../data/data";
 import { useTranslation } from "react-i18next";
 import { Element } from "react-scroll";
 
