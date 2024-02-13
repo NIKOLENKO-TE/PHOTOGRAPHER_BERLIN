@@ -3,7 +3,6 @@ import userProductsReducer from '../features/user/wishProducts/productsSlice';
 import productsReducer from '../features/products/productsSlice';
 import userDateReducer from '../components/MyAccount/UserSlice';
 import authReducer from '../features/auth/authSlice';
-// import counterReducer from '../features/counter/counterSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -11,7 +10,6 @@ export const store = configureStore({
 		userDate: userDateReducer,
 		products: productsReducer,
 		auth: authReducer,
-		// counter: counterReducer,
 	},
 });
 
