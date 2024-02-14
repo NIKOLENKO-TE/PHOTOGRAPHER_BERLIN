@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PHOTOGRAPHER_BERLIN/static/css/main.227cef4b.css",
-    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.4198ef9d.js",
+    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.6dd684eb.js",
     "static/media/1.jpg": "/PHOTOGRAPHER_BERLIN/static/media/1.a5fdd07b5c45fe701dc4.jpg",
     "static/media/13.jpg": "/PHOTOGRAPHER_BERLIN/static/media/13.e9c7b7fa99afadcb86db.jpg",
     "static/media/FC_two_phones_1.png": "/PHOTOGRAPHER_BERLIN/static/media/FC_two_phones_1.eb2678f5a4a6e33e28cb.png",
@@ -71,10 +71,10 @@
     "static/media/deFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/deFlag.202dbcc02e84dae3ba8c022622d53e43.svg",
     "static/media/uaFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/uaFlag.bf6ea1ce28490b2c476ed39c999e1f24.svg",
     "main.227cef4b.css.map": "/PHOTOGRAPHER_BERLIN/static/css/main.227cef4b.css.map",
-    "main.4198ef9d.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.4198ef9d.js.map"
+    "main.6dd684eb.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.6dd684eb.js.map"
   },
   "entrypoints": [
     "static/css/main.227cef4b.css",
-    "static/js/main.4198ef9d.js"
+    "static/js/main.6dd684eb.js"
   ]
 }
