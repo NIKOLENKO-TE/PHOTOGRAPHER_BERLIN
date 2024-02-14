@@ -175,7 +175,7 @@ const Weddings = () => {
   );
 
   return (
-    <div className={CarouselBackgroundStyle}>
+    <div className={CarouselBackgroundStyle} id={`category${0}`}>
       <Element name={`category${0}`}></Element>
       {WeddingsTitle}
       {ThumbnailCarousel}

@@ -213,7 +213,7 @@ const Photosessions = () => {
       <div className="splide__track">
         <ul className="splide__list">
           {horizontalSliders.map((previewItem: string | undefined, previewIndex: number) => (
-            <li key={previewIndex} className={`splide__slide`} onClick={() => handleHorizontalPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()}>
+            <li key={previewIndex} className={`splide__slide`} data-category-index={previewIndex} onClick={() => handleHorizontalPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()}>
               <img className="h-[100px] w-full object-cover rounded-2xl" src={previewItem} alt={`Preview ${previewIndex}`} />
             </li>
           ))}
@@ -221,13 +221,13 @@ const Photosessions = () => {
       </div>
     </section>
   );
-
+  
   const VerticalThumbnailCarouselPreview = (
     <section id="vertical_thumbnail_carousel_preview" ref={previewSplideRefVertical} className="splide">
       <div className="splide__track">
         <ul className="splide__list">
           {verticalSliders.map((previewItem: string | undefined, previewIndex: number) => (
-            <li key={previewIndex} className={`splide__slide`} onClick={() => handleVerticalPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()}>
+            <li key={previewIndex} className={`splide__slide`} data-category-index={previewIndex} onClick={() => handleVerticalPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()}>
               <img className="ssm:h-[150px] sm:h-[160px] md:h-[155px] lg:h-[200px] w-full object-cover rounded-2xl" src={previewItem} alt={`Preview ${previewIndex}`} />
             </li>
           ))}
@@ -248,8 +248,8 @@ const Photosessions = () => {
   const CarouselBackgroundStyle =
     "px-2 py-2 mx-2 my-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
   return (
-    <div className={CarouselBackgroundStyle}>
-      <Element name={`category${4}`}></Element>
+    <div className={CarouselBackgroundStyle} id={`category${4}`}>
+    <Element name={`category${4}`}></Element>
       {PhotosessionsTitle}
       <div className="flex ssm:flex-wrap md:flex-nowrap ">
         <div id="Vertical" className="ssm:basis-1/1 sm:basis-1/3 md:basis-1/4 pr-2 ssm:pb-2 sm:pb-0 md:pb-0 ">

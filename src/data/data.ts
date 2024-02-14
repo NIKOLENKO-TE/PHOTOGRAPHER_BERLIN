@@ -1,3 +1,4 @@
+// data.ts
 function importAll(r: any) {
   let images: { [key: string]: string } = {};
   r.keys().map((item: string) => {

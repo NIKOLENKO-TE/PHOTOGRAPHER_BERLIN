@@ -52,7 +52,7 @@ const AboutMe: React.FC = (): JSX.Element => {
     </div>
   );
   return (
-    <div className="w-full ssm:px-2 md:px-2 py-2">
+    <div className="w-full ssm:px-2 md:px-2 py-2" id={`category${7}`}>
       <Element name={`category${7}`}></Element>
       {AboutMeTitle}
       <div className="bg-white bg-opacity-30 backdrop-blur-[10px] w-flex h-flex justify-items-center max-w-[1000px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2  rounded-2xl shadow-xl ">

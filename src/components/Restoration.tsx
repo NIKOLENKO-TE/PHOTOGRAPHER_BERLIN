@@ -393,7 +393,7 @@ const Restoration: React.FC = (): JSX.Element => {
   const image_restoration_container_style =
     "grid ssm:grid-cols-1 lg:grid-cols-2 ";
   return (
-    <div className={image_restoration_background_style}>
+    <div className={image_restoration_background_style} id={`category${3}`}>
       <Element name={`category${3}`}></Element>
       {buttonChangePhotoTitle}
       <div className={image_restoration_container_style}>

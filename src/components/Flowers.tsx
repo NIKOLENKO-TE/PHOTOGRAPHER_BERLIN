@@ -171,7 +171,7 @@ const Flowers = () => {
     "px-2 py-2 mx-2 my-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
 
   return (
-    <div className={CarouselBackgroundStyle}>
+    <div className={CarouselBackgroundStyle} id={`category${1}`}>
       <Element name={`category${1}`}></Element>
       {FlowersTitle}
       {ThumbnailCarousel}
