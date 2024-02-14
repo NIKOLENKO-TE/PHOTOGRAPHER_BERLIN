@@ -9,6 +9,7 @@ import Restoration from "./components/Restoration.tsx";
 import BottomBanner from "./components/Bottom_banner.tsx";
 import Flowers from "./components/Flowers.tsx";
 import Childrens from "./components/Childrens.tsx";
+import Photosessions from "./components/Photosessions.tsx";
 import bg_image from "./components/img/1.jpg";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   const childrensRef = useRef(null);
   const restorationRef = useRef(null);
   const aboutMeRef = useRef(null);
+  const photosessionsRef = useRef(null);
 
   const scrollToBlock = (index) => {
     let targetRef;
@@ -32,6 +34,9 @@ function App() {
         break;
       case 4:
         targetRef = restorationRef;
+        break;
+      case 5:
+        targetRef = photosessionsRef;
         break;
       case 8:
         targetRef = aboutMeRef;
@@ -72,11 +77,12 @@ function App() {
     <div className="relative" style={{ overflow: "hidden" }}>
       <div className="parallax-bg " style={dg_image_style} />
       <div className="relative bg-origin-content ">
-        <TopNav />
+        <TopNav /> 
         <Categories scrollToBlock={scrollToBlock} />
         <Weddings ref={weddingRef} />
         <Flowers ref={flowersRef} />
         <Childrens ref={childrensRef} />
+        <Photosessions ref={photosessionsRef} /> 
         <Restoration ref={restorationRef} />
         <AboutMe ref={aboutMeRef} />
         <Footer />

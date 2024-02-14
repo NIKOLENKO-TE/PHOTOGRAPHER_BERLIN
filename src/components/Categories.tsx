@@ -73,7 +73,7 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
                   src={item.img}
                   alt={item.title}
                 />
-              </div>{" "}
+              </div>
             </Link>
           </SplideSlide>
         ))}

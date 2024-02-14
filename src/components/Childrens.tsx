@@ -38,6 +38,8 @@ const Childrens = () => {
         arrows: true,
         focus: "center",
         pagination: true,
+        autoplay: true, 
+        interval: 3000,
       });
 
       splideInstance.on("mounted", () => {

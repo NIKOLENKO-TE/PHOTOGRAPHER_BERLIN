@@ -38,6 +38,8 @@ const Flowers = () => {
         rewind: true,
         arrows: true,
         focus: "center",
+        autoplay: true, 
+        interval: 3000,
       });
 
       splideInstance.on("mounted", () => {

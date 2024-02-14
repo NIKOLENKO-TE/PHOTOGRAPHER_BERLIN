@@ -21,6 +21,9 @@
   "Childrens": {
     "childrens_title": "Дитячі Фотосесії"
   },
+  "Photosessions": {
+    "photosessions_title": "Фотосесії"
+  },
   "ImageRestoration": {
     "before_after_text": "BEFORE           AFTER"
   },

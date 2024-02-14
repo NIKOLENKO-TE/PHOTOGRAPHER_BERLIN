@@ -5,7 +5,8 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "lib": ["dom", "esnext"]
+    "lib": ["dom", "esnext"],
+    "types": ["node"]
   },
   "files": [
     "src/locales/en.json",

@@ -24,6 +24,9 @@
   "ImageRestoration": {
     "before_after_text": "BEFORE           AFTER"
   },
+  "Photosessions": {
+    "photosessions_title": "Photosessions"
+  },
   "Restoration": {
     "restoration_title": "PHOTO RESTORATION",
     "change_photo_text": "PRESS to change photo",
