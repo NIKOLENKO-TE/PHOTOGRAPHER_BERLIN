@@ -1,4 +1,3 @@
-//Weddings.tsx
 import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
 import { weddingPhotos } from "../data/data";
@@ -114,7 +113,7 @@ const Weddings = () => {
   };
 
   const WeddingsTitle = (
-    <h3 className="flex justify-center mb-1">
+    <h3 className="flex justify-center mb-1" data-testId="weddings-title">
       <span className={weddingBackgroundStyle}>
         <span className={weddingText}>{t("weddings")}</span>
       </span>
@@ -125,6 +124,7 @@ const Weddings = () => {
       id="thumbnail_carousel"
       ref={splideRef}
       className="splide pb-2 mt-1.5"
+      data-testId="thumbnail-carousel"
     >
       <div className="splide__track rounded-2xl">
         <ul className="splide__list">
@@ -133,6 +133,7 @@ const Weddings = () => {
               key={slideIndex}
               className={`splide__slide`}
               onContextMenu={(e) => e.preventDefault()}
+              data-testId={`thumbnail-carousel-item-${slideIndex}`}
             >
               <img
                 className={imageSlideStyle}
@@ -150,6 +151,7 @@ const Weddings = () => {
       id="thumbnail_carousel_preview"
       ref={previewSplideRef}
       className="splide"
+      data-testId="thumbnail-carousel-preview"
     >
       <div className="splide__track">
         <ul className="splide__list">
@@ -160,6 +162,7 @@ const Weddings = () => {
                 className={`splide__slide`}
                 onClick={() => handlePreviewClick(previewIndex)}
                 onContextMenu={(e) => e.preventDefault()}
+                data-testId={`thumbnail-carousel-preview-item-${previewIndex}`}
               >
                 <img
                   className="h-[100px] w-full object-cover rounded-2xl"
@@ -175,7 +178,7 @@ const Weddings = () => {
   );
 
   return (
-    <div className={CarouselBackgroundStyle} id={`category${0}`}>
+    <div className={CarouselBackgroundStyle} id={`category${0}`} data-testId="weddings-wrapper">
       <Element name={`category${0}`}></Element>
       {WeddingsTitle}
       {ThumbnailCarousel}

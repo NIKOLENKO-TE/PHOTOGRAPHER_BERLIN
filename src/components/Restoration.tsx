@@ -1,4 +1,4 @@
-//Restoration.tsx
+// Restoration.tsx
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Element } from "react-scroll";
@@ -62,12 +62,14 @@ const ImageRestoration: React.FC<ImageRestorationProps> = ({
       onMouseUp={handleEnd}
       onContextMenu={preventRightClick}
       onClick={handleClick}
+      data-testId="image-restoration"
     >
       <img
         id="beforeImage"
         src={beforeImage}
         className="absolute h-full object-cover select-none"
         alt="before"
+        data-testId="before-image"
       />
       <div id="after_container" className="absolute h-full overflow-hidden">
         <img
@@ -80,6 +82,7 @@ const ImageRestoration: React.FC<ImageRestorationProps> = ({
             clipPath: `inset(0 0 0 ${sliderX})`,
             pointerEvents: "auto",
           }}
+          data-testId="after-image"
         />
       </div>
       <div
@@ -146,6 +149,7 @@ const Restoration: React.FC = (): JSX.Element => {
                 ? "bg-blue-700 bg-opacity-90 backdrop-blur-[2px]"
                 : "bg-white bg-opacity-40 backdrop-blur-[2px]"
             }`}
+            data-testId={`pagination-dot-${index}`}
           ></div>
         ))}
       </div>
@@ -248,8 +252,8 @@ const Restoration: React.FC = (): JSX.Element => {
               break;
           }
         } else {
-          setProgress(0); // Reset progress to 0
-          setLabel("Place order"); // Reset label to "Start 1"
+          setProgress(0);
+          setLabel("Place order");
         }
       }, 2000);
 
@@ -292,6 +296,7 @@ const Restoration: React.FC = (): JSX.Element => {
             alt="Send"
             className="ssm:h-[60px] h-[80px] mt-[3px] cursor-pointer"
             onClick={handleFileUpload}
+            data-testId="send-image-button"
           />
           <img
             src={orderRestorePhotos[1].img}
@@ -307,6 +312,7 @@ const Restoration: React.FC = (): JSX.Element => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className="ssm:h-[60px] h-[80px] mt-[3px]"
+            data-testId="alternate-image-button"
           >
             {isHovered ? (
               <img
@@ -360,6 +366,7 @@ const Restoration: React.FC = (): JSX.Element => {
       id="button_change_photo_example"
       className={`cursor-pointer items-center  ${button_title_style}`}
       onClick={handleClick}
+      data-testId="change-photo-button"
     >
       {t("restoration_title")}
     </button>
@@ -369,10 +376,10 @@ const Restoration: React.FC = (): JSX.Element => {
       <div className="grid grid-cols-1 ">
         <div className="flex flex-column justify-center">
         <ImageRestoration
-  beforeImage={currentImages.afterImage}
-  afterImage={currentImages.beforeImage}
-  onClick={handleClick}
-/>
+          beforeImage={currentImages.afterImage}
+          afterImage={currentImages.beforeImage}
+          onClick={handleClick}
+        />
         </div>
         <div className="relative top-[-32px] -mb-7">{paginationDots}</div>
       </div>

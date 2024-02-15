@@ -43,15 +43,16 @@ const SetLanguage: React.FC<SetLanguageProps> = ({
   };
 
   return (
-    <Listbox value={selectedLanguage} onChange={handleSelectLanguage}>
+    <Listbox value={selectedLanguage} onChange={handleSelectLanguage} data-testId="language-listbox">
       {({ open }) => (
         <div className="relative inline-block text-center">
-          <Listbox.Button className="inline-flex justify-center ssm:h-[38px] md:h-[40px] xl:h-[42px] w-full rounded-[12px] ssm:text-[16px]  md:text-[18px] xl:text-[20px] text-white whitespace-nowrap place-content-stretch bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br border-blue-600 shadow-lg shadow-blue-500/50 mr-1">
+          <Listbox.Button className="inline-flex justify-center ssm:h-[38px] md:h-[40px] xl:h-[42px] w-full rounded-[12px] ssm:text-[16px]  md:text-[18px] xl:text-[20px] text-white whitespace-nowrap place-content-stretch bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br border-blue-600 shadow-lg shadow-blue-500/50 mr-1" data-testId="language-button">
             {languageInfo && (
               <img
                 src={languageInfo.flag}
                 alt={languageInfo.title}
                 className="w-[30px] h-[20px] ssm:mt-1 md:mt-1.5 mr-1 object-cover rounded-sm"
+                data-testId={`language-flag-${selectedLanguage}`}
               />
             )}
             {languageInfo?.title}
@@ -65,9 +66,10 @@ const SetLanguage: React.FC<SetLanguageProps> = ({
             <Listbox.Options
               static
               className="absolute z-10 mt-2 shadow-md bg-white bg-opacity-30 backdrop-blur-[4px] ring-1 ring-black ring-opacity-10 focus:outline-2 rounded-[8px] w-[85px]"
+              data-testId="language-options"
             >
               {Object.keys(locales).map((locale) => (
-                <Listbox.Option key={locale} value={locale}>
+                <Listbox.Option key={locale} value={locale} data-testId={`language-option-${locale}`}>
                   {({ selected }) => (
                     <div
                       className={`${
@@ -81,6 +83,7 @@ const SetLanguage: React.FC<SetLanguageProps> = ({
                         src={locales[locale as keyof typeof locales].flag}
                         alt={locales[locale as keyof typeof locales].title}
                         className="w-[35px] mr-2 shadow-md shadow-black/20"
+                        data-testId={`language-option-flag-${locale}`}
                       />
                       {locales[locale as keyof typeof locales].title}
                     </div>

@@ -1,3 +1,4 @@
+//Hospital.tsx
 import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
 import { hospitalPhotos } from "../data/data";
@@ -122,11 +123,11 @@ const Hospital = () => {
     </div>
   );
 
-  const ThumbnailCarousel = <section id="thumbnail_carousel" ref={splideRef} className="splide pb-2 mt-1.5">
+  const ThumbnailCarousel = <section id="thumbnail_carousel" ref={splideRef} className="splide pb-2 mt-1.5" data-testId="hospital-carousel">
     <div className="splide__track rounded-2xl">
       <ul className="splide__list">
         {sliders.map((sliderItem, slideIndex) => (
-          <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()}>
+          <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()} data-testId={`hospital-carousel-item-${slideIndex}`}>
             <img className="ssm:h-[440px] xl:h-[700px] w-full object-cover duration-300 ease-out" src={sliderItem} alt={`Slide ${slideIndex}`} />
           </li>
         ))}
@@ -134,11 +135,11 @@ const Hospital = () => {
     </div>
   </section>;
 
-  const ThumbnailCarouselPreview = <section id="thumbnail_carousel_preview" ref={previewSplideRef} className="splide">
+  const ThumbnailCarouselPreview = <section id="thumbnail_carousel_preview" ref={previewSplideRef} className="splide" data-testId="hospital-carousel-preview">
     <div className="splide__track">
       <ul className="splide__list">
         {sliders.map((previewItem, previewIndex) => (
-          <li key={previewIndex} className={`splide__slide`} onClick={() => handlePreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()}>
+          <li key={previewIndex} className={`splide__slide`} onClick={() => handlePreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()} data-testId={`hospital-carousel-preview-item-${previewIndex}`}>
             <img className="h-[100px] w-full object-cover rounded-2xl" src={previewItem} alt={`Preview ${previewIndex}`} />
           </li>
         ))}
@@ -147,7 +148,7 @@ const Hospital = () => {
   </section>;
 
   return (
-    <div className={container} id={`category${6}`}>
+    <div className={container} id={`category${6}`} data-testId="hospital-wrapper">
       {HospitalTitle}
       {showConfirmation && (
         buttonAge

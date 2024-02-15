@@ -1,4 +1,3 @@
-//Flowers.tsx
 import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
 import { flowersPhotos } from "../data/data";
@@ -105,7 +104,7 @@ const Flowers = () => {
     }
   };
   const FlowersTitle = (
-    <h3 className="flex justify-center mb-1">
+    <h3 className="flex justify-center mb-1" data-testId="flowers-title">
       <span className="w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[12px] md:rounded-[15px]">
         <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4">
           {t("flowers_title")}
@@ -118,6 +117,7 @@ const Flowers = () => {
       id="thumbnail_carousel"
       ref={splideRef}
       className="splide pb-2 pt-0.5"
+      data-testId="thumbnail-carousel"
     >
       <div className="splide__track rounded-2xl">
         <ul className="splide__list">
@@ -126,6 +126,7 @@ const Flowers = () => {
               key={slideIndex}
               className={`splide__slide`}
               onContextMenu={(e) => e.preventDefault()}
+              data-testId={`thumbnail-carousel-item-${slideIndex}`}
             >
               <img
                 className="ssm:h-[440px] xl:h-[700px] w-full object-cover duration-300 ease-out"
@@ -143,6 +144,7 @@ const Flowers = () => {
       id="thumbnail_carousel_preview"
       ref={previewSplideRef}
       className="splide"
+      data-testId="thumbnail-carousel-preview"
     >
       <div className="splide__track">
         <ul className="splide__list">
@@ -153,6 +155,7 @@ const Flowers = () => {
                 className={`splide__slide`}
                 onClick={() => handlePreviewClick(previewIndex)}
                 onContextMenu={(e) => e.preventDefault()}
+                data-testId={`thumbnail-carousel-preview-item-${previewIndex}`}
               >
                 <img
                   className="h-[100px] w-full object-cover rounded-2xl"
@@ -171,7 +174,7 @@ const Flowers = () => {
     "px-2 py-2 mx-2 my-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
 
   return (
-    <div className={CarouselBackgroundStyle} id={`category${1}`}>
+    <div className={CarouselBackgroundStyle} id={`category${1}`} data-testId="flowers-wrapper">
       <Element name={`category${1}`}></Element>
       {FlowersTitle}
       {ThumbnailCarousel}
