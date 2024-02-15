@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PHOTOGRAPHER_BERLIN/static/css/main.a501081e.css",
-    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.77e135aa.js",
+    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.c4bd8659.js",
     "static/media/1.jpg": "/PHOTOGRAPHER_BERLIN/static/media/1.a5fdd07b5c45fe701dc4.jpg",
     "static/media/13.jpg": "/PHOTOGRAPHER_BERLIN/static/media/13.63a8077b78f84a670972.jpg",
     "static/media/FC_two_phones_1.png": "/PHOTOGRAPHER_BERLIN/static/media/FC_two_phones_1.eb2678f5a4a6e33e28cb.png",
@@ -31,6 +31,7 @@
     "static/media/9.jpg": "/PHOTOGRAPHER_BERLIN/static/media/9.51286a09311ff3f09c56.jpg",
     "static/media/5.jpg": "/PHOTOGRAPHER_BERLIN/static/media/5.d0b5f9f632f8650420b9.jpg",
     "static/media/17.jpg": "/PHOTOGRAPHER_BERLIN/static/media/17.8794f7cac7225e632b30.jpg",
+    "static/media/Restoration4Final.jpg": "/PHOTOGRAPHER_BERLIN/static/media/Restoration4Final.af1befe64470a2b8501a.jpg",
     "static/media/16.jpg": "/PHOTOGRAPHER_BERLIN/static/media/16.b2e6bf97b354222ecfe3.jpg",
     "static/media/24.jpg": "/PHOTOGRAPHER_BERLIN/static/media/24.0f869f16f2961851115d.jpg",
     "static/media/Restoration6Final.jpg": "/PHOTOGRAPHER_BERLIN/static/media/Restoration6Final.8640f431f3e388a24469.jpg",
@@ -43,7 +44,6 @@
     "static/media/Restoration2Final.jpg": "/PHOTOGRAPHER_BERLIN/static/media/Restoration2Final.277cdc1333bf7877f458.jpg",
     "static/media/23.jpg": "/PHOTOGRAPHER_BERLIN/static/media/23.450f9c755578d4dc66b3.jpg",
     "static/media/Restoration3Original.jpg": "/PHOTOGRAPHER_BERLIN/static/media/Restoration3Original.95d41b70ac1ceee477ed.jpg",
-    "static/media/Restoration4Final.jpg": "/PHOTOGRAPHER_BERLIN/static/media/Restoration4Final.3fb15279a67b6d88f2c1.jpg",
     "static/media/2_flowers_1.jpg": "/PHOTOGRAPHER_BERLIN/static/media/2_flowers_1.5f3e8b1a3ae7ac0e8fdb.jpg",
     "static/media/4_childrens_parties.jpg": "/PHOTOGRAPHER_BERLIN/static/media/4_childrens_parties.b4e3851aa94f271d802b.jpg",
     "static/media/2_flowers_2.jpg": "/PHOTOGRAPHER_BERLIN/static/media/2_flowers_2.9ea5cc717a9f9b9e4661.jpg",
@@ -73,10 +73,10 @@
     "static/media/deFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/deFlag.202dbcc02e84dae3ba8c022622d53e43.svg",
     "static/media/uaFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/uaFlag.bf6ea1ce28490b2c476ed39c999e1f24.svg",
     "main.a501081e.css.map": "/PHOTOGRAPHER_BERLIN/static/css/main.a501081e.css.map",
-    "main.77e135aa.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.77e135aa.js.map"
+    "main.c4bd8659.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.c4bd8659.js.map"
   },
   "entrypoints": [
     "static/css/main.a501081e.css",
-    "static/js/main.77e135aa.js"
+    "static/js/main.c4bd8659.js"
   ]
 }
