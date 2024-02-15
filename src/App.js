@@ -10,6 +10,7 @@ import BottomBanner from "./components/Bottom_banner.tsx";
 import Flowers from "./components/Flowers.tsx";
 import Childrens from "./components/Childrens.tsx";
 import Photosessions from "./components/Photosessions.tsx";
+import Hospital from "./components/Hospital.tsx";
 import bg_image from "./components/img/1.jpg";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const restorationRef = useRef(null);
   const aboutMeRef = useRef(null);
   const photosessionsRef = useRef(null);
+  const hospitalRef = useRef(null);
 
   const scrollToBlock = (index) => {
     let targetRef;
@@ -83,10 +85,11 @@ function App() {
         <Flowers ref={flowersRef} />
         <Childrens ref={childrensRef} />
         <Photosessions ref={photosessionsRef} /> 
+        <Hospital ref={hospitalRef} />
         <Restoration ref={restorationRef} />
         <AboutMe ref={aboutMeRef} />
         <Footer />
-        <div className="fixed bottom-0 w-full ssm:flex z-49">
+        <div className="fixed bottom-0 w-full ssm:flex z-51">
           <BottomBanner />
         </div>
       </div>

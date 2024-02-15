@@ -18,6 +18,10 @@
   "Flowers": {
     "flowers_title": "КВIТИ та ОБРУЧКИ"
   }, 
+  "Hospital": {
+    "hospital": "ШПИТАЛЬ",
+    "age18": "Підтвердіть, що вам є 18 років"
+  }, 
   "Childrens": {
     "childrens_title": "Дитячі Фотосесії"
   },

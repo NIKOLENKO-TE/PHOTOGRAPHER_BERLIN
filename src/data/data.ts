@@ -25,6 +25,9 @@ const photosessionsHorizontalImages = importAll(
 const photosessionsVerticalImages = importAll(
   require.context("../components/img/Photosessions/verticalPhotos", false, /\.(png|jpe?g|svg)$/)
 );
+const hospitalImages = importAll(
+  require.context("../components/img/Hospital", false, /\.(png|jpe?g|svg)$/)
+);
 const restorationIconsImages = importAll(
   require.context(
     "../components/img/Restoration/icons",
@@ -56,6 +59,12 @@ export const weddingPhotos = Object.keys(weddingImages).map((key, index) => ({
   id: index,
   title: `weddingPhoto${index}`,
   img: weddingImages[key],
+}));
+
+export const hospitalPhotos = Object.keys(hospitalImages).map((key, index) => ({
+  id: index,
+  title: `hospitalPhoto${index}`,
+  img: hospitalImages[key],
 }));
 
 export const flowersPhotos = Object.keys(flowersImages).map((key, index) => ({

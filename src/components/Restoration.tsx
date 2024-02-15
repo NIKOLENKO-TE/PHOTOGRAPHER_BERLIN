@@ -329,7 +329,6 @@ const Restoration: React.FC = (): JSX.Element => {
           />
         </div>
         <div className="row">
-          {" "}
           <OrderSteps />
         </div>
       </div>
@@ -369,11 +368,11 @@ const Restoration: React.FC = (): JSX.Element => {
     <div id="container_left" className="min-w-[250px] pt-2">
       <div className="grid grid-cols-1 ">
         <div className="flex flex-column justify-center">
-          <ImageRestoration
-            beforeImage={currentImages.beforeImage}
-            afterImage={currentImages.afterImage}
-            onClick={handleClick}
-          />
+        <ImageRestoration
+  beforeImage={currentImages.afterImage}
+  afterImage={currentImages.beforeImage}
+  onClick={handleClick}
+/>
         </div>
         <div className="relative top-[-32px] -mb-7">{paginationDots}</div>
       </div>

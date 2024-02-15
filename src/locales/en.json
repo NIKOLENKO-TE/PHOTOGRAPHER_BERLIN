@@ -18,6 +18,10 @@
   "Flowers": {
     "flowers_title": "FLOWERS and RING"
   },
+  "Hospital": {
+    "hospital": "HOSPITAL",
+    "age18": "Confirm that you are 18 years old"
+  }, 
   "Childrens": {
     "childrens_title": "Children's photo sessions"
   },

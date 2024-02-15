@@ -12,7 +12,16 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
   const isMd = useMediaQuery({ minWidth: 667 });
   const isSd = useMediaQuery({ maxWidth: 666 });
 
-  let perPage = isXl ? 6 : isLg ? 5 : isMd ? 3 : isSd ? 2 : 7;
+  let perPage = 7;
+  if (isXl) {
+    perPage = 6;
+  } else if (isLg) {
+    perPage = 5;
+  } else if (isMd) {
+    perPage = 3;
+  } else if (isSd) {
+    perPage = 2;
+  }
 
   const CategoriesBackgroundStyle =
     "mx-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
@@ -39,30 +48,7 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
       </span>
     </h3>
   );
-  const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
-    t /= d / 2;
-    if (t < 1) return c / 2 * t * t + b;
-    t--;
-    return -c / 2 * (t * (t - 2) - 1) + b;
-  };
-  
-  const scrollToSmoothly = (pos: number, duration: number) => {
-    const start = window.pageYOffset;
-    const change = pos - start;
-    const increment = 20;
-    let currentTime = 0;
-  
-    const animateScroll = () => {
-      currentTime += increment;
-      const val = easeInOutQuad(currentTime, start, change, duration);
-      window.scrollTo(0, val);
-      if (currentTime < duration) {
-        requestAnimationFrame(animateScroll);
-      }
-    };
-  
-    animateScroll();
-  };
+
   const categoriesPreview = (
     <div className="flex w-full ssm:p-1.5 md:p-2">
       <style>{smoothScrollAnimationStyle}</style>
@@ -77,17 +63,18 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
         {categoryPhotos.map((item, index) => (
           <SplideSlide key={item.id}>
             <div
-              className="flex justify-center smooth-scroll-animation"
+              className="flex justify-center smooth-scroll-animation" 
               onClick={() => {
                 const element = document.getElementById(`category${index}`);
                 if (element) {
-                  element.classList.add('smooth-scroll-animation');
+                  element.classList.add('smooth-scroll-animation'); 
+                  window.scrollTo({
+                    top: element.offsetTop - 5,
+                    behavior: "smooth",
+                  });
                   setTimeout(() => {
-                    scrollToSmoothly(element.offsetTop - 5, 3000);
-                    setTimeout(() => {
-                      element.classList.remove('smooth-scroll-animation');
-                    }, 1000);
-                  }, 50);
+                    element.classList.remove('smooth-scroll-animation');
+                  }, 500);
                 }
               }}
             >

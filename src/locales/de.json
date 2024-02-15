@@ -18,6 +18,10 @@
   "Flowers": {
     "flowers_title": "BLUMEN und EHERINGE"
   },
+  "Hospital": {
+    "hospital": "HOSPITAL",
+    "age18": "Bestätigen Sie, dass Sie 18 Jahre alt sind"
+  }, 
   "Childrens": {
     "childrens_title": "Fotosessions für Kinder"
   },

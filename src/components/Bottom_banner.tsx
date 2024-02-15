@@ -36,7 +36,7 @@ const BottomBanner = () => {
   };
 
   const bottomBannerStyle =
-    "justify-self-center fixed bottom-0 left-0 right-0 w-full  block md:hidden grid max-w-[315px] grid-cols-3 gap-1 p-1 pb-4 mb-1 mx-auto bg-white bg-opacity-0 backdrop-filter backdrop-blur-[5px] rounded-lg";
+    "justify-self-center fixed bottom-0 left-0 right-0 w-full  block md:hidden grid max-w-[315px] grid-cols-3 gap-1 p-1  mb-1 mx-auto bg-white bg-opacity-0 backdrop-filter backdrop-blur-[5px] rounded-lg";
 
   const newsButton = (
     <button
