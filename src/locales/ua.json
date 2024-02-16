@@ -28,6 +28,9 @@
   "Photosessions": {
     "photosessions_title": "Фотосесії"
   },
+  "AID": {
+    "aid_title": "Гуманітарна допомога"
+  },
   "ImageRestoration": {
     "before_after_text": "BEFORE           AFTER"
   },
@@ -43,7 +46,7 @@
     "Flowers": "Квіти",
     "Photosessions": "Фотосесії",
     "Children's parties": "Дитячі",
-    "Children": "Дитячі",
+    "Childrens": "Дитячі",
     "Restorations": "Реставрації",
     "Humanitarian AID": "Гумдопомога",
     "AID": "Гумдопомога",

@@ -238,7 +238,7 @@ const Photosessions = () => {
   );
 
   const PhotosessionsTitle = (
-    <h3 className="flex justify-center mb-1">
+    <h3 className="flex justify-center mb-1 uppercase">
       <span className="w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[12px] md:rounded-[15px]">
         <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4">
           {t("photosessions_title")}
@@ -250,7 +250,6 @@ const Photosessions = () => {
     "px-2 py-2 mx-2 my-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
   return (
     <div className={CarouselBackgroundStyle} id={`category${4}`} data-testId="photosessions-wrapper">
-      <Element name={`category${4}`}></Element>
       {PhotosessionsTitle}
       <div className="flex ssm:flex-wrap md:flex-nowrap ">
         <div id="Vertical" className="ssm:basis-1/1 sm:basis-1/3 md:basis-1/4 pr-2 ssm:pb-2 sm:pb-0 md:pb-0 ">

@@ -31,6 +31,9 @@
   "Photosessions": {
     "photosessions_title": "Fotosessions"
   },
+  "AID": {
+    "aid_title": "Humanitäre Hilfe"
+  },
   "Restoration": {
     "restoration_title": "FOTORESTAURIERUNG",
     "change_photo_text": "DRÜCKEN Sie, um das Foto zu ändern",
@@ -45,6 +48,8 @@
      "Children's parties": "Kinderfeste",
      "Restorations": "Restaurierungen",
      "Humanitarian AID": "Humanitäre Hilfe",
+     "Childrens": "Kinder",
+     "AID":"Hilfe",
      "War medicine": "Kriegsmedizin",
      "About me": "Über mich"
   },

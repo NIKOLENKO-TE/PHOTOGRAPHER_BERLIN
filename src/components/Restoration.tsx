@@ -1,7 +1,6 @@
 // Restoration.tsx
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Element } from "react-scroll";
 import {
   restoredPhotos,
   orderRestorePhotos,
@@ -400,7 +399,6 @@ const Restoration: React.FC = (): JSX.Element => {
     "grid ssm:grid-cols-1 lg:grid-cols-2 ";
   return (
     <div className={image_restoration_background_style} id={`category${3}`}>
-      <Element name={`category${3}`}></Element>
       {buttonChangePhotoTitle}
       <div className={image_restoration_container_style}>
         {imageRestorationBlockLeft}

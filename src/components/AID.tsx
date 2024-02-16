@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
-import { weddingPhotos } from "../data/data";
+import { aidPhotos } from "../data/data";
 import { useTranslation } from "react-i18next";
 
-const Weddings = () => {
-  const { t } = useTranslation("Weddings");
-  const sliders = weddingPhotos.map(
+const AID = () => {
+  const { t } = useTranslation("AID");
+  const sliders = aidPhotos.map(
     (photo: { id: number; title: string; img: string } | undefined) =>
       photo?.img
   );
@@ -28,9 +28,9 @@ const Weddings = () => {
   };
   const CarouselBackgroundStyle =
     "px-2 py-2 mx-2 my-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
-  const weddingBackgroundStyle =
+  const aidBackgroundStyle =
     "w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[12px] md:rounded-[15px]";
-  const weddingText =
+  const aidText =
     "text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4";
   const imageSlideStyle =
     "ssm:h-[440px] xl:h-[700px] w-full object-cover duration-300 ease-out";
@@ -111,10 +111,10 @@ const Weddings = () => {
     }
   };
 
-  const WeddingsTitle = (
-    <h3 className="flex justify-center mb-1" data-testId="weddings-title">
-      <span className={weddingBackgroundStyle}>
-        <span className={weddingText}>{t("weddings")}</span>
+  const aidTitle = (
+    <h3 className="flex justify-center mb-1 uppercase" data-testId="aid-title">
+      <span className={aidBackgroundStyle}>
+        <span className={aidText}>{t("aid_title")}</span>
       </span>
     </h3>
   );
@@ -177,12 +177,12 @@ const Weddings = () => {
   );
 
   return (
-    <div className={CarouselBackgroundStyle} id={`category${0}`} data-testId="weddings-wrapper">
-      {WeddingsTitle}
+    <div className={CarouselBackgroundStyle} id={`category${5}`} data-testId="aid-wrapper">
+      {aidTitle}
       {ThumbnailCarousel}
       {ThumbnailCarouselPreview}
     </div>
   );
 };
 
-export default Weddings;
+export default AID;

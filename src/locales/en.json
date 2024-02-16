@@ -31,6 +31,9 @@
   "Photosessions": {
     "photosessions_title": "Photosessions"
   },
+  "AID": {
+    "aid_title": "Humanitarian AID"
+  },
   "Restoration": {
     "restoration_title": "PHOTO RESTORATION",
     "change_photo_text": "PRESS to change photo",
@@ -45,6 +48,8 @@
      "Children's parties": "Children's parties",
      "Restorations": "Restorations",
      "Humanitarian AID":"Humanitarian AID",
+     "Childrens": "Children's",
+     "AID":"AID",
      "War medicine": "War medicine",
      "About me": "About me"
   },

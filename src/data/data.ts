@@ -28,6 +28,9 @@ const photosessionsVerticalImages = importAll(
 const hospitalImages = importAll(
   require.context("../components/img/Hospital", false, /\.(png|jpe?g|svg)$/)
 );
+const aidImages = importAll(
+  require.context("../components/img/AID", false, /\.(png|jpe?g|svg)$/)
+);
 const restorationIconsImages = importAll(
   require.context(
     "../components/img/Restoration/icons",
@@ -41,7 +44,7 @@ const categoriesImages = importAll(
 const categoriesData = [
   { id: 1, title: "Weddings", shortTitle: "Weddings", imgFile: "1_weddings.jpg" },
   { id: 2, title: "Flowers", shortTitle: "Flowers", imgFile: "2_flowers_1.jpg" },
-  { id: 3, title: "Children's parties", shortTitle: "Children", imgFile: "4_childrens_parties.jpg" },
+  { id: 3, title: "Children's parties", shortTitle: "Childrens", imgFile: "4_childrens_parties.jpg" },
   { id: 4, title: "Restorations", shortTitle: "Restorations", imgFile: "5_restorations.jpg" },
   { id: 5, title: "Photosessions", shortTitle: "Photosessions", imgFile: "3_photosessions.jpg" },
   { id: 6, title: "Humanitarian AID", shortTitle: "AID", imgFile: "6_humanitarian_aid.jpg" },
@@ -80,7 +83,13 @@ export const childrensPhotos = Object.keys(childrensImages).map(
     img: childrensImages[key],
   })
 );
-
+export const aidPhotos = Object.keys(aidImages).map(
+  (key, index) => ({
+    id: index,
+    title: `aidPhoto${index}`,
+    img: aidImages[key],
+  })
+);
 export const restoredPhotos = Object.keys(restorationImages).map(
   (key, index) => ({
     id: index,
@@ -91,14 +100,14 @@ export const restoredPhotos = Object.keys(restorationImages).map(
 export const photosessionsHorizontal = Object.keys(photosessionsHorizontalImages).map(
   (key, index) => ({
     id: index,
-    title: `Restore${index}`,
+    title: `photosessionsHorizontal${index}`,
     img: photosessionsHorizontalImages[key],
   })
 );
 export const photosessionsVertical = Object.keys(photosessionsVerticalImages).map(
   (key, index) => ({
     id: index,
-    title: `Restore${index}`,
+    title: `photosessionsVertical${index}`,
     img: photosessionsVerticalImages[key],
   })
 );

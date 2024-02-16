@@ -11,6 +11,7 @@ import Flowers from "./components/Flowers.tsx";
 import Childrens from "./components/Childrens.tsx";
 import Photosessions from "./components/Photosessions.tsx";
 import Hospital from "./components/Hospital.tsx";
+import AID from "./components/AID.tsx";
 import bg_image from "./components/img/1.jpg";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   const aboutMeRef = useRef(null);
   const photosessionsRef = useRef(null);
   const hospitalRef = useRef(null);
+  const aidRef = useRef(null);
 
   const scrollToBlock = (index) => {
     let targetRef;
@@ -40,6 +42,12 @@ function App() {
       case 5:
         targetRef = photosessionsRef;
         break;
+      case 6:
+        targetRef = aidRef;
+        break;
+      case 7:
+         targetRef = hospitalRef;
+         break;
       case 8:
         targetRef = aboutMeRef;
         break;
@@ -85,6 +93,7 @@ function App() {
         <Flowers ref={flowersRef} />
         <Childrens ref={childrensRef} />
         <Photosessions ref={photosessionsRef} /> 
+        <AID ref={aidRef} /> 
         <Hospital ref={hospitalRef} />
         <Restoration ref={restorationRef} />
         <AboutMe ref={aboutMeRef} />

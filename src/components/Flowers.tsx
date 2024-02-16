@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
 import { flowersPhotos } from "../data/data";
 import { useTranslation } from "react-i18next";
-import { Element } from "react-scroll";
 
 const Flowers = () => {
   const { t } = useTranslation("Flowers");
@@ -175,7 +174,6 @@ const Flowers = () => {
 
   return (
     <div className={CarouselBackgroundStyle} id={`category${1}`} data-testId="flowers-wrapper">
-      <Element name={`category${1}`}></Element>
       {FlowersTitle}
       {ThumbnailCarousel}
       {ThumbnailCarouselPreview}
