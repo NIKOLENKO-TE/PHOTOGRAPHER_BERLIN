@@ -55,12 +55,12 @@ const VerticalSlider = ({ photos, selectedSlide, setSplideInstance, autoplay = t
   }, [selectedSlide, setSplideInstance, autoplay]);
 
   return (
-    <section id="vertical_thumbnail_carousel" ref={splideRef} className="splide pb-2 pt-0.5">
+    <section id="vertical_thumbnail_carousel" ref={splideRef} className="splide pb-2 pt-0.5 ssm:-mr-2 sm:mr-0">
       <div className="splide__track rounded-2xl">
         <ul className="splide__list">
           {photos.map((photo, slideIndex) => (
             <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()}>
-              <img className="ssm:h-full sm:h-[380px]  md:h-[385px] lg:h-[500px] xl:h-[600px] w-full object-cover duration-300 ease-out" src={photo} alt={`Slide ${slideIndex}`} />
+              <img className="ssm:h-full sm:h-[380px] md:h-[385px] lg:h-[500px] xl:h-[600px] w-full object-cover duration-300 ease-out" src={photo} alt={`Slide ${slideIndex}`} />
             </li>
           ))}
         </ul>

@@ -51,7 +51,7 @@ const VerticalSliderPreview = ({ photos, selectedSlide, onPreviewClick, getPerPa
   }, [selectedSlide, getPerPageValue, onPreviewClick]);
 
   return (
-    <section id="vertical_thumbnail_carousel_preview" ref={previewSplideRef} className="splide">
+    <section id="vertical_thumbnail_carousel_preview" ref={previewSplideRef} className="splide ssm:-mr-2 sm:mr-0">
       <div className="splide__track">
         <ul className="splide__list">
           {photos.map((photo, previewIndex) => (

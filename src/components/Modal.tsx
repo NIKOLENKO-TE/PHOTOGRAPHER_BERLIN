@@ -1,11 +1,9 @@
 //Modal.tsx
-import React from "react";
-import emailjs from '@emailjs/browser'
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
+import emailjs from "@emailjs/browser";
 import * as Yup from "yup";
-
 
 type NikolenkoTEBlockModalProps = {
   showModal: boolean;
@@ -18,7 +16,6 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   showModal,
   setShowModal,
   style = {},
-
 }) => {
   useEffect(() => {
     const body = document.body;
@@ -38,10 +35,6 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
     };
   }, [showModal]);
 
- 
-  // const [name, setName] = useState<string>("")
-  // const [email, setEmail] = useState<string>("")
-  // const [message, setMessage] = useState<string>("") 
   const [_files, setFiles] = useState<File[]>([]);
   const [fileNames, setFileNames] = useState<string[]>([]);
   const { t } = useTranslation("NikolenkoTEBlockModal");
@@ -49,7 +42,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   const templateID = "template_tz9shde";
   const publicKey = "LgZTgn-3uopBUrfpI";
   emailjs.init(publicKey);
-  
+
   const validationSchema = Yup.object({
     name: Yup.string().required(t("validation.modal.name.required")),
     email: Yup.string()
@@ -176,59 +169,62 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
       files: [],
     },
     validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       if (!formik.isValid) {
         return;
       }
-    
+
+      const uploadedImageLinks = await Promise.all(
+        _files.map(async (file) => {
+          const formData = new FormData();
+          formData.append("key", "9eea17ff2ebe097f4e4ada123b28e05d");
+          formData.append("image", file);
+
+          try {
+            const response = await fetch("https://api.imgbb.com/1/upload", {
+              method: "POST",
+              body: formData,
+            });
+            const data = await response.json();
+            return data.data.url;
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            return null;
+          }
+        })
+      );
+
+      const messageWithImages = `${values.message}\n\nAttached Images:\n${uploadedImageLinks.join(
+        "\n"
+      )}`;
+
       const templateParams = {
         to_name: "NikolenkoTE",
         from_name: values.name,
         from_email: values.email,
-        message: values.message,
+        message: messageWithImages,
       };
-    
+
       emailjs.send(serviceID, templateID, templateParams, publicKey)
         .then((response) => {
           console.log('SUCCESS!', response.status, response.text);
           setShowModal(false);
           formik.resetForm();
-        }, (error) => {
+        })
+        .catch((error) => {
           console.error('FAILED...', error);
         });
     }
-  })
+  });
 
-const handleCancelClick = (event: React.MouseEvent) => {
-  event.stopPropagation();
-  setShowModal(false);
-};
-
-  const handleSendClick = () => {
-    if (!formik.isValid) {
-      return;
-    }
-
-    const templateParams = {
-      to_name: "NikolenkoTE",
-      from_name: formik.values.name,
-      from_email: formik.values.email,
-      message: formik.values.message,
-    };
-
-    emailjs.send(serviceID, templateID, templateParams, publicKey)
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-        setShowModal(false);
-        formik.resetForm();
-      }, (error) => {
-        console.error('FAILED...', error);
-      });
+  const handleCancelClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setShowModal(false);
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      const selectedFiles = Array.from(event.target.files).slice(0, 5); // Limit to 5 files
+      const selectedFiles = Array.from(event.target.files).slice(0, 10);
       setFiles(selectedFiles);
       const selectedFileNames = selectedFiles.map((file) => file.name);
       setFileNames(selectedFileNames);
@@ -255,7 +251,6 @@ const handleCancelClick = (event: React.MouseEvent) => {
   const ModalContainerLeft = (
     <div id="modal_container_left">
       <h2 className={modal_label_style}>{t("text.modal.send.message")}</h2>
-
       <div className="relative mb-3">
         <input
           type="text"
@@ -347,7 +342,6 @@ const handleCancelClick = (event: React.MouseEvent) => {
           className={close_button_style}
           data-te-modal-dismiss
           aria-label="Close"
-         // onTouchStart={handleCancelClick}
           onClick={handleCancelClick}
         >
           <svg
@@ -425,29 +419,30 @@ const handleCancelClick = (event: React.MouseEvent) => {
             <button
               id="file_input_button_cancel"
               className={button_cancel_style}
-             // onTouchStart={handleCancelClick}
               onClick={handleCancelClick}
             >
               <p className="mt-[-5px]">{t("button.modal.cancel")}</p>
             </button>
             <button
-  id="file_input_button_send"
-  type="submit"
-  className={button_send_style}
-  onClick={formik.handleSubmit}
->
-  <p className="mt-[-5px]">{t("button.modal.send")}</p>
-</button>
+              id="file_input_button_send"
+              type="submit"
+              className={button_send_style}
+            >
+              <p className="mt-[-5px]">{t("button.modal.send")}</p>
+            </button>
           </div>
         </div>
       </div>
     </div>
   );
+
   const modal1plus1Style =
     "flex flex-col justify-center items-between ssm:grid ssm:grid-cols-1 ssm:gap-4 ssm:justify-self-center ssm:max grid pt-5 pb-10 grid-cols-1 sm:grid-cols-2 gap-4 justify-self-center max-h-screen overflow-y-auto overflow-x-auto";
-  const modalContainerStyle =
+  
+    const modalContainerStyle =
     "z-50 w-screen h-screen flex ssm:items-start md:items-center justify-center shadow-2xl p-4 bg-white bg-opacity-10 backdrop-blur-[15px] fixed top-0 left-0 ";
-  return (
+  
+    return (
     showModal && (
       <div data-te-modal-init id="modal_shadow" role="dialog" aria-modal="true">
         <div data-te-modal-dialog-ref>
