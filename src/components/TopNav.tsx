@@ -28,70 +28,70 @@ const emailIconStyle = "ml-1 ssm:mt-[4px] sm:mt-[0px] md:mt-[0px] xl:mt-[-1px]";
 const photographButtonStyle =
   "z-50 bg-white bg-opacity-20 backdrop-blur-[10px] rounded-[14px] p-[2px] flex items-center";
 
-  const TopNameButton: React.FC<{ onClick: () => void }> = (
-    props
-  ): JSX.Element => {
-    const { t } = useTranslation("TopNameButton");
-  
-    return (
-      <div className={photographButtonStyle}>
-        <button
-          id="name_button"
-          className={`px-1 ${buttonStyleName}`}
-          onClick={props.onClick}
-          data-testid="name-button"
-        >
-          {t("my_name")}
-        </button>
-        <div>
-          <span className="hidden m-[2px] md:flex text-white text-xl">
-            {t("my_profession")}
-          </span>
-        </div>
-      </div>
-    );
-  };
+const TopNameButton: React.FC<{ onClick: () => void }> = (
+  props
+): JSX.Element => {
+  const { t } = useTranslation("TopNameButton");
 
-  const TopSearch: React.FC = (): JSX.Element => {
-    const { t } = useTranslation("TopSearch");
-  
-    return (
-      <div className={searchFieldTopNav}>
-        <div className="flex-grow">
-          <input
-            className={searchInputStyle}
-            type="text"
-            id="searchField"
-            placeholder={t("placeholder_search")}
-            style={{
-              WebkitTextFillColor: "white",
-              opacity: 0.8,
-              textAlign: "center",
-            }}
-            data-testid="search-input"
-          />
-          <div className="absolute top-[0px] right-0 ">
-            <button type="submit" className={` ${buttonStyleSearch}`} data-testid="search-button">
-              <svg
-                className="w-4 h-4"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
-            </button>
-          </div>
+  return (
+    <div className={photographButtonStyle}>
+      <button
+        id="name_button"
+        className={`px-1 ${buttonStyleName}`}
+        onClick={props.onClick}
+        data-testid="name-button"
+      >
+        {t("my_name")}
+      </button>
+      <div>
+        <span className="hidden m-[2px] md:flex text-white text-xl">
+          {t("my_profession")}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const TopSearch: React.FC = (): JSX.Element => {
+  const { t } = useTranslation("TopSearch");
+
+  return (
+    <div className={searchFieldTopNav}>
+      <div className="flex-grow">
+        <input
+          className={searchInputStyle}
+          type="text"
+          id="searchField"
+          placeholder={t("placeholder_search")}
+          style={{
+            WebkitTextFillColor: "white",
+            opacity: 0.8,
+            textAlign: "center",
+          }}
+          data-testid="search-input"
+        />
+        <div className="absolute top-[0px] right-0 ">
+          <button type="submit" className={` ${buttonStyleSearch}`} data-testid="search-button">
+            <svg
+              className="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              />
+            </svg>
+          </button>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 const TopMailButton: React.FC<{ onClick: () => void }> = (
   props

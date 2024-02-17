@@ -1,9 +1,11 @@
 //Modal.tsx
 import React from "react";
+import emailjs from '@emailjs/browser'
 import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
+
 
 type NikolenkoTEBlockModalProps = {
   showModal: boolean;
@@ -16,7 +18,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   showModal,
   setShowModal,
   style = {},
-  
+
 }) => {
   useEffect(() => {
     const body = document.body;
@@ -36,9 +38,18 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
     };
   }, [showModal]);
 
+ 
+  // const [name, setName] = useState<string>("")
+  // const [email, setEmail] = useState<string>("")
+  // const [message, setMessage] = useState<string>("") 
   const [files, setFiles] = useState<File[]>([]);
   const [fileNames, setFileNames] = useState<string[]>([]);
   const { t } = useTranslation("NikolenkoTEBlockModal");
+  const serviceID = "service_6hkyxdi";
+  const templateID = "template_tz9shde";
+  const publicKey = "LgZTgn-3uopBUrfpI";
+  emailjs.init(publicKey);
+  
   const validationSchema = Yup.object({
     name: Yup.string().required(t("validation.modal.name.required")),
     email: Yup.string()
@@ -166,9 +177,8 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
     },
-  });
+  })
 
   const handleCancelClick = () => {
     setShowModal(false);
@@ -179,29 +189,20 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
       return;
     }
 
-    const formData = new FormData();
-    formData.append("name", formik.values.name);
-    formData.append("email", formik.values.email);
-    formData.append("message", formik.values.message);
-    files.forEach((file, index) => {
-      formData.append(`file${index + 1}`, file);
-    });
+    const templateParams = {
+      to_name: "NikolenkoTE",
+      from_name: formik.values.name,
+      from_email: formik.values.email,
+      message: formik.values.message,
+    };
 
-    fetch("https://mockbin.org/requests", {
-      method: "POST",
-      body: formData,
-    })
+    emailjs.send(serviceID, templateID, templateParams, publicKey)
       .then((response) => {
-        if (response.ok) {
-          setShowModal(false);
-          setFiles([]);
-          setFileNames([]);
-        } else {
-          throw new Error("Error sending data to server");
-        }
-      })
-      .catch((error) => {
-        console.error("Error sending data to server:", error);
+        console.log('SUCCESS!', response.status, response.text);
+        setShowModal(false);
+        formik.resetForm();
+      }, (error) => {
+        console.error('FAILED...', error);
       });
   };
 
@@ -436,7 +437,6 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
             id="modal_container"
             style={style}
             className={modalContainerStyle}
-
           >
             <form onSubmit={formik.handleSubmit}>
               <div className={modal1plus1Style} data-te-modal-body-ref>
@@ -452,3 +452,8 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
 };
 
 export default NikolenkoTEBlockModal;
+
+//nikolenkote
+//nikolenkote@gmail.com
+//HHbdSCBqeT@7nhc
+//service_6hkyxdi
