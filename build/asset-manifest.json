@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PHOTOGRAPHER_BERLIN/static/css/main.653d8052.css",
-    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.ba28f19b.js",
+    "main.css": "/PHOTOGRAPHER_BERLIN/static/css/main.5e6ff124.css",
+    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.f8e744fe.js",
     "static/media/01.jpg": "/PHOTOGRAPHER_BERLIN/static/media/01.a2b6888253805ceb54d7.jpg",
     "static/media/00.jpg": "/PHOTOGRAPHER_BERLIN/static/media/00.19a51ac398e0cfada8eb.jpg",
     "static/media/13.jpg": "/PHOTOGRAPHER_BERLIN/static/media/13.63a8077b78f84a670972.jpg",
@@ -78,11 +78,11 @@
     "static/media/enFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/enFlag.b05fba118967ceb0b35db3f4559cb385.svg",
     "static/media/deFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/deFlag.202dbcc02e84dae3ba8c022622d53e43.svg",
     "static/media/uaFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/uaFlag.bf6ea1ce28490b2c476ed39c999e1f24.svg",
-    "main.653d8052.css.map": "/PHOTOGRAPHER_BERLIN/static/css/main.653d8052.css.map",
-    "main.ba28f19b.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.ba28f19b.js.map"
+    "main.5e6ff124.css.map": "/PHOTOGRAPHER_BERLIN/static/css/main.5e6ff124.css.map",
+    "main.f8e744fe.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.f8e744fe.js.map"
   },
   "entrypoints": [
-    "static/css/main.653d8052.css",
-    "static/js/main.ba28f19b.js"
+    "static/css/main.5e6ff124.css",
+    "static/js/main.f8e744fe.js"
   ]
 }

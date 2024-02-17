@@ -42,7 +42,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   // const [name, setName] = useState<string>("")
   // const [email, setEmail] = useState<string>("")
   // const [message, setMessage] = useState<string>("") 
-  const [files, setFiles] = useState<File[]>([]);
+  const [_files, setFiles] = useState<File[]>([]);
   const [fileNames, setFileNames] = useState<string[]>([]);
   const { t } = useTranslation("NikolenkoTEBlockModal");
   const serviceID = "service_6hkyxdi";
@@ -177,12 +177,32 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
     },
     validationSchema,
     onSubmit: (values) => {
-    },
+      if (!formik.isValid) {
+        return;
+      }
+    
+      const templateParams = {
+        to_name: "NikolenkoTE",
+        from_name: values.name,
+        from_email: values.email,
+        message: values.message,
+      };
+    
+      emailjs.send(serviceID, templateID, templateParams, publicKey)
+        .then((response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          setShowModal(false);
+          formik.resetForm();
+        }, (error) => {
+          console.error('FAILED...', error);
+        });
+    }
   })
 
-  const handleCancelClick = () => {
-    setShowModal(false);
-  };
+const handleCancelClick = (event: React.MouseEvent) => {
+  event.stopPropagation();
+  setShowModal(false);
+};
 
   const handleSendClick = () => {
     if (!formik.isValid) {
@@ -327,7 +347,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
           className={close_button_style}
           data-te-modal-dismiss
           aria-label="Close"
-          onTouchStart={handleCancelClick}
+         // onTouchStart={handleCancelClick}
           onClick={handleCancelClick}
         >
           <svg
@@ -405,20 +425,19 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
             <button
               id="file_input_button_cancel"
               className={button_cancel_style}
-              onTouchStart={handleCancelClick}
+             // onTouchStart={handleCancelClick}
               onClick={handleCancelClick}
             >
               <p className="mt-[-5px]">{t("button.modal.cancel")}</p>
             </button>
             <button
-              id="file_input_button_send"
-              type="submit"
-              className={button_send_style}
-              onTouchStart={handleSendClick}
-              onClick={handleSendClick}
-            >
-              <p className="mt-[-5px]">{t("button.modal.send")}</p>
-            </button>
+  id="file_input_button_send"
+  type="submit"
+  className={button_send_style}
+  onClick={formik.handleSubmit}
+>
+  <p className="mt-[-5px]">{t("button.modal.send")}</p>
+</button>
           </div>
         </div>
       </div>
