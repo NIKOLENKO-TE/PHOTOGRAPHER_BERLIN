@@ -1,5 +1,5 @@
 //Childrens.tsx
-import { useRef, useState, useMemo, useCallback } from "react";
+import { forwardRef, useRef, useState, useMemo, useCallback } from "react";
 import { Splide } from "@splidejs/splide";
 import { useTranslation } from "react-i18next";
 import { childrensPhotos } from "../data/data";
@@ -8,7 +8,7 @@ import Title from './sliders/Title';
 import CarouselBackground from './sliders/CarouselBackground';
 import HorizontalSliderPreview from './sliders/HorizontalSliderPreview';
 
-const Childrens = () => {
+const Childrens = forwardRef<HTMLDivElement>((_, ref) => {
   const { t } = useTranslation("Childrens");
   const [selectedSlide] = useState(0);
   const splideInstanceRef = useRef<Splide | null>(null);
@@ -25,12 +25,13 @@ const Childrens = () => {
   }, []);
 
   return (
-    <CarouselBackground id={`category${2}`} data-testId="childrens-wrapper">
-      <Title text={t("childrens_title")}  data-testId="childrens_title"/>
-      <HorizontalSlider photos={sliders} selectedSlide={selectedSlide} setSplideInstance={splide => splideInstanceRef.current = splide} autoplay={false} />
-      <HorizontalSliderPreview photos={sliders} selectedSlide={selectedSlide} onPreviewClick={handlePreviewClick} getPerPageValue={getPerHorizontalPageValue} />
-    </CarouselBackground>
+    <div ref={ref}>
+      <CarouselBackground id={`category${2}`} data-testid="childrens-wrapper">
+        <Title text={t("childrens_title")} data-testid="childrens_title" />
+        <HorizontalSlider photos={sliders} selectedSlide={selectedSlide} setSplideInstance={splide => splideInstanceRef.current = splide} autoplay={false} />
+        <HorizontalSliderPreview photos={sliders} selectedSlide={selectedSlide} onPreviewClick={handlePreviewClick} getPerPageValue={getPerHorizontalPageValue} />
+      </CarouselBackground>
+    </div>
   );
-};
-
+});
 export default Childrens;

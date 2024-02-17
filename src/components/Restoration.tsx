@@ -1,5 +1,5 @@
 // Restoration.tsx
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   restoredPhotos,
@@ -61,14 +61,14 @@ const ImageRestoration: React.FC<ImageRestorationProps> = ({
       onMouseUp={handleEnd}
       onContextMenu={preventRightClick}
       onClick={handleClick}
-      data-testId="image-restoration"
+      data-testid="image-restoration"
     >
       <img
         id="beforeImage"
         src={beforeImage}
         className="absolute h-full object-cover select-none"
         alt="before"
-        data-testId="before-image"
+        data-testid="before-image"
       />
       <div id="after_container" className="absolute h-full overflow-hidden">
         <img
@@ -81,7 +81,7 @@ const ImageRestoration: React.FC<ImageRestorationProps> = ({
             clipPath: `inset(0 0 0 ${sliderX})`,
             pointerEvents: "auto",
           }}
-          data-testId="after-image"
+          data-testid="after-image"
         />
       </div>
       <div
@@ -108,7 +108,7 @@ const ImageRestoration: React.FC<ImageRestorationProps> = ({
   );
 };
 
-const Restoration: React.FC = (): JSX.Element => {
+const Restoration = forwardRef<HTMLDivElement>((props, ref) => {
   const { t } = useTranslation("Restoration");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -148,7 +148,7 @@ const Restoration: React.FC = (): JSX.Element => {
                 ? "bg-blue-700 bg-opacity-90 backdrop-blur-[2px]"
                 : "bg-white bg-opacity-40 backdrop-blur-[2px]"
             }`}
-            data-testId={`pagination-dot-${index}`}
+            data-testid={`pagination-dot-${index}`}
           ></div>
         ))}
       </div>
@@ -295,7 +295,7 @@ const Restoration: React.FC = (): JSX.Element => {
             alt="Send"
             className="ssm:h-[60px] h-[80px] mt-[3px] cursor-pointer"
             onClick={handleFileUpload}
-            data-testId="send-image-button"
+            data-testid="send-image-button"
           />
           <img
             src={orderRestorePhotos[1].img}
@@ -311,7 +311,7 @@ const Restoration: React.FC = (): JSX.Element => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className="ssm:h-[60px] h-[80px] mt-[3px]"
-            data-testId="alternate-image-button"
+            data-testid="alternate-image-button"
           >
             {isHovered ? (
               <img
@@ -365,7 +365,7 @@ const Restoration: React.FC = (): JSX.Element => {
       id="button_change_photo_example"
       className={`cursor-pointer items-center  ${button_title_style}`}
       onClick={handleClick}
-      data-testId="change-photo-button"
+      data-testid="change-photo-button"
     >
       {t("restoration_title")}
     </button>
@@ -398,6 +398,7 @@ const Restoration: React.FC = (): JSX.Element => {
   const image_restoration_container_style =
     "grid ssm:grid-cols-1 lg:grid-cols-2 ";
   return (
+    <div ref={ref}>
     <div className={image_restoration_background_style} id={`category${3}`}>
       {buttonChangePhotoTitle}
       <div className={image_restoration_container_style}>
@@ -405,7 +406,8 @@ const Restoration: React.FC = (): JSX.Element => {
         {imageRestorationBlockRight}
       </div>
     </div>
-  );
-};
+    </div>
+    );
+  });
 
 export default Restoration;

@@ -1,5 +1,5 @@
 //Photosessions.tsx
-import { useRef, useState, useMemo, useCallback } from "react";
+import { forwardRef, useRef, useState, useMemo, useCallback } from "react";
 import { Splide } from "@splidejs/splide";
 import { useTranslation } from "react-i18next";
 import { photosessionsHorizontal, photosessionsVertical } from "../data/data";
@@ -10,7 +10,7 @@ import CarouselBackground from './sliders/CarouselBackground';
 import HorizontalSliderPreview from './sliders/HorizontalSliderPreview';
 import VerticalSliderPreview from './sliders/VerticalSliderPreview';
 
-const Photosessions = () => {
+const Photosessions = forwardRef<HTMLDivElement>((_, ref) => {
   const { t } = useTranslation("Photosessions");
   const [selectedHorizontalSlide] = useState(0);
   const [selectedVerticalSlide] = useState(0);
@@ -40,8 +40,9 @@ const Photosessions = () => {
   }, []);
 
   return (
-    <CarouselBackground id={`category${4}`} data-testId="photosessions-wrapper">
-      <Title text={t("photosessions_title")} data-testId="photosessions_title"/>
+    <div ref={ref}>
+    <CarouselBackground id={`category${4}`} data-testid="photosessions-wrapper">
+      <Title text={t("photosessions_title")} data-testid="photosessions_title"/>
       <div className="flex ssm:flex-wrap md:flex-nowrap ">
         <div id="Vertical" className="ssm:basis-1/1 sm:basis-1/3 md:basis-1/4 pr-2 ssm:pb-2 sm:pb-0 md:pb-0">
           <VerticalSlider photos={slidersVertical} selectedSlide={selectedVerticalSlide} setSplideInstance={splide => splideInstanceRefVertical.current = splide} autoplay={true} />
@@ -54,7 +55,8 @@ const Photosessions = () => {
         </div></div>
       </div>
     </CarouselBackground>
+    </div>
   );
-};
+});
 
 export default Photosessions;

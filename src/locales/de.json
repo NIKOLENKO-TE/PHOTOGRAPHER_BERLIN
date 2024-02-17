@@ -20,7 +20,8 @@
   },
   "Hospital": {
     "hospital": "HOSPITAL",
-    "age18": "Bestätigen Sie, dass Sie 18 Jahre alt sind"
+    "age18": "Bestätigen Sie, dass Sie 18 Jahre alt sind",
+    "war_medicine": "KRIEGSMEDIZIN"
   }, 
   "Childrens": {
     "childrens_title": "Fotosessions für Kinder"

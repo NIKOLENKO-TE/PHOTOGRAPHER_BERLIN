@@ -39,7 +39,7 @@ const photographButtonStyle =
           id="name_button"
           className={`px-1 ${buttonStyleName}`}
           onClick={props.onClick}
-          data-testId="name-button"
+          data-testid="name-button"
         >
           {t("my_name")}
         </button>
@@ -68,10 +68,10 @@ const photographButtonStyle =
               opacity: 0.8,
               textAlign: "center",
             }}
-            data-testId="search-input"
+            data-testid="search-input"
           />
           <div className="absolute top-[0px] right-0 ">
-            <button type="submit" className={` ${buttonStyleSearch}`} data-testId="search-button">
+            <button type="submit" className={` ${buttonStyleSearch}`} data-testid="search-button">
               <svg
                 className="w-4 h-4"
                 aria-hidden="true"
@@ -99,7 +99,7 @@ const TopMailButton: React.FC<{ onClick: () => void }> = (
   return (
     <button
       className={`px-2 hidden sm:flex ${buttonStyle}`}
-      data-testId="MdMarkEmailButton"
+      data-testid="MdMarkEmailButton"
       onClick={props.onClick}
     >
       <MdMarkEmailUnread className={emailIcon} />
@@ -139,7 +139,7 @@ const TopNav: React.FC = (): JSX.Element => {
   };
 
   return (
-    <div id="topNav" className={TopNavStyle} data-testId="top-nav">
+    <div id="topNav" className={TopNavStyle} data-testid="top-nav">
       <TopNameButton onClick={handleNameButtonClick} />
       <TopSearch />
       <SetLanguage onSelectLanguage={handleSelectLanguage} />

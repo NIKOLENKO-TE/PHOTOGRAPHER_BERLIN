@@ -7,7 +7,6 @@ interface SliderProps {
   selectedSlide: number;
   setSplideInstance: (splide: Splide | null) => void;
   autoplay?: boolean;
-  className?: string;
 }
 
 export const getPerHorizontalPageValue = () => {

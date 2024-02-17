@@ -1,5 +1,5 @@
 import "@splidejs/react-splide/css";
-import { forwardRef } from "react";
+import { forwardRef, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -11,7 +11,7 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
   const isLg = useMediaQuery({ minWidth: 1024 });
   const isMd = useMediaQuery({ minWidth: 667 });
   const isSd = useMediaQuery({ maxWidth: 666 });
-
+  const anotherRef = useRef(null); 
   let perPage = 7;
   if (isXl) {
     perPage = 6;
@@ -41,16 +41,17 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
 
   const categoriesTitle = (
     <h3 className="flex justify-center ssm:px-1.5 ssm:pt-1.5 ">
-      <span className="w-3/4 flex justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] bg-purple-500/30 shadow-lg  ssm:rounded-[12px] md:rounded-[15px]  " data-testId="categories-title">
-        <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-[5px] uppercase">
+      <span className="flex w-5/6 justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] bg-purple-500/30 shadow-lg  ssm:rounded-[12px] md:rounded-[15px]  " data-testid="categories-title">
+        <span className="text-white flex  ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-[5px] uppercase whitespace-nowrap">
           {t("select_category_text")}
         </span>
       </span>
     </h3>
+    
 );
 
   const categoriesPreview = (
-    <div className="flex w-full ssm:p-1.5 md:p-2" data-testId="categories-preview">
+    <div className="flex w-full ssm:p-1.5 md:p-2" data-testid="categories-preview">
       <style>{smoothScrollAnimationStyle}</style>
       <Splide
         options={{
@@ -77,7 +78,7 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
                   }, 500);
                 }
               }}
-              data-testId={`category-${index}`}
+              data-testid={`category-${index}`}
             >
               <div className="absolute top-1">
                 <span className="px-2 items-center ssm:text-[22px] md:text-[24px] xl:text-[28px] text-white flex bg-white bg-opacity-20 backdrop-blur-[5px] cursor-pointer whitespace-nowrap ssm:rounded-[10px] md:rounded-[13px] shadow-md">
@@ -99,11 +100,12 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
       </Splide>
     </div>
   );
-
   return (
-    <div className={CategoriesBackgroundStyle} ref={ref} data-testId="categories-wrapper">
+    <div className={CategoriesBackgroundStyle} ref={ref} data-testid="categories-wrapper">
       {categoriesTitle}
-      {categoriesPreview}
+      <div ref={anotherRef}>
+        {categoriesPreview}
+      </div>
     </div>
   );
 });
