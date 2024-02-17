@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
 import { photosessionsHorizontal, photosessionsVertical } from "../data/data";
 import { useTranslation } from "react-i18next";
-import { Element } from "react-scroll";
 
 const Photosessions = () => {
   const { t } = useTranslation("Photosessions");
@@ -180,6 +179,15 @@ const Photosessions = () => {
     }
   }, []);
 
+  const PhotosessionsTitle = (
+    <h3 className="flex justify-center mb-1 uppercase">
+      <span className="w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[12px] md:rounded-[15px]">
+        <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4">
+          {t("photosessions_title")}
+        </span>
+      </span>
+    </h3>
+  );
 
   const HorizontalThumbnailCarousel = (
     <section id="horizontal_thumbnail_carousel" ref={splideRefHorizontal} className="splide pb-2 pt-0.5" data-testId="horizontal-carousel">
@@ -201,7 +209,7 @@ const Photosessions = () => {
         <ul className="splide__list">
           {verticalSliders.map((sliderItem: string | undefined, slideIndex: number) => (
             <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()} data-testId={`vertical-carousel-item-${slideIndex}`}>
-              <img className="ssm:h-[430px]  sm:h-[380px]  md:h-[385px] lg:h-[500px] xl:h-[600px] w-full object-cover duration-300 ease-out" src={sliderItem} alt={`Slide ${slideIndex}`} />
+              <img className="ssm:h-full  sm:h-[380px]  md:h-[385px] lg:h-[500px] xl:h-[600px] w-full object-cover duration-300 ease-out" src={sliderItem} alt={`Slide ${slideIndex}`} />
             </li>
           ))}
         </ul>
@@ -229,7 +237,7 @@ const Photosessions = () => {
         <ul className="splide__list">
           {verticalSliders.map((previewItem: string | undefined, previewIndex: number) => (
             <li key={previewIndex} className={`splide__slide`} data-category-index={previewIndex} onClick={() => handleVerticalPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()} data-testId={`vertical-carousel-preview-item-${previewIndex}`}>
-              <img className="ssm:h-[150px] sm:h-[160px] md:h-[155px] lg:h-[200px] w-full object-cover rounded-2xl" src={previewItem} alt={`Preview ${previewIndex}`} />
+              <img className="ssm:h-[200px] sm:h-[160px] md:h-[155px] lg:h-[200px] w-full object-cover rounded-2xl" src={previewItem} alt={`Preview ${previewIndex}`} />
             </li>
           ))}
         </ul>
@@ -237,15 +245,6 @@ const Photosessions = () => {
     </section>
   );
 
-  const PhotosessionsTitle = (
-    <h3 className="flex justify-center mb-1 uppercase">
-      <span className="w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[12px] md:rounded-[15px]">
-        <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4">
-          {t("photosessions_title")}
-        </span>
-      </span>
-    </h3>
-  );
   const CarouselBackgroundStyle =
     "px-2 py-2 mx-2 my-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
   return (

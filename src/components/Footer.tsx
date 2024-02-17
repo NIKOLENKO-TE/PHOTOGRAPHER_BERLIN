@@ -53,45 +53,52 @@ const Footer = () => {
       </div>
     </div>
   );
+  const social_icons = (
+    <div className="flex justify-between md:w-[100%] my-1">
+      <a
+        href="https://www.facebook.com/nikolenkote"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaFacebookSquare size={35} className="cursor-pointer" />
+      </a>
+      <a
+        href="https://www.instagram.com/nikolenkote/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaInstagramSquare size={35} className="cursor-pointer" />
+      </a>
+      <FaTwitterSquare size={35} className="cursor-pointer" />
+      <a
+        href="https://github.com/NIKOLENKO-TE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaGithubSquare size={35} className="cursor-pointer" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/nikolenkote/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaLinkedin size={35} className="cursor-pointer" />
+      </a>
+    </div>
+  );
+  const follow_my_social_text = (
+    <p id="social_media_text">{t("follow_my_social")}</p>
+  );
+  const social_media_label = <h1 className="shadow-lg px-5 pb-1 inline-block text-2xl bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-2xl flex-nowrap mb-2">
+    {t("social_media")}
+  </h1>;
   const socialMediaContainer = (
     <div className="w-full mt-2 sm:w-[52%] md:w-[60%] lg:w-[40%]">
       <div className="text-white bg-white bg-opacity-30 backdrop-blur-[10px] h-[150px] px-4 py-2 rounded-xl mx-2 flex flex-col justify-center items-center">
-        <div className="px-4 text-center justify-center place-content-stretch gap-2 p-2">
-          <h1 className="shadow-lg px-5 pb-1 inline-block text-2xl bg-gradient-to-l from-cyan-500 to-blue-500 border border-purple-200 hover:bg-purple-600 rounded-2xl flex-nowrap mb-2">
-            {t("social_media")}
-          </h1>
-          <p id="social_media_text">{t("follow_my_social")}</p>
-          <div className="flex justify-between md:w-[100%] my-1">
-            <a
-              href="https://www.facebook.com/nikolenkote"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookSquare size={35} className="cursor-pointer" />
-            </a>
-            <a
-              href="https://www.instagram.com/nikolenkote/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagramSquare size={35} className="cursor-pointer" />
-            </a>
-            <FaTwitterSquare size={35} className="cursor-pointer" />
-            <a
-              href="https://github.com/NIKOLENKO-TE"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithubSquare size={35} className="cursor-pointer" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/nikolenkote/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin size={35} className="cursor-pointer" />
-            </a>
-          </div>
+        <div className=" text-center justify-center place-content-stretch">
+          {social_media_label}
+          {follow_my_social_text}
+          {social_icons}
         </div>
       </div>
     </div>

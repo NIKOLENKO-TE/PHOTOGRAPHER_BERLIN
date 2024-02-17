@@ -1,29 +1,50 @@
+//Weddings.tsx
 import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
-import { weddingPhotos } from "../data/data";
+import { weddingPhotosVertical, weddingHorizontal } from "../data/data";
 import { useTranslation } from "react-i18next";
 
 const Weddings = () => {
   const { t } = useTranslation("Weddings");
-  const sliders = weddingPhotos.map(
+  const slidersHorizontal = weddingHorizontal.map(
     (photo: { id: number; title: string; img: string } | undefined) =>
       photo?.img
   );
-  const splideRef = useRef<HTMLDivElement | null>(null);
-  const previewSplideRef = useRef<HTMLDivElement | null>(null);
-  const [selectedSlide] = useState(0);
+  const slidersVertical = weddingPhotosVertical.map(
+    (photo: { id: number; title: string; img: string } | undefined) =>
+      photo?.img
+  );
+  const splideRefHorizontal = useRef<HTMLDivElement | null>(null);
+  const splideRefVertical = useRef<HTMLDivElement | null>(null);
+  const previewSplideRefHorizontal = useRef<HTMLDivElement | null>(null);
+  const previewSplideRefVertical = useRef<HTMLDivElement | null>(null);
+  const [selectedHorizontalSlide, setSelectedHorizontalSlide] = useState(0);
+  const [selectedVerticalSlide, setSelectedVerticalSlide] = useState(0);
   const splideInstanceRef = useRef<Splide | null>(null);
-  const getPerPageValue = () => {
+  const getPerVerticalPageValue = () => {
     if (window.innerWidth < 640) {
       return 3;
     } else if (window.innerWidth < 768) {
-      return 4;
+      return 2;
     } else if (window.innerWidth < 1024) {
-      return 5;
+      return 2;
     } else if (window.innerWidth < 1280) {
-      return 6;
+      return 2;
     } else {
-      return 8;
+      return 3;
+    }
+  };
+  const getPerHorizontalPageValue = () => {
+    if (window.innerWidth < 640) {
+      return 2;
+    } else if (window.innerWidth < 768) {
+      return 3;
+    } else if (window.innerWidth < 1024) {
+      return 4;
+    } else if (window.innerWidth < 1280) {
+      return 5;
+    } else {
+      return 6;
     }
   };
   const CarouselBackgroundStyle =
@@ -32,11 +53,16 @@ const Weddings = () => {
     "w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[12px] md:rounded-[15px]";
   const weddingText =
     "text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4";
-  const imageSlideStyle =
-    "ssm:h-[440px] xl:h-[700px] w-full object-cover duration-300 ease-out";
+   const handleHorizontalPreviewClick = (index: number) => {
+    setSelectedHorizontalSlide(index);
+  };
+
+  const handleVerticalPreviewClick = (index: number) => {
+    setSelectedVerticalSlide(index);
+  };
   useEffect(() => {
-    if (splideRef.current) {
-      const splideInstance = new Splide(splideRef.current, {
+    if (splideRefHorizontal.current) {
+      const splideInstance = new Splide(splideRefHorizontal.current, {
         type: "slide",
         perPage: 1,
         perMove: 1,
@@ -50,7 +76,7 @@ const Weddings = () => {
 
       splideInstance.on("mounted", () => {
         splideInstanceRef.current = splideInstance;
-        splideInstance.go(selectedSlide);
+        splideInstance.go(selectedHorizontalSlide);
       });
 
       splideInstance.mount();
@@ -59,12 +85,40 @@ const Weddings = () => {
         splideInstance.destroy();
       };
     }
-  }, [selectedSlide]);
+  }, [selectedHorizontalSlide]);
+
   useEffect(() => {
-    if (previewSplideRef.current) {
-      const previewSplide = new Splide(previewSplideRef.current, {
+    if (splideRefVertical.current) {
+      const splideInstance = new Splide(splideRefVertical.current, {
         type: "slide",
-        perPage: getPerPageValue(),
+        perPage: 1,
+        perMove: 1,
+        gap: 10,
+        rewind: true,
+        arrows: true,
+        focus: "center",
+        //autoplay: true, 
+        //interval: 3000,
+      });
+
+      splideInstance.on("mounted", () => {
+        splideInstanceRef.current = splideInstance;
+        splideInstance.go(selectedVerticalSlide);
+      });
+
+      splideInstance.mount();
+
+      return () => {
+        splideInstance.destroy();
+      };
+    }
+  }, [selectedVerticalSlide]);
+
+  useEffect(() => {
+    if (previewSplideRefHorizontal.current) {
+      const previewSplide = new Splide(previewSplideRefHorizontal.current, {
+        type: "slide",
+        perPage: getPerHorizontalPageValue(),
         gap: 5,
         rewind: true,
         pagination: false,
@@ -72,44 +126,68 @@ const Weddings = () => {
       });
 
       previewSplide.on("mounted", () => {
-        const slides =
-          previewSplideRef.current!.querySelectorAll(".splide__slide");
-        slides.forEach(
-          (
-            slide: {
-              addEventListener: (arg0: string, arg1: () => void) => void;
-            },
-            index: number
-          ) => {
-            slide.addEventListener("click", () => {
-              handlePreviewClick(index);
-            });
-          }
-        );
+        const slides = previewSplideRefHorizontal.current!.querySelectorAll(".splide__slide");
+        slides.forEach((slide, index) => {
+          slide.addEventListener("click", () => {
+            handleHorizontalPreviewClick(index);
+          });
+        });
       });
 
       previewSplide.mount();
 
-      const handleResize = () => {
-        const newPerPage = getPerPageValue();
-        previewSplide.go(selectedSlide);
+      const handleResizeHorizontal = () => {
+        const newPerPage = getPerHorizontalPageValue();
         previewSplide.options.perPage = newPerPage;
         previewSplide.refresh();
       };
 
-      window.addEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResizeHorizontal);
 
       return () => {
-        window.removeEventListener("resize", handleResize);
+        window.removeEventListener("resize", handleResizeHorizontal);
         previewSplide.destroy();
       };
     }
-  }, [selectedSlide]);
-  const handlePreviewClick = (index: number) => {
-    if (splideInstanceRef.current) {
-      splideInstanceRef.current.go(index);
+  }, []);
+
+
+  useEffect(() => {
+    if (previewSplideRefVertical.current) {
+      const previewSplide = new Splide(previewSplideRefVertical.current, {
+        type: "slide",
+        perPage: getPerVerticalPageValue(),
+        gap: 5,
+        rewind: true,
+        pagination: false,
+        focus: "center",
+      });
+
+      previewSplide.on("mounted", () => {
+        const slides = previewSplideRefVertical.current!.querySelectorAll(".splide__slide");
+        slides.forEach((slide, index) => {
+          slide.addEventListener("click", () => {
+            handleVerticalPreviewClick(index);
+          });
+        });
+      });
+
+      previewSplide.mount();
+
+      const handleResizeVertical = () => {
+        const newPerPage = getPerVerticalPageValue();
+        previewSplide.options.perPage = newPerPage;
+        previewSplide.refresh();
+      };
+
+      window.addEventListener("resize", handleResizeVertical);
+
+      return () => {
+        window.removeEventListener("resize", handleResizeVertical);
+        previewSplide.destroy();
+      };
     }
-  };
+  }, []);
 
   const WeddingsTitle = (
     <h3 className="flex justify-center mb-1" data-testId="weddings-title">
@@ -118,59 +196,58 @@ const Weddings = () => {
       </span>
     </h3>
   );
-  const ThumbnailCarousel = (
-    <section
-      id="thumbnail_carousel"
-      ref={splideRef}
-      className="splide pb-2 mt-1.5"
-      data-testId="thumbnail-carousel"
-    >
+
+  const HorizontalThumbnailCarousel = (
+    <section id="horizontal_thumbnail_carousel" ref={splideRefHorizontal} className="splide pb-2 pt-0.5" data-testId="horizontal-carousel">
       <div className="splide__track rounded-2xl">
         <ul className="splide__list">
-          {sliders.map((sliderItem: string | undefined, slideIndex: number) => (
-            <li
-              key={slideIndex}
-              className={`splide__slide`}
-              onContextMenu={(e) => e.preventDefault()}
-              data-testId={`thumbnail-carousel-item-${slideIndex}`}
-            >
-              <img
-                className={imageSlideStyle}
-                src={sliderItem}
-                alt={`Slide ${slideIndex}`}
-              />
+          {slidersHorizontal.map((sliderItem: string | undefined, slideIndex: number) => (
+            <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()} data-testId={`horizontal-carousel-item-${slideIndex}`}>
+              <img className="ssm:h-[440px] lg:h-[600px] xl:h-[700px] w-full object-cover duration-300 ease-out" src={sliderItem} alt={`Slide ${slideIndex}`} />
             </li>
           ))}
         </ul>
       </div>
     </section>
   );
-  const ThumbnailCarouselPreview = (
-    <section
-      id="thumbnail_carousel_preview"
-      ref={previewSplideRef}
-      className="splide"
-      data-testId="thumbnail-carousel-preview"
-    >
+
+  const VerticalThumbnailCarousel = (
+    <section id="vertical_thumbnail_carousel" ref={splideRefVertical} className="splide pb-2 pt-0.5" data-testId="vertical-carousel">
+      <div className="splide__track rounded-2xl">
+        <ul className="splide__list">
+          {slidersVertical.map((sliderItem: string | undefined, slideIndex: number) => (
+            <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()} data-testId={`vertical-carousel-item-${slideIndex}`}>
+              <img className="ssm:h-full  sm:h-[380px]  md:h-[385px] lg:h-[500px] xl:h-[600px] w-full object-cover duration-300 ease-out" src={sliderItem} alt={`Slide ${slideIndex}`} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+
+  const HorizontalThumbnailCarouselPreview = (
+    <section id="horizontal_thumbnail_carousel_preview" ref={previewSplideRefHorizontal} className="splide" data-testId="horizontal-carousel-preview">
       <div className="splide__track">
         <ul className="splide__list">
-          {sliders.map(
-            (previewItem: string | undefined, previewIndex: number) => (
-              <li
-                key={previewIndex}
-                className={`splide__slide`}
-                onClick={() => handlePreviewClick(previewIndex)}
-                onContextMenu={(e) => e.preventDefault()}
-                data-testId={`thumbnail-carousel-preview-item-${previewIndex}`}
-              >
-                <img
-                  className="h-[100px] w-full object-cover rounded-2xl"
-                  src={previewItem}
-                  alt={`Preview ${previewIndex}`}
-                />
-              </li>
-            )
-          )}
+          {slidersHorizontal.map((previewItem: string | undefined, previewIndex: number) => (
+            <li key={previewIndex} className={`splide__slide`} data-category-index={previewIndex} onClick={() => handleHorizontalPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()} data-testId={`horizontal-carousel-preview-item-${previewIndex}`}>
+              <img className="h-[100px] w-full object-cover rounded-2xl" src={previewItem} alt={`Preview ${previewIndex}`} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+
+  const VerticalThumbnailCarouselPreview = (
+    <section id="vertical_thumbnail_carousel_preview" ref={previewSplideRefVertical} className="splide" data-testId="vertical-carousel-preview">
+      <div className="splide__track">
+        <ul className="splide__list">
+          {slidersVertical.map((previewItem: string | undefined, previewIndex: number) => (
+            <li key={previewIndex} className={`splide__slide`} data-category-index={previewIndex} onClick={() => handleVerticalPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()} data-testId={`vertical-carousel-preview-item-${previewIndex}`}>
+              <img className="ssm:h-[200px] sm:h-[160px] md:h-[155px] lg:h-[200px] w-full object-cover rounded-2xl" src={previewItem} alt={`Preview ${previewIndex}`} />
+            </li>
+          ))}
         </ul>
       </div>
     </section>
@@ -179,8 +256,18 @@ const Weddings = () => {
   return (
     <div className={CarouselBackgroundStyle} id={`category${0}`} data-testId="weddings-wrapper">
       {WeddingsTitle}
-      {ThumbnailCarousel}
-      {ThumbnailCarouselPreview}
+      <div className="flex ssm:flex-wrap md:flex-nowrap ">
+        <div id="Vertical" className="ssm:basis-1/1 sm:basis-1/3 md:basis-1/4 pr-2 ssm:pb-2 sm:pb-0 md:pb-0">
+          {VerticalThumbnailCarousel}
+          {VerticalThumbnailCarouselPreview}
+        </div>
+        <div id="Horizontal" className="ssm:basis-1/1 sm:basis-2/3 md:basis-3/4 lg:pt-0">
+          <div>
+            {HorizontalThumbnailCarousel}
+            {HorizontalThumbnailCarouselPreview}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

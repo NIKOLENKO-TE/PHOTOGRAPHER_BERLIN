@@ -6,9 +6,11 @@ function importAll(r: any) {
   });
   return images;
 }
-
-const weddingImages = importAll(
-  require.context("../components/img/Wedding", false, /\.(png|jpe?g|svg)$/)
+const weddingVerticalImages = importAll(
+  require.context("../components/img/Wedding/verticalWeddings", false, /\.(png|jpe?g|svg)$/)
+);
+const weddingHorizontalImages = importAll(
+  require.context("../components/img/Wedding/horizontalWeddings", false, /\.(png|jpe?g|svg)$/)
 );
 const flowersImages = importAll(
   require.context("../components/img/Flowers", false, /\.(png|jpe?g|svg)$/)
@@ -58,12 +60,6 @@ export const categoryPhotos = categoriesData.map((category) => ({
   img: categoriesImages[category.imgFile],
 }));
 
-export const weddingPhotos = Object.keys(weddingImages).map((key, index) => ({
-  id: index,
-  title: `weddingPhoto${index}`,
-  img: weddingImages[key],
-}));
-
 export const hospitalPhotos = Object.keys(hospitalImages).map((key, index) => ({
   id: index,
   title: `hospitalPhoto${index}`,
@@ -97,6 +93,19 @@ export const restoredPhotos = Object.keys(restorationImages).map(
     img: restorationImages[key],
   })
 );
+
+export const weddingPhotosVertical = Object.keys(weddingVerticalImages).map((key, index) => ({
+  id: index,
+  title: `weddingPhoto${index}`,
+  img: weddingVerticalImages[key],
+}));
+
+export const weddingHorizontal = Object.keys(weddingHorizontalImages).map((key, index) => ({
+  id: index,
+  title: `weddingPhoto${index}`,
+  img: weddingHorizontalImages[key],
+}));
+
 export const photosessionsHorizontal = Object.keys(photosessionsHorizontalImages).map(
   (key, index) => ({
     id: index,
@@ -104,6 +113,7 @@ export const photosessionsHorizontal = Object.keys(photosessionsHorizontalImages
     img: photosessionsHorizontalImages[key],
   })
 );
+
 export const photosessionsVertical = Object.keys(photosessionsVerticalImages).map(
   (key, index) => ({
     id: index,

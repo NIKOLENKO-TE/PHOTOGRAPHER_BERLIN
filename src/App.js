@@ -16,6 +16,7 @@ import bg_image from "./components/img/1.jpg";
 
 function App() {
   const weddingRef = useRef(null);
+  const wedding2Ref = useRef(null);
   const flowersRef = useRef(null);
   const childrensRef = useRef(null);
   const restorationRef = useRef(null);
