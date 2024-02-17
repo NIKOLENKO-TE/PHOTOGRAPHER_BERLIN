@@ -1,274 +1,59 @@
-//Weddings.tsx
-import { useEffect, useRef, useState } from "react";
+// Weddings.tsx
+import { useRef, useState, useMemo, useCallback } from "react";
 import { Splide } from "@splidejs/splide";
-import { weddingPhotosVertical, weddingHorizontal } from "../data/data";
 import { useTranslation } from "react-i18next";
+import { weddingPhotosVertical, weddingHorizontal } from "../data/data";
+import HorizontalSlider, { getPerHorizontalPageValue } from './sliders/HorizontalSlider';
+import VerticalSlider, { getPerVerticalPageValue } from './sliders/VerticalSlider';
+import Title from './sliders/Title';
+import CarouselBackground from './sliders/CarouselBackground';
+import HorizontalSliderPreview from './sliders/HorizontalSliderPreview';
+import VerticalSliderPreview from './sliders/VerticalSliderPreview';
+
 
 const Weddings = () => {
   const { t } = useTranslation("Weddings");
-  const slidersHorizontal = weddingHorizontal.map(
-    (photo: { id: number; title: string; img: string } | undefined) =>
-      photo?.img
-  );
-  const slidersVertical = weddingPhotosVertical.map(
-    (photo: { id: number; title: string; img: string } | undefined) =>
-      photo?.img
-  );
-  const splideRefHorizontal = useRef<HTMLDivElement | null>(null);
-  const splideRefVertical = useRef<HTMLDivElement | null>(null);
-  const previewSplideRefHorizontal = useRef<HTMLDivElement | null>(null);
-  const previewSplideRefVertical = useRef<HTMLDivElement | null>(null);
-  const [selectedHorizontalSlide, setSelectedHorizontalSlide] = useState(0);
-  const [selectedVerticalSlide, setSelectedVerticalSlide] = useState(0);
-  const splideInstanceRef = useRef<Splide | null>(null);
-  const getPerVerticalPageValue = () => {
-    if (window.innerWidth < 640) {
-      return 3;
-    } else if (window.innerWidth < 768) {
-      return 2;
-    } else if (window.innerWidth < 1024) {
-      return 2;
-    } else if (window.innerWidth < 1280) {
-      return 2;
-    } else {
-      return 3;
-    }
-  };
-  const getPerHorizontalPageValue = () => {
-    if (window.innerWidth < 640) {
-      return 2;
-    } else if (window.innerWidth < 768) {
-      return 3;
-    } else if (window.innerWidth < 1024) {
-      return 4;
-    } else if (window.innerWidth < 1280) {
-      return 5;
-    } else {
-      return 6;
-    }
-  };
-  const CarouselBackgroundStyle =
-    "px-2 py-2 mx-2 my-2 bg-white rounded-2xl shadow-lg bg-opacity-30 backdrop-blur-sm";
-  const weddingBackgroundStyle =
-    "w-full justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[12px] md:rounded-[15px]";
-  const weddingText =
-    "text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4";
-   const handleHorizontalPreviewClick = (index: number) => {
-    setSelectedHorizontalSlide(index);
-  };
+  const [selectedHorizontalSlide] = useState(0);
+  const [selectedVerticalSlide] = useState(0);
+  const splideInstanceRefHorizontal = useRef<Splide | null>(null);
+  const splideInstanceRefVertical = useRef<Splide | null>(null);
+  const slidersHorizontal = useMemo(() => (
+    weddingHorizontal
+      .map((photo) => photo?.img)
+      .filter((img): img is string => img !== undefined)
+  ), []);
+  const slidersVertical = useMemo(() => (
+    weddingPhotosVertical
+      .map((photo) => photo?.img)
+      .filter((img): img is string => img !== undefined)
+  ), []);
 
-  const handleVerticalPreviewClick = (index: number) => {
-    setSelectedVerticalSlide(index);
-  };
-  useEffect(() => {
-    if (splideRefHorizontal.current) {
-      const splideInstance = new Splide(splideRefHorizontal.current, {
-        type: "slide",
-        perPage: 1,
-        perMove: 1,
-        gap: 10,
-        rewind: true,
-        arrows: true,
-        focus: "center",
-        //autoplay: true, 
-        //interval: 3000,
-      });
-
-      splideInstance.on("mounted", () => {
-        splideInstanceRef.current = splideInstance;
-        splideInstance.go(selectedHorizontalSlide);
-      });
-
-      splideInstance.mount();
-
-      return () => {
-        splideInstance.destroy();
-      };
-    }
-  }, [selectedHorizontalSlide]);
-
-  useEffect(() => {
-    if (splideRefVertical.current) {
-      const splideInstance = new Splide(splideRefVertical.current, {
-        type: "slide",
-        perPage: 1,
-        perMove: 1,
-        gap: 10,
-        rewind: true,
-        arrows: true,
-        focus: "center",
-        //autoplay: true, 
-        //interval: 3000,
-      });
-
-      splideInstance.on("mounted", () => {
-        splideInstanceRef.current = splideInstance;
-        splideInstance.go(selectedVerticalSlide);
-      });
-
-      splideInstance.mount();
-
-      return () => {
-        splideInstance.destroy();
-      };
-    }
-  }, [selectedVerticalSlide]);
-
-  useEffect(() => {
-    if (previewSplideRefHorizontal.current) {
-      const previewSplide = new Splide(previewSplideRefHorizontal.current, {
-        type: "slide",
-        perPage: getPerHorizontalPageValue(),
-        gap: 5,
-        rewind: true,
-        pagination: false,
-        focus: "center",
-      });
-
-      previewSplide.on("mounted", () => {
-        const slides = previewSplideRefHorizontal.current!.querySelectorAll(".splide__slide");
-        slides.forEach((slide, index) => {
-          slide.addEventListener("click", () => {
-            handleHorizontalPreviewClick(index);
-          });
-        });
-      });
-
-      previewSplide.mount();
-
-      const handleResizeHorizontal = () => {
-        const newPerPage = getPerHorizontalPageValue();
-        previewSplide.options.perPage = newPerPage;
-        previewSplide.refresh();
-      };
-
-      window.addEventListener("resize", handleResizeHorizontal);
-
-      return () => {
-        window.removeEventListener("resize", handleResizeHorizontal);
-        previewSplide.destroy();
-      };
+  const handleHorizontalPreviewClick = useCallback((index: number) => {
+    if (splideInstanceRefHorizontal.current) {
+      splideInstanceRefHorizontal.current.go(index);
     }
   }, []);
 
-
-  useEffect(() => {
-    if (previewSplideRefVertical.current) {
-      const previewSplide = new Splide(previewSplideRefVertical.current, {
-        type: "slide",
-        perPage: getPerVerticalPageValue(),
-        gap: 5,
-        rewind: true,
-        pagination: false,
-        focus: "center",
-      });
-
-      previewSplide.on("mounted", () => {
-        const slides = previewSplideRefVertical.current!.querySelectorAll(".splide__slide");
-        slides.forEach((slide, index) => {
-          slide.addEventListener("click", () => {
-            handleVerticalPreviewClick(index);
-          });
-        });
-      });
-
-      previewSplide.mount();
-
-      const handleResizeVertical = () => {
-        const newPerPage = getPerVerticalPageValue();
-        previewSplide.options.perPage = newPerPage;
-        previewSplide.refresh();
-      };
-
-      window.addEventListener("resize", handleResizeVertical);
-
-      return () => {
-        window.removeEventListener("resize", handleResizeVertical);
-        previewSplide.destroy();
-      };
+  const handleVerticalPreviewClick = useCallback((index: number) => {
+    if (splideInstanceRefVertical.current) {
+      splideInstanceRefVertical.current.go(index);
     }
   }, []);
-
-  const WeddingsTitle = (
-    <h3 className="flex justify-center mb-1" data-testId="weddings-title">
-      <span className={weddingBackgroundStyle}>
-        <span className={weddingText}>{t("weddings")}</span>
-      </span>
-    </h3>
-  );
-
-  const HorizontalThumbnailCarousel = (
-    <section id="horizontal_thumbnail_carousel" ref={splideRefHorizontal} className="splide pb-2 pt-0.5" data-testId="horizontal-carousel">
-      <div className="splide__track rounded-2xl">
-        <ul className="splide__list">
-          {slidersHorizontal.map((sliderItem: string | undefined, slideIndex: number) => (
-            <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()} data-testId={`horizontal-carousel-item-${slideIndex}`}>
-              <img className="ssm:h-[440px] lg:h-[600px] xl:h-[700px] w-full object-cover duration-300 ease-out" src={sliderItem} alt={`Slide ${slideIndex}`} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-
-  const VerticalThumbnailCarousel = (
-    <section id="vertical_thumbnail_carousel" ref={splideRefVertical} className="splide pb-2 pt-0.5" data-testId="vertical-carousel">
-      <div className="splide__track rounded-2xl">
-        <ul className="splide__list">
-          {slidersVertical.map((sliderItem: string | undefined, slideIndex: number) => (
-            <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()} data-testId={`vertical-carousel-item-${slideIndex}`}>
-              <img className="ssm:h-full  sm:h-[380px]  md:h-[385px] lg:h-[500px] xl:h-[600px] w-full object-cover duration-300 ease-out" src={sliderItem} alt={`Slide ${slideIndex}`} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-
-  const HorizontalThumbnailCarouselPreview = (
-    <section id="horizontal_thumbnail_carousel_preview" ref={previewSplideRefHorizontal} className="splide" data-testId="horizontal-carousel-preview">
-      <div className="splide__track">
-        <ul className="splide__list">
-          {slidersHorizontal.map((previewItem: string | undefined, previewIndex: number) => (
-            <li key={previewIndex} className={`splide__slide`} data-category-index={previewIndex} onClick={() => handleHorizontalPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()} data-testId={`horizontal-carousel-preview-item-${previewIndex}`}>
-              <img className="h-[100px] w-full object-cover rounded-2xl" src={previewItem} alt={`Preview ${previewIndex}`} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-
-  const VerticalThumbnailCarouselPreview = (
-    <section id="vertical_thumbnail_carousel_preview" ref={previewSplideRefVertical} className="splide" data-testId="vertical-carousel-preview">
-      <div className="splide__track">
-        <ul className="splide__list">
-          {slidersVertical.map((previewItem: string | undefined, previewIndex: number) => (
-            <li key={previewIndex} className={`splide__slide`} data-category-index={previewIndex} onClick={() => handleVerticalPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()} data-testId={`vertical-carousel-preview-item-${previewIndex}`}>
-              <img className="ssm:h-[200px] sm:h-[160px] md:h-[155px] lg:h-[200px] w-full object-cover rounded-2xl" src={previewItem} alt={`Preview ${previewIndex}`} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
 
   return (
-    <div className={CarouselBackgroundStyle} id={`category${0}`} data-testId="weddings-wrapper">
-      {WeddingsTitle}
+    <CarouselBackground id={`category${0}`} data-testId="weddings-wrapper">
+      <Title text={t("weddings")} data-testId="weddings_title"/>
       <div className="flex ssm:flex-wrap md:flex-nowrap ">
         <div id="Vertical" className="ssm:basis-1/1 sm:basis-1/3 md:basis-1/4 pr-2 ssm:pb-2 sm:pb-0 md:pb-0">
-          {VerticalThumbnailCarousel}
-          {VerticalThumbnailCarouselPreview}
+          <VerticalSlider photos={slidersVertical} selectedSlide={selectedVerticalSlide} setSplideInstance={splide => splideInstanceRefVertical.current = splide} autoplay={false} />
+          <VerticalSliderPreview photos={slidersVertical} selectedSlide={selectedVerticalSlide} onPreviewClick={handleVerticalPreviewClick} getPerPageValue={getPerVerticalPageValue} />
         </div>
         <div id="Horizontal" className="ssm:basis-1/1 sm:basis-2/3 md:basis-3/4 lg:pt-0">
-          <div>
-            {HorizontalThumbnailCarousel}
-            {HorizontalThumbnailCarouselPreview}
-          </div>
+          <HorizontalSlider photos={slidersHorizontal} selectedSlide={selectedHorizontalSlide} setSplideInstance={splide => splideInstanceRefHorizontal.current = splide} autoplay={false} />
+          <HorizontalSliderPreview photos={slidersHorizontal} selectedSlide={selectedHorizontalSlide} onPreviewClick={handleHorizontalPreviewClick} getPerPageValue={getPerHorizontalPageValue} />
         </div>
       </div>
-    </div>
+    </CarouselBackground>
   );
 };
 

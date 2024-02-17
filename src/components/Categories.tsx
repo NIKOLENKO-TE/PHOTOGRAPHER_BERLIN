@@ -40,14 +40,14 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
   `;
 
   const categoriesTitle = (
-    <h3 className="flex justify-center ssm:px-1.5 ssm:pt-1.5">
-      <span className="justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] flex text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 border-blue-600 shadow-lg shadow-blue-500/50 ssm:rounded-[12px] md:rounded-[15px]" data-testId="categories-title">
-        <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-1.5 mx-4">
+    <h3 className="flex justify-center ssm:px-1.5 ssm:pt-1.5 ">
+      <span className="w-3/4 flex justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] bg-purple-500/30 shadow-lg  ssm:rounded-[12px] md:rounded-[15px]  " data-testId="categories-title">
+        <span className="text-white ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-[5px] uppercase">
           {t("select_category_text")}
         </span>
       </span>
     </h3>
-  );
+);
 
   const categoriesPreview = (
     <div className="flex w-full ssm:p-1.5 md:p-2" data-testId="categories-preview">
