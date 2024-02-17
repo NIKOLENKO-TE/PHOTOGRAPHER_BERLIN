@@ -41,8 +41,8 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
 
   const categoriesTitle = (
     <h3 className="flex justify-center ssm:px-1.5 ssm:pt-1.5 ">
-      <span className="flex w-5/6 justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] bg-purple-500/30 shadow-lg  ssm:rounded-[12px] md:rounded-[15px]  " data-testid="categories-title">
-        <span className="text-white flex  ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-[5px] uppercase whitespace-nowrap">
+      <span className="flex w-5/6 justify-center ssm:py-2 sm:py-[0px] ssm:h-[29px] sm:h-[31px] md:h-[38px] bg-purple-500/30 shadow-lg ssm:rounded-[12px] md:rounded-[15px]" data-testid="categories-title">
+        <span className="text-white flex ssm:text-[22px] md:text-[26px] xl:text-[30px] ssm:-mt-[10px] sm:-mt-0.5 md:-mt-0.5 lg:-mt-0.5 xl:-mt-[5px] uppercase whitespace-nowrap">
           {t("select_category_text")}
         </span>
       </span>

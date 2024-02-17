@@ -69,7 +69,8 @@
     "text.modal.attach.photo":"Attach your photos",
     "text.modal.click.upload.1":"Click to upload ",
     "text.modal.click.upload.2":"or  drag and drop",
-    "text.modal.click.upload.3":"Acceptable file formats are SVG, PNG, JPG, BMP or GIF"
+    "text.modal.click.upload.3":"Acceptable file formats are SVG, PNG, JPG, BMP or GIF",
+    "attached_files": "Attached files"
    },
    "Footer": {
     "nikolenko_te": "NIKOLENKO Tymofii",

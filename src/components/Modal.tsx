@@ -320,7 +320,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
 
   const ModalContainerRight = (
     <div id="modal_container_right">
-      <div className="flex flex-col justify-between h-full ">
+      <div className="flex flex-col justify-between h-full">
         <button
           id="button_close"
           type="submit"
@@ -341,7 +341,6 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
             <path d="M5 15L15 5M5 5l10 10" className="cross-style " />
           </svg>
         </button>
-
         <div id="modal_container_right_file_title" className="">
           <h3 id="message_file_input" className={modal_label_style}>
             {t("text.modal.attach.photo")}
@@ -353,8 +352,8 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
               id="dropzone-file-label"
               className={file_attach_background_style}
             >
-              <div className="h-auto md:h-[180px] flex flex-col items-center justify-center">
-                <div className="flex flex-col items-center justify-center">
+              <div className="h-full flex flex-col">
+                <div className="flex flex-col items-center justify-center p-2">
                   <svg
                     className="w-8 h-8 mb-1 text-gray-500 "
                     aria-hidden="true"
@@ -370,7 +369,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
                       d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                     />
                   </svg>
-                  <p className="mb-2 text-sm text-gray-500">
+                  <p className="mb-2 text-sm text-gray-500 ">
                     <span className="font-semibold">
                       {t("text.modal.click.upload.1")}
                     </span>
@@ -390,9 +389,9 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
               />
             </label>
           </div>
-          <div id="file_input_files_names" className="text-white">
+          <div id="file_input_files_names" className="text-white ">
             {fileNames.length > 0 && (
-              <p>Attached files: {fileNames.join(", ")}</p>
+              <p>{t("attached_files")}{fileNames.join(", ")}</p>
             )}
           </div>
           {formik.touched.files && formik.errors.files ? (
@@ -428,7 +427,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   const modal1plus1Style =
     "flex flex-col justify-center items-between ssm:grid ssm:grid-cols-1 ssm:gap-4 ssm:justify-self-center ssm:max grid pt-5 pb-10 grid-cols-1 sm:grid-cols-2 gap-4 justify-self-center max-h-screen overflow-y-auto overflow-x-auto";
   const modalContainerStyle =
-    "z-50 w-screen h-screen flex items-center justify-center shadow-2xl p-4 bg-white bg-opacity-10 backdrop-blur-[15px] fixed top-0 left-0 ";
+    "z-50 w-screen h-screen flex ssm:items-start md:items-center justify-center shadow-2xl p-4 bg-white bg-opacity-10 backdrop-blur-[15px] fixed top-0 left-0 ";
   return (
     showModal && (
       <div data-te-modal-init id="modal_shadow" role="dialog" aria-modal="true">
@@ -452,8 +451,3 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
 };
 
 export default NikolenkoTEBlockModal;
-
-//nikolenkote
-//nikolenkote@gmail.com
-//HHbdSCBqeT@7nhc
-//service_6hkyxdi

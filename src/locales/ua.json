@@ -79,7 +79,8 @@
     "text.modal.attach.photo": "Прикріпіть  фотографії",
     "text.modal.click.upload.1": "Натисніть, щоб завантажити ",
     "text.modal.click.upload.2": "або перетягніть і вiдпустіть",
-    "text.modal.click.upload.3": "Допустимі формати файлів: SVG, PNG, JPG, BMP або GIF"
+    "text.modal.click.upload.3": "Допустимі формати файлів: SVG, PNG, JPG, BMP або GIF",
+    "attached_files": "Доданi фото: "
   },
   "Footer": {
     "nikolenko_te": "НIКОЛЕНКО Тимофій",
