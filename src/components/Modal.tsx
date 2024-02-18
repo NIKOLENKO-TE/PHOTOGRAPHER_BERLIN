@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
+import { Toaster, toast } from 'react-hot-toast';
+import CarouselBackground from './sliders/CarouselBackground';
 import emailjs from "@emailjs/browser";
 import * as Yup from "yup";
 
@@ -17,6 +19,8 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   setShowModal,
   style = {},
 }) => {
+  const [fileNames, setFileNames] = useState<{ name: string; icon: string; color: string; }[]>([]);
+  const [submitCount, setSubmitCount] = useState(0);
   useEffect(() => {
     const body = document.body;
     const disableScroll = () => {
@@ -36,12 +40,26 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   }, [showModal]);
 
   const [_files, setFiles] = useState<File[]>([]);
-  const [fileNames, setFileNames] = useState<string[]>([]);
   const { t } = useTranslation("NikolenkoTEBlockModal");
-  const serviceID = "service_6hkyxdi";
-  const templateID = "template_tz9shde";
-  const publicKey = "LgZTgn-3uopBUrfpI";
+  const serviceID = "service_laehc3e";
+  const templateID = "template_qadu4k2";
+  const publicKey = "0up_r2n1CjMbq-05E";
   emailjs.init(publicKey);
+  const handleRemoveFile = (event: React.MouseEvent, index: number) => {
+    event.preventDefault();
+    setFiles(_files => {
+      const newFiles = _files.filter((_, fileIndex) => fileIndex !== index);
+      formik.setFieldValue("files", newFiles);
+      formik.validateField('files');
+      return newFiles;
+    });
+    setFileNames(fileNames => fileNames.filter((_, fileNameIndex) => fileNameIndex !== index));
+    if (Array.isArray(formik.errors.files)) {
+      const newErrors = [...formik.errors.files];
+      newErrors.splice(index, 1);
+      formik.setErrors({ ...formik.errors, files: newErrors });
+    }
+  };
 
   const validationSchema = Yup.object({
     name: Yup.string().required(t("validation.modal.name.required")),
@@ -168,55 +186,84 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
       message: "",
       files: [],
     },
+    validateOnChange: false,
     validationSchema,
     onSubmit: async (values) => {
-      if (!formik.isValid) {
-        return;
-      }
+      setSubmitCount(submitCount + 1);
 
-      const uploadedImageLinks = await Promise.all(
-        _files.map(async (file) => {
-          const formData = new FormData();
-          formData.append("key", "9eea17ff2ebe097f4e4ada123b28e05d");
-          formData.append("image", file);
+      const uploadPromises = _files.map((file) => {
+        const formData = new FormData();
+        formData.append("key", "9eea17ff2ebe097f4e4ada123b28e05d");
+        formData.append("image", file);
 
-          try {
-            const response = await fetch("https://api.imgbb.com/1/upload", {
-              method: "POST",
-              body: formData,
-            });
-            const data = await response.json();
-            return data.data.url;
-          } catch (error) {
+        const uploadPromise = fetch("https://api.imgbb.com/1/upload", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => data.data.url)
+          .catch((error) => {
             console.error("Error uploading image:", error);
             return null;
-          }
-        })
-      );
+          });
 
-      const messageWithImages = `${values.message}\n\nAttached Images:\n${uploadedImageLinks.join(
-        "\n"
-      )}`;
+        toast.promise(uploadPromise, {
+          loading: 'Uploading image...',
+          success: 'Image uploaded',
+          error: 'Error while uploading image',
+        });
+
+        return uploadPromise;
+      });
+
+      const uploadedImageLinks = await Promise.all(uploadPromises);
+
+      const imagesHtml = uploadedImageLinks
+        .map((link) => `<img src="${link}" width="350">`)
+        .join(" ");
 
       const templateParams = {
         to_name: "NikolenkoTE",
         from_name: values.name,
         from_email: values.email,
-        message: messageWithImages,
+        message: values.message,
+        photos_links: imagesHtml,
       };
 
-      emailjs.send(serviceID, templateID, templateParams, publicKey)
+      const sendEmailPromise = emailjs
+        .send(serviceID, templateID, templateParams, publicKey)
         .then((response) => {
-          console.log('SUCCESS!', response.status, response.text);
-          setShowModal(false);
+          console.log("SUCCESS!", response.status, response.text);
           formik.resetForm();
+          toast.success('This window will close now.', {
+            duration: 4500
+          }); 
+             return response;
+         
         })
         .catch((error) => {
-          console.error('FAILED...', error);
+          console.error("FAILED...", error);
+          toast.error('Failed to send message');
         });
-    }
-  });
 
+      toast.promise(sendEmailPromise, {
+        loading: 'Sending message...',
+        success: 'Message sent successfully.',
+        error: 'Failed to send message',
+      });
+
+      await sendEmailPromise;
+
+      setTimeout(() => {
+        setShowModal(false);
+      }, 5000);
+    },
+  });
+  useEffect(() => {
+    if (Object.keys(formik.errors).length > 0) {
+      toast.error(t("validation.error"));
+    }
+  }, [formik.errors, t]);
   const handleCancelClick = (event: React.MouseEvent) => {
     event.stopPropagation();
     setShowModal(false);
@@ -225,16 +272,34 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const selectedFiles = Array.from(event.target.files).slice(0, 10);
+      const allowedTypes = [
+        "image/svg+xml",
+        "image/png",
+        "image/jpeg",
+        "image/jpg",
+        "image/bmp",
+        "image/gif",
+      ];
+
+      const selectedFileNames = selectedFiles.map((file) => {
+        return {
+          name: file.name,
+          icon: allowedTypes.includes(file.type) ? 'check' : 'cross',
+          color: allowedTypes.includes(file.type) ? 'green' : 'red'
+        };
+      });
       setFiles(selectedFiles);
-      const selectedFileNames = selectedFiles.map((file) => file.name);
       setFileNames(selectedFileNames);
       formik.setFieldValue("files", selectedFiles);
+      formik.validateField('files');
+      formik.validateForm();
     }
   };
-  const input_name_email_message_style =
-    "peer block h-[58px] w-full rounded-md border border-solid border-neutral-300 bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:shadow-te-primary focus:outline-none peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]";
+  const input_name_email_style = "peer block min-h-[58px] h-full max-w-[390px] w-full rounded-md border border-solid border-neutral-300 bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:shadow-te-primary focus:outline-none peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]";
+  const input_message_style = "peer block min-h-[120px] h-full w-full rounded-md border border-solid border-neutral-300 bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:shadow-te-primary focus:outline-none peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]";
+
   const validation_error_message_style =
-    "w-auto px-2 pb-1 text-white mt-1 text-bold bg-red-600 bg-opacity-60 rounded-xl whitespace-wrap";
+    "max-w-[390px] w-auto px-2 pb-1 text-white mt-1 text-bold bg-red-600 bg-opacity-60 rounded-xl whitespace-wrap";
   const input_text_placeholder_style =
     "pointer-events-none absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-neutral-500 transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem] peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none ";
   const modal_label_style =
@@ -256,7 +321,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
           type="text"
           id="input_name"
           name="name"
-          className={input_name_email_message_style}
+          className={input_name_email_style}
           placeholder={t("text.modal.name")}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -280,7 +345,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
           id="input_email"
           name="email"
           form="novalidate"
-          className={input_name_email_message_style}
+          className={input_name_email_style}
           placeholder={t("text.modal.email")}
           value={formik.values.email}
           onChange={formik.handleChange}
@@ -311,7 +376,7 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
         <textarea
           id="input_message_area"
           name="message"
-          className={input_name_email_message_style}
+          className={input_message_style}
           placeholder={t("text.modal.message")}
           value={formik.values.message}
           onChange={formik.handleChange}
@@ -403,11 +468,48 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
               />
             </label>
           </div>
-          <div id="file_input_files_names" className="text-white ">
-            {fileNames.length > 0 && (
-              <p>{t("attached_files")}{fileNames.join(", ")}</p>
-            )}
-          </div>
+          {fileNames.length > 0 && (
+            <CarouselBackground>
+              <div id="file_input_files_names" className="text-white">
+                <ul>
+                  <p className="text-left uppercase" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-500 mr-1 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v6a1 1 0 102 0V5zm-1 10a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                    </svg>
+                    {t("attached_files")}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-5 mr-1 inline-block" viewBox="0 0 20 20">
+                      <path fill="#ff9540" d="M10 18a8 8 0 100-16 8 8 0 000 16z" />
+                      <path fill="white" d="M11 5a1 1 0 10-2 0v6a1 1 0 102 0V5zm-1 10a1 1 0 100-2 1 1 0 000 2z" />
+                    </svg>{t("delete_file")}
+                  </p>
+                  {fileNames.map((file, index) => (
+                    <li key={index} style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 mr-0.5 inline-block`} viewBox="0 0 20 20">
+                        {file.icon === 'check' ? (
+                          <>
+                            <path fill="white" d="M10 18a8 8 0 100-16 8 8 0 000 16z" />
+                            <path fill="#00D000" fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </>
+                        ) : (
+                          <>
+                            <path fill="white" d="M10 18a8 8 0 100-16 8 8 0 000 16z" />
+                            <path fill={file.color} fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm2.707-11.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293z" clipRule="evenodd" />
+                          </>
+                        )}
+                      </svg>
+                      <button style={{ background: 'none', border: 'none', padding: 0, margin: 0 }} onClick={(event) => handleRemoveFile(event, index)}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1 inline-block" viewBox="0 0 20 20">
+                          <path fill="#ff9540" d="M10 18a8 8 0 100-16 8 8 0 000 16z" />
+                          <path fill="white" d="M11 5a1 1 0 10-2 0v6a1 1 0 102 0V5zm-1 10a1 1 0 100-2 1 1 0 000 2z" />
+                        </svg>
+                      </button>
+                      {file.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </CarouselBackground>
+          )}
           {formik.touched.files && formik.errors.files ? (
             <div className={validation_error_message_style}>
               {formik.errors.files}
@@ -438,13 +540,14 @@ const NikolenkoTEBlockModal: React.FC<NikolenkoTEBlockModalProps> = ({
 
   const modal1plus1Style =
     "flex flex-col justify-center items-between ssm:grid ssm:grid-cols-1 ssm:gap-4 ssm:justify-self-center ssm:max grid pt-5 pb-10 grid-cols-1 sm:grid-cols-2 gap-4 justify-self-center max-h-screen overflow-y-auto overflow-x-auto";
-  
-    const modalContainerStyle =
+
+  const modalContainerStyle =
     "z-50 w-screen h-screen flex ssm:items-start md:items-center justify-center shadow-2xl p-4 bg-white bg-opacity-10 backdrop-blur-[15px] fixed top-0 left-0 ";
-  
-    return (
+
+  return (
     showModal && (
       <div data-te-modal-init id="modal_shadow" role="dialog" aria-modal="true">
+        <Toaster />
         <div data-te-modal-dialog-ref>
           <div
             id="modal_container"

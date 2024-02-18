@@ -55,6 +55,7 @@
      "About me": "About me"
   },
   "NikolenkoTEBlockModal": {
+    "validation.error": "Check entered data",
     "validation.modal.name.required": "Name is required",
     "validation.modal.email.required": "Email is required",
     "validation.modal.email.invalid":"Email is invalid",

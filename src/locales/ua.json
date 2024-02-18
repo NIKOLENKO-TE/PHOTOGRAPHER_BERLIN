@@ -55,6 +55,7 @@
     "About me": "Про мене"
   },
   "NikolenkoTEBlockModal": {
+    "validation.error": "Перевiрте даннi форми",
     "validation.modal.name.required": "Необхідно вказати ім'я",
     "validation.modal.email.required": "Необхідно вказати Email",
     "validation.modal.email.invalid": "Помилка",
@@ -80,7 +81,8 @@
     "text.modal.click.upload.1": "Натисніть, щоб завантажити ",
     "text.modal.click.upload.2": "або перетягніть і вiдпустіть",
     "text.modal.click.upload.3": "Допустимі формати файлів: SVG, PNG, JPG, BMP або GIF",
-    "attached_files": "Доданi фото: "
+    "attached_files": "Статус фото",
+    "delete_file": "Видалити фото"
   },
   "Footer": {
     "nikolenko_te": "НIКОЛЕНКО Тимофій",
