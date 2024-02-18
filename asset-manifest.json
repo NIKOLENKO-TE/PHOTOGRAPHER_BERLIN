@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PHOTOGRAPHER_BERLIN/static/css/main.b0caa8c2.css",
-    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.ddc7f4d5.js",
+    "main.css": "/PHOTOGRAPHER_BERLIN/static/css/main.19e176bd.css",
+    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.e07c0d97.js",
     "static/media/01.jpg": "/PHOTOGRAPHER_BERLIN/static/media/01.a2b6888253805ceb54d7.jpg",
     "static/media/00.jpg": "/PHOTOGRAPHER_BERLIN/static/media/00.19a51ac398e0cfada8eb.jpg",
     "static/media/13.jpg": "/PHOTOGRAPHER_BERLIN/static/media/13.63a8077b78f84a670972.jpg",
@@ -74,15 +74,17 @@
     "static/media/4.2.magic.png": "/PHOTOGRAPHER_BERLIN/static/media/4.2.magic.1f66d216655c53d0c5a4.png",
     "static/media/4.1.magic.png": "/PHOTOGRAPHER_BERLIN/static/media/4.1.magic.2a2f2c712703c14b42d4.png",
     "static/media/1.send.png": "/PHOTOGRAPHER_BERLIN/static/media/1.send.0078878c80fca0337cc5.png",
+    "static/media/pause.svg": "/PHOTOGRAPHER_BERLIN/static/media/pause.5bdd41b07f46c72001a3196cf6b2a2ff.svg",
     "index.html": "/PHOTOGRAPHER_BERLIN/index.html",
     "static/media/enFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/enFlag.b05fba118967ceb0b35db3f4559cb385.svg",
+    "static/media/play.svg": "/PHOTOGRAPHER_BERLIN/static/media/play.f15cce35b05166d56b7afefcf3df5746.svg",
     "static/media/deFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/deFlag.202dbcc02e84dae3ba8c022622d53e43.svg",
     "static/media/uaFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/uaFlag.bf6ea1ce28490b2c476ed39c999e1f24.svg",
-    "main.b0caa8c2.css.map": "/PHOTOGRAPHER_BERLIN/static/css/main.b0caa8c2.css.map",
-    "main.ddc7f4d5.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.ddc7f4d5.js.map"
+    "main.19e176bd.css.map": "/PHOTOGRAPHER_BERLIN/static/css/main.19e176bd.css.map",
+    "main.e07c0d97.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.e07c0d97.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0caa8c2.css",
-    "static/js/main.ddc7f4d5.js"
+    "static/css/main.19e176bd.css",
+    "static/js/main.e07c0d97.js"
   ]
 }
