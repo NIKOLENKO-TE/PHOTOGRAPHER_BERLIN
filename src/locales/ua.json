@@ -21,7 +21,9 @@
   "Hospital": {
     "hospital": "ШПИТАЛЬ",
     "age18": "Підтвердіть, що вам є 18 років",
-    "war_medicine": "ВІЙСЬКОВА МЕДИЦИНА"
+    "war_medicine": "ВІЙСЬКОВА МЕДИЦИНА",
+    "hospital.age.success": "Ви підтвердили ваш вік",
+    "hospital.age.error": "Ви не підтвердили ваш вік"
   }, 
   "Childrens": {
     "childrens_title": "Дитячі Фотосесії"
@@ -55,12 +57,19 @@
     "About me": "Про мене"
   },
   "NikolenkoTEBlockModal": {
-    "validation.error": "Перевiрте даннi форми",
+    "validation.toast.form.check.entered.data": "Перевiрте даннi форми",
+    "validation.toast.form.uploading.image": "Завантаження зображення...", 
+    "validation.toast.form.image.uploaded": "Зображення завантажено", 
+    "validation.toast.form.error.while.uploading.image": "Помилка під час завантаження зображення", 
+    "validation.toast.form.send.message": "Не вдалося надіслати повідомлення", 
+    "validation.toast.form.sending.message": "Надсилання повідомлення...", 
+    "validation.toast.form.message.sent.successfully": "Повідомлення успішно надіслано.", 
+    "validation.toast.form.window.will.close": "Це вікно зараз закриється.",
+    
     "validation.modal.name.required": "Необхідно вказати ім'я",
     "validation.modal.email.required": "Необхідно вказати Email",
     "validation.modal.email.invalid": "Помилка",
     "validation.modal.email.invalid2": "Адреса електронної пошти недійсна",
-
     "validation.modal.email.invalid.dot": "вiдсутня точка [.] пiсля знаку [@] ",
     "validation.modal.email.invalid.at": "треба додати [@]",
     "validation.modal.email.invalid.domain": "занадто короткий домен",
@@ -68,7 +77,6 @@
     "validation.modal.email.invalid.space": "не повино буди пробілів",
     "validation.modal.email.invalid.spec.characters": "не повино бути спеціальних символів як ,:;!#%*()=+{}[]/?~^&<>",
     "validation.modal.email.invalid.layout": "допустимі лише лiтери латинського алфавіту",
-
     "validation.modal.file.type.invalid": "Неприпустимий тип файлу",
     "validation.modal.message.required": "Необхідно додати текст повідомлення",
     "button.modal.cancel": "Скасувати",
@@ -80,7 +88,7 @@
     "text.modal.attach.photo": "Прикріпіть  фотографії",
     "text.modal.click.upload.1": "Натисніть, щоб завантажити ",
     "text.modal.click.upload.2": "або перетягніть і вiдпустіть",
-    "text.modal.click.upload.3": "Допустимі формати файлів: SVG, PNG, JPG, BMP або GIF",
+    "text.modal.click.upload.3": "Допустимі формати файлів: PNG, JPG, BMP або GIF",
     "attached_files": "Статус фото",
     "delete_file": "Видалити фото"
   },

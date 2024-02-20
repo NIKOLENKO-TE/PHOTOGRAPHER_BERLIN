@@ -21,14 +21,14 @@
   "Hospital": {
     "hospital": "HOSPITAL",
     "age18": "Bestätigen Sie, dass Sie 18 Jahre alt sind",
-    "war_medicine": "KRIEGSMEDIZIN"
+    "war_medicine": "KRIEGSMEDIZIN",
+    "hospital.age.success": "Sie haben Ihr Alter bestätigt",
+    "hospital.age.error": "Sie haben Ihr Alter nicht bestätigt"
   }, 
   "Childrens": {
     "childrens_title": "Fotosessions für Kinder"
   },
-  "ImageRestoration": {
-    "before_after_text": "BEFORE           AFTER"
-  },
+
   "Photosessions": {
     "photosessions_title": "Fotosessions"
   },
@@ -55,7 +55,14 @@
      "About me": "Über mich"
   },
   "NikolenkoTEBlockModal": {
-    "validation.error": "Fehler",
+    "validation.toast.form.check.entered.data": "Überprüfen Sie die eingegebenen Daten", 
+    "validation.toast.form.uploading.image": "Bild wird hochgeladen...", 
+    "validation.toast.form.image.uploaded": "Bild hochgeladen", 
+    "validation.toast.form.error.while.uploading.image": "Fehler beim Hochladen des Bildes", 
+    "validation.toast.form.send.message": "Nachricht konnte nicht gesendet werden", 
+    "validation.toast.form.sending.message": "Nachricht wird gesendet...", 
+    "validation.toast.form.message.sent.successfully": "Nachricht erfolgreich gesendet.", 
+    "validation.toast.form.window.will.close": "Dieses Fenster wird jetzt geschlossen.",
     "validation.modal.name.required": "Name ist erforderlich",
     "validation.modal.email.required": "E-Mail ist erforderlich",
     "validation.modal.email.invalid":"E-Mail ist ungültig",
@@ -70,7 +77,7 @@
     "text.modal.attach.photo":"Hängen Sie Ihre Fotos an",
     "text.modal.click.upload.1":"Klicken Sie zum Hochladen ",
     "text.modal.click.upload.2":"oder per Drag & Drop",
-    "text.modal.click.upload.3":"Akzeptable Dateiformate sind SVG, PNG, JPG, BMP oder GIF",
+    "text.modal.click.upload.3":"Akzeptable Dateiformate sind PNG, JPG, BMP oder GIF",
     "attached_files": "Anhängen von Dateien"
    },
    "Footer": {

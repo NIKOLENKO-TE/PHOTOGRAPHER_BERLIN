@@ -7,7 +7,7 @@ import HorizontalSlider, {
   getPerHorizontalPageValue,
 } from "./sliders/HorizontalSlider";
 import Title from "./sliders/Title";
-import CarouselBackground from "./sliders/CarouselBackground";
+import SiteContainerBackground from "./sliders/SiteContainerBackground";
 import HorizontalSliderPreview from "./sliders/HorizontalSliderPreview";
 
 const Flowers = forwardRef<HTMLDivElement>((_, ref) => {
@@ -30,7 +30,7 @@ const Flowers = forwardRef<HTMLDivElement>((_, ref) => {
 
   return (
     <div ref={ref}>
-      <CarouselBackground id={`category${1}`} data-testid="flowers-wrapper">
+      <SiteContainerBackground id={`category${1}`} data-testid="flowers-wrapper">
         <Title text={t("flowers_title")} />
         <HorizontalSlider
           photos={sliders}
@@ -44,7 +44,7 @@ const Flowers = forwardRef<HTMLDivElement>((_, ref) => {
           onPreviewClick={handlePreviewClick}
           getPerPageValue={getPerHorizontalPageValue}
         />
-      </CarouselBackground>
+      </SiteContainerBackground>
     </div>
   );
 });

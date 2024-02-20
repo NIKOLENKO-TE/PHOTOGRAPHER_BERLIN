@@ -10,7 +10,7 @@ import VerticalSlider, {
   getPerVerticalPageValue,
 } from "./sliders/VerticalSlider";
 import Title from "./sliders/Title";
-import CarouselBackground from "./sliders/CarouselBackground";
+import SiteContainerBackground from "./sliders/SiteContainerBackground";
 import HorizontalSliderPreview from "./sliders/HorizontalSliderPreview";
 import VerticalSliderPreview from "./sliders/VerticalSliderPreview";
 
@@ -49,7 +49,7 @@ const Weddings = forwardRef<HTMLDivElement>((_, ref) => {
 
   return (
     <div ref={ref}>
-      <CarouselBackground id={`category${0}`} data-testid="weddings-wrapper">
+      <SiteContainerBackground id={`category${0}`} data-testid="weddings-wrapper">
         <Title text={t("weddings")} data-testid="weddings_title" />
         <div className="flex ssm:flex-wrap md:flex-nowrap ">
           <div
@@ -91,7 +91,7 @@ const Weddings = forwardRef<HTMLDivElement>((_, ref) => {
             />
           </div>
         </div>
-      </CarouselBackground>
+      </SiteContainerBackground>
     </div>
   );
 });

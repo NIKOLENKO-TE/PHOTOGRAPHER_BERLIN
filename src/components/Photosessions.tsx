@@ -6,7 +6,7 @@ import { photosessionsHorizontal, photosessionsVertical } from "../data/data";
 import HorizontalSlider, { getPerHorizontalPageValue } from './sliders/HorizontalSlider';
 import VerticalSlider, { getPerVerticalPageValue } from './sliders/VerticalSlider';
 import Title from './sliders/Title';
-import CarouselBackground from './sliders/CarouselBackground';
+import SiteContainerBackground from './sliders/SiteContainerBackground';
 import HorizontalSliderPreview from './sliders/HorizontalSliderPreview';
 import VerticalSliderPreview from './sliders/VerticalSliderPreview';
 
@@ -41,7 +41,7 @@ const Photosessions = forwardRef<HTMLDivElement>((_, ref) => {
 
   return (
     <div ref={ref}>
-    <CarouselBackground id={`category${4}`} data-testid="photosessions-wrapper">
+    <SiteContainerBackground id={`category${4}`} data-testid="photosessions-wrapper">
       <Title text={t("photosessions_title")} data-testid="photosessions_title"/>
       <div className="flex ssm:flex-wrap md:flex-nowrap ">
         <div id="Vertical" className="ssm:basis-1/1 sm:basis-1/3 md:basis-1/4 pr-2 ssm:pb-2 sm:pb-0 md:pb-0">
@@ -54,7 +54,7 @@ const Photosessions = forwardRef<HTMLDivElement>((_, ref) => {
           <HorizontalSliderPreview photos={slidersHorizontal} selectedSlide={selectedHorizontalSlide} onPreviewClick={handleHorizontalPreviewClick} getPerPageValue={getPerHorizontalPageValue} />
         </div></div>
       </div>
-    </CarouselBackground>
+    </SiteContainerBackground>
     </div>
   );
 });

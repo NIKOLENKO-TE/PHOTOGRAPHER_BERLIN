@@ -1,24 +1,25 @@
 // Hospital.tsx
 import { forwardRef, useRef, useState, useMemo, useCallback } from "react";
+import { toast } from 'react-hot-toast';
 import { Splide } from "@splidejs/splide";
 import { useTranslation } from "react-i18next";
 import { hospitalPhotos } from "../data/data";
 import HorizontalSlider, { getPerHorizontalPageValue } from './sliders/HorizontalSlider';
 import Title from './sliders/Title';
-import CarouselBackground from './sliders/CarouselBackground';
+import SiteContainerBackground from './sliders/SiteContainerBackground';
 import HorizontalSliderPreview from './sliders/HorizontalSliderPreview';
 
 const Hospital = forwardRef<HTMLDivElement>((_, ref) => {
   const { t } = useTranslation("Hospital");
   const [selectedSlide] = useState(0);
   const splideInstanceRef = useRef<Splide | null>(null);
+  const [showConfirmation, setShowConfirmation] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
   const sliders = useMemo(() => (
     hospitalPhotos
       .map((photo) => photo?.img)
       .filter((img): img is string => img !== undefined)
   ), []);
-  const [showConfirmation, setShowConfirmation] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
 
   const handlePreviewClick = useCallback((index: number) => {
     if (splideInstanceRef.current) {
@@ -26,12 +27,20 @@ const Hospital = forwardRef<HTMLDivElement>((_, ref) => {
     }
   }, []);
 
-  const handleConfirm = () => {
+  const handleConfirm = (event: React.MouseEvent) => {
+    event.stopPropagation();
     setFadeOut(true);
     setTimeout(() => {
       setShowConfirmation(false);
       setFadeOut(false);
-    }, 900);
+      toast.success(t("hospital.age.success"));
+    }, 300);
+  };
+
+  const handleContainerClick = () => {
+    if (showConfirmation) {
+      toast.error(t("hospital.age.error"));
+    }
   };
 
   const buttonAge = (
@@ -43,15 +52,15 @@ const Hospital = forwardRef<HTMLDivElement>((_, ref) => {
   );
 
   return (
-    <div ref={ref}>
-      <CarouselBackground id={`category${6}`} data-testid="war_medicine-wrapper">
+    <div ref={ref} onClick={handleContainerClick}>
+      <SiteContainerBackground id={`category${6}`} data-testid="war_medicine-wrapper">
         <Title text={t("war_medicine")} data-testid="hospital_title" />
         {showConfirmation && (
           buttonAge
         )}
         <HorizontalSlider photos={sliders} selectedSlide={selectedSlide} setSplideInstance={splide => splideInstanceRef.current = splide} autoplay={false} />
         <HorizontalSliderPreview photos={sliders} selectedSlide={selectedSlide} onPreviewClick={handlePreviewClick} getPerPageValue={getPerHorizontalPageValue} />
-      </CarouselBackground>
+      </SiteContainerBackground>
     </div>
   );
 });

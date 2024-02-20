@@ -6,7 +6,7 @@ import iphone_photo_1 from "./img/iphones/FC_two_phones_1.png";
 import nikolenkote from "./img/NIKOLENKOTE_PHOTO_BW.png";
 import { useTranslation } from "react-i18next";
 import Title from './sliders/Title';
-import CarouselBackground from './sliders/CarouselBackground';
+import SiteContainerBackground from './sliders/SiteContainerBackground';
 
 const AboutMe = forwardRef<HTMLDivElement>((_, ref) => {
   const { t } = useTranslation("AboutMe");
@@ -47,7 +47,7 @@ const AboutMe = forwardRef<HTMLDivElement>((_, ref) => {
   );
   return (
     <div ref={ref}>
-      <CarouselBackground id={`category${7}`} data-testid="about-me-wrapper">
+      <SiteContainerBackground id={`category${7}`} data-testid="about-me-wrapper">
         <Title text={t("order_services")} data-testid="hospital_title" />
         <div className="w-flex h-flex justify-items-center max-w-[1500px] mx-auto grid items-center ssm:grid-cols-1 md:grid-cols-2 rounded-2xl">
           {AboutMeIphone}
@@ -60,7 +60,7 @@ const AboutMe = forwardRef<HTMLDivElement>((_, ref) => {
             {aboutMeOrderButton}
           </div>
         </div>
-      </CarouselBackground>
+      </SiteContainerBackground>
       <NikolenkoTEBlockModal
         key={showModal ? "modal-open" : "modal-closed"}
         showModal={showModal}

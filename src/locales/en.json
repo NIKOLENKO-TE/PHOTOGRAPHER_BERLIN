@@ -21,7 +21,9 @@
   "Hospital": {
     "hospital": "HOSPITAL",
     "age18": "Confirm that you are 18 years old",
-    "war_medicine": "WAR MEDICINE"
+    "war_medicine": "WAR MEDICINE",
+    "hospital.age.success": "You have verified your age",
+    "hospital.age.error": "You have not verified your age"
   }, 
   "Childrens": {
     "childrens_title": "Children's photo sessions"
@@ -55,7 +57,15 @@
      "About me": "About me"
   },
   "NikolenkoTEBlockModal": {
-    "validation.error": "Check entered data",
+    "validation.toast.form.check.entered.data": "Check entered data",
+    "validation.toast.form.uploading.image": "Uploading image...",
+    "validation.toast.form.image.uploaded": "Image uploaded",
+    "validation.toast.form.error.while.uploading.image": "Error while uploading image",
+    "validation.toast.form.send.message": "Failed to send message",
+    "validation.toast.form.sending.message": "Sending message...",
+    "validation.toast.form.message.sent.successfully": "Message sent successfully.",
+    "validation.toast.form.window.will.close": "This window will close now.",
+
     "validation.modal.name.required": "Name is required",
     "validation.modal.email.required": "Email is required",
     "validation.modal.email.invalid":"Email is invalid",
@@ -70,7 +80,7 @@
     "text.modal.attach.photo":"Attach your photos",
     "text.modal.click.upload.1":"Click to upload ",
     "text.modal.click.upload.2":"or  drag and drop",
-    "text.modal.click.upload.3":"Acceptable file formats are SVG, PNG, JPG, BMP or GIF",
+    "text.modal.click.upload.3":"Acceptable file formats are PNG, JPG, BMP or GIF",
     "attached_files": "Attached files"
    },
    "Footer": {

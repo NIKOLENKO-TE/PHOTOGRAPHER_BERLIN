@@ -1,5 +1,6 @@
 // App.tsx
 import React, { useEffect, useRef } from "react";
+import { Toaster } from 'react-hot-toast';
 import TopNav from "./components/TopNav.tsx";
 import Weddings from "./components/Weddings.tsx";
 import AboutMe from "./components/About_Me.tsx";
@@ -84,7 +85,9 @@ function App() {
   };
 
   return (
-    <div className="relative" style={{ overflow: "hidden" }}>
+   
+    <div className="relative" style={{ overflow: "hidden" }}> 
+    <Toaster />
       <div className="parallax-bg " style={dg_image_style} />
       <div className="relative bg-origin-content ">
         <TopNav /> 

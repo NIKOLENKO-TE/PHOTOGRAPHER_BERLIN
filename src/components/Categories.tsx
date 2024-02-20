@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { categoryPhotos } from "../data/data";
+import { toast } from 'react-hot-toast';
 
 const Categories = forwardRef<HTMLDivElement>((_, ref) => {
   const { t } = useTranslation("Categories");
@@ -11,7 +12,7 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
   const isLg = useMediaQuery({ minWidth: 1024 });
   const isMd = useMediaQuery({ minWidth: 667 });
   const isSd = useMediaQuery({ maxWidth: 666 });
-  const anotherRef = useRef(null); 
+  const anotherRef = useRef(null);
   let perPage = 7;
   if (isXl) {
     perPage = 6;
@@ -47,8 +48,8 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
         </span>
       </span>
     </h3>
-    
-);
+
+  );
 
   const categoriesPreview = (
     <div className="flex w-full ssm:p-1.5 md:p-2" data-testid="categories-preview">
@@ -64,11 +65,11 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
         {categoryPhotos.map((item, index) => (
           <SplideSlide key={item.id}>
             <div
-              className="flex justify-center smooth-scroll-animation" 
+              className="flex justify-center smooth-scroll-animation"
               onClick={() => {
                 const element = document.getElementById(`category${index}`);
                 if (element) {
-                  element.classList.add('smooth-scroll-animation'); 
+                  element.classList.add('smooth-scroll-animation');
                   window.scrollTo({
                     top: element.offsetTop - 5,
                     behavior: "smooth",
@@ -77,6 +78,7 @@ const Categories = forwardRef<HTMLDivElement>((_, ref) => {
                     element.classList.remove('smooth-scroll-animation');
                   }, 500);
                 }
+                toast.success(`${t(item.title)}`);
               }}
               data-testid={`category-${index}`}
             >

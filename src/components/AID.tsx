@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { aidPhotos } from "../data/data";
 import HorizontalSlider, { getPerHorizontalPageValue } from './sliders/HorizontalSlider';
 import Title from './sliders/Title';
-import CarouselBackground from './sliders/CarouselBackground';
+import SiteContainerBackground from './sliders/SiteContainerBackground';
 import HorizontalSliderPreview from './sliders/HorizontalSliderPreview';
 
 const AID = forwardRef<HTMLDivElement>((_, ref) => {
@@ -25,11 +25,11 @@ const AID = forwardRef<HTMLDivElement>((_, ref) => {
   }, []);
   return (
     <div ref={ref}>
-    <CarouselBackground  id={`category${5}`} data-testid="aid-wrapper" >
+    <SiteContainerBackground  id={`category${5}`} data-testid="aid-wrapper" >
       <Title text={t("aid_title")} data-testid="aid_title"/>
       <HorizontalSlider photos={sliders} selectedSlide={selectedSlide} setSplideInstance={splide => splideInstanceRef.current = splide} />
       <HorizontalSliderPreview photos={sliders} selectedSlide={selectedSlide} onPreviewClick={handlePreviewClick} getPerPageValue={getPerHorizontalPageValue} />
-    </CarouselBackground>
+    </SiteContainerBackground>
     </div>
     );
   });

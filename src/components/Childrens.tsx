@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { childrensPhotos } from "../data/data";
 import HorizontalSlider, { getPerHorizontalPageValue } from './sliders/HorizontalSlider';
 import Title from './sliders/Title';
-import CarouselBackground from './sliders/CarouselBackground';
+import SiteContainerBackground from './sliders/SiteContainerBackground';
 import HorizontalSliderPreview from './sliders/HorizontalSliderPreview';
 
 const Childrens = forwardRef<HTMLDivElement>((_, ref) => {
@@ -26,11 +26,11 @@ const Childrens = forwardRef<HTMLDivElement>((_, ref) => {
 
   return (
     <div ref={ref}>
-      <CarouselBackground id={`category${2}`} data-testid="childrens-wrapper">
+      <SiteContainerBackground id={`category${2}`} data-testid="childrens-wrapper">
         <Title text={t("childrens_title")} data-testid="childrens_title" />
         <HorizontalSlider photos={sliders} selectedSlide={selectedSlide} setSplideInstance={splide => splideInstanceRef.current = splide} autoplay={false} />
         <HorizontalSliderPreview photos={sliders} selectedSlide={selectedSlide} onPreviewClick={handlePreviewClick} getPerPageValue={getPerHorizontalPageValue} />
-      </CarouselBackground>
+      </SiteContainerBackground>
     </div>
   );
 });
