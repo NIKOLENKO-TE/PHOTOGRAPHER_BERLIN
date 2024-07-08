@@ -103,13 +103,13 @@ const TopMailButton: React.FC<{ onClick: () => void }> = (
       onClick={props.onClick}
     >
       <MdMarkEmailUnread className={emailIcon} />
-      <span className={emailIconStyle}>nikolenkote@gmail.com</span>
+      <span className={emailIconStyle}>email@gmail.com</span>
     </button>
   );
 };
 
 const TopPhoneButton = () => {
-  const phoneNumber = "+491605945127";
+  const phoneNumber = "+1234567890";
   const handlePhoneClick = () => {
     if (window.location && window.location.href) {
       window.location.href = `tel:${phoneNumber}`;
