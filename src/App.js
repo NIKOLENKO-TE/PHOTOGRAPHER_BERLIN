@@ -89,7 +89,7 @@ function App() {
     <div className="relative" style={{ overflow: "hidden" }}> 
     <Toaster />
       <div className="parallax-bg " style={dg_image_style} />
-      <div className="relative bg-origin-content ">
+      <div className="relative bg-origin-content">
         <TopNav /> 
         <Categories scrollToBlock={scrollToBlock} />
         <Weddings ref={weddingRef} />

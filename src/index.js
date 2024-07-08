@@ -10,7 +10,7 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .use(LanguageDetector) // add browser language detection
   .init({
-    lng: localStorage.getItem('selectedLanguage') || 'ua', // set initial language
+    lng: localStorage.getItem('selectedLanguage') || 'en', // set default language
     resources: {
       en: require('./locales/en.json'), // Use require to import JSON files
       de: require('./locales/de.json'),
