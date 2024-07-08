@@ -25,3 +25,5 @@ src/components/img/Featured/original.rar
 src/components/img/Restoration/original.rar
 node_modules/
 node_modules/.cache/
+/.idea/
+/.idea/
