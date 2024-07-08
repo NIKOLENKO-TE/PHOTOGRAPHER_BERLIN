@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b10299c-a56d-4b8e-a656-13a6f4c4cfec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gh-pages.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gh-pages.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration1Final.ce7eaa1aad445b841abc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration1Original.40d156fe2895999067c7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration2Final.277cdc1333bf7877f458.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration2Original.cddea52d46087c4d77de.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration3Final.1946ebb952961925d725.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration3Original.95d41b70ac1ceee477ed.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration4Original.cf8381ae2aefc31f8b11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration5Final.0b496429db132d1c8755.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration5Original.6e6a1f3de07de5f023a9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration6Final.8640f431f3e388a24469.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/Restoration6Original.356ae52cd6d0c72817f5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Restoration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Restoration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/i18n.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n.ts" afterDir="false" />
-    </list>
+    <list default="true" id="0b10299c-a56d-4b8e-a656-13a6f4c4cfec" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +98,7 @@
       <workItem from="1709926583593" duration="949000" />
       <workItem from="1709927557832" duration="27000" />
       <workItem from="1714739908455" duration="2060000" />
-      <workItem from="1720459154919" duration="842000" />
+      <workItem from="1720459154919" duration="1206000" />
     </task>
     <servers />
   </component>
