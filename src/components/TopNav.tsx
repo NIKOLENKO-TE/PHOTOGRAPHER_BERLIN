@@ -103,7 +103,7 @@ const TopMailButton: React.FC<{ onClick: () => void }> = (
       onClick={props.onClick}
     >
       <MdMarkEmailUnread className={emailIcon} />
-      <span className={emailIconStyle}>email@gmail.com</span>
+      <span className={emailIconStyle}>nikolenkote@gmail.com</span>
     </button>
   );
 };
@@ -122,7 +122,7 @@ const TopPhoneButton = () => {
       onClick={handlePhoneClick}
     >
       <PiPhoneCallFill className={phoneIcon} />
-      <span className={piPhoneCallFill}>160-1111-222</span>
+      <span className={piPhoneCallFill}>160-5945-127</span>
     </button>
   );
 };
