@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@types/node": "^20.11.17",
+    "@types/node": "^20.14.15",
     "@types/react-resizable": "^3.0.7",
     "@types/react-scroll": "^1.8.10",
     "@types/react-world-flags": "^1.4.5",
