@@ -1,6 +1,7 @@
+// HorizontalSliderPreview.tsx
 import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
-import SkeletonLoader from './SkeletonLoader'; // Импортируем компонент
+import SkeletonLoader from './SkeletonLoader'; // Import SkeletonLoader
 
 interface PreviewSliderHorizontalProps {
   photos: string[];
@@ -59,17 +60,23 @@ const HorizontalSliderPreview = ({ photos, selectedSlide, onPreviewClick, getPer
     });
   };
 
+  const commonStyles = "h-[100px] w-full object-cover rounded-2xl";
   return (
       <section id="thumbnail_carousel_preview" ref={previewSplideRef} className="splide">
         <div className="splide__track">
           <ul className="splide__list">
             {photos.map((photo, previewIndex) => (
-                <li key={previewIndex} className={`splide__slide`} onClick={() => onPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()}>
+                <li
+                    key={previewIndex}
+                    className="splide__slide"
+                    onClick={() => onPreviewClick(previewIndex)}
+                    onContextMenu={(e) => e.preventDefault()}
+                >
                   {loading[previewIndex] && (
-                      <SkeletonLoader className="h-[100px] w-full object-cover rounded-2xl" />
+                      <SkeletonLoader className={commonStyles} />
                   )}
                   <img
-                      className={`h-[100px] w-full object-cover rounded-2xl duration-300 ease-out ${loading[previewIndex] ? 'hidden' : ''}`}
+                      className={`duration-300 ease-out ${commonStyles} ${loading[previewIndex] ? 'hidden' : ''}`}
                       src={photo}
                       alt={`Preview ${previewIndex}`}
                       onLoad={() => handleImageLoad(previewIndex)}

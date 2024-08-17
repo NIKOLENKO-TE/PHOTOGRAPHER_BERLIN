@@ -1,7 +1,15 @@
 // SkeletonLoader.tsx
-const SkeletonLoader = ({ className }: { className?: string }) => {
+import React from "react";
+
+interface SkeletonLoaderProps {
+    className?: string;
+}
+
+const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({ className }) => {
     return (
-        <div className={`bg-gray-300 animate-pulse ${className}`}></div>
+        <div className={`animate-pulse bg-gray-300 ${className}`}>
+            {/* Пустой div для отображения скелетон-лоадера */}
+        </div>
     );
 };
 

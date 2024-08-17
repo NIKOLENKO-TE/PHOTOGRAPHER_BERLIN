@@ -59,7 +59,7 @@ const VerticalSliderPreview = ({ photos, selectedSlide, onPreviewClick, getPerPa
       return newLoading;
     });
   };
-
+  const commonImageStyles = "ssm:h-[200px] sm:h-[160px] md:h-[155px] lg:h-[200px] w-full object-cover rounded-2xl";
   return (
       <section id="vertical_thumbnail_carousel_preview" ref={previewSplideRef} className="splide ssm:-mr-2 sm:mr-0">
         <div className="splide__track">
@@ -67,10 +67,10 @@ const VerticalSliderPreview = ({ photos, selectedSlide, onPreviewClick, getPerPa
             {photos.map((photo, previewIndex) => (
                 <li key={previewIndex} className="splide__slide" onClick={() => onPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()}>
                   {loading[previewIndex] && (
-                      <SkeletonLoader className="ssm:h-[200px] sm:h-[160px] md:h-[155px] lg:h-[200px] w-full object-cover rounded-2xl" />
+                      <SkeletonLoader className={commonImageStyles} />
                   )}
                   <img
-                      className={`ssm:h-[200px] sm:h-[160px] md:h-[155px] lg:h-[200px] w-full object-cover rounded-2xl duration-300 ease-out ${loading[previewIndex] ? 'hidden' : ''}`}
+                      className={`duration-300 ease-out ${commonImageStyles} ${loading[previewIndex] ? 'hidden' : ''}`}
                       src={photo}
                       alt={`Preview ${previewIndex}`}
                       onLoad={() => handleImageLoad(previewIndex)}

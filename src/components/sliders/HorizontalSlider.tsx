@@ -62,7 +62,7 @@ const HorizontalSlider = ({ photos, selectedSlide, setSplideInstance, autoplay =
       return newLoading;
     });
   };
-
+  const commonStyles = "ssm:h-[440px] lg:h-[600px] xl:h-[700px] w-full object-cover rounded-lg";
   return (
       <section id="horizontal_thumbnail_carousel" ref={splideRef} className="splide pb-2 pt-0.5">
         <div className="splide__track rounded-2xl">
@@ -70,10 +70,10 @@ const HorizontalSlider = ({ photos, selectedSlide, setSplideInstance, autoplay =
             {photos.map((photo, slideIndex) => (
                 <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()}>
                   {loading[slideIndex] && (
-                      <SkeletonLoader className="ssm:h-[440px] lg:h-[600px] xl:h-[700px] w-full object-cover rounded-lg" />
+                      <SkeletonLoader className={commonStyles} />
                   )}
                   <img
-                      className={`ssm:h-[440px] lg:h-[600px] xl:h-[700px] w-full object-cover duration-300 ease-out ${loading[slideIndex] ? 'hidden' : ''}`}
+                      className={`duration-300 ease-out ${commonStyles} ${loading[slideIndex] ? 'hidden' : ''}`}
                       src={photo}
                       alt={`Slide ${slideIndex}`}
                       onLoad={() => handleImageLoad(slideIndex)}
