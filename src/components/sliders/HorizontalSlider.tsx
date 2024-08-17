@@ -1,6 +1,6 @@
-//HorizontalSlider.tsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
+import SkeletonLoader from './SkeletonLoader'; // Импортируем компонент
 
 interface SliderProps {
   photos: string[];
@@ -25,6 +25,7 @@ export const getPerHorizontalPageValue = () => {
 
 const HorizontalSlider = ({ photos, selectedSlide, setSplideInstance, autoplay = true }: SliderProps) => {
   const splideRef = useRef<HTMLDivElement | null>(null);
+  const [loading, setLoading] = useState<boolean[]>(Array(photos.length).fill(true));
 
   useEffect(() => {
     if (splideRef.current) {
@@ -39,33 +40,49 @@ const HorizontalSlider = ({ photos, selectedSlide, setSplideInstance, autoplay =
         autoplay,
         interval: 4000,
       });
-  
+
       setSplideInstance(splideInstance);
-  
+
       splideInstance.on("mounted", () => {
         splideInstance.go(selectedSlide);
       });
-  
+
       splideInstance.mount();
-  
+
       return () => {
         splideInstance.destroy();
       };
     }
   }, [selectedSlide, setSplideInstance, autoplay]);
 
+  const handleImageLoad = (index: number) => {
+    setLoading((prevLoading) => {
+      const newLoading = [...prevLoading];
+      newLoading[index] = false;
+      return newLoading;
+    });
+  };
+
   return (
-    <section id="horizontal_thumbnail_carousel" ref={splideRef} className="splide pb-2 pt-0.5">
-      <div className="splide__track rounded-2xl">
-        <ul className="splide__list">
-          {photos.map((photo, slideIndex) => (
-            <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()}>
-              <img className="ssm:h-[440px] lg:h-[600px] xl:h-[700px] w-full object-cover duration-300 ease-out" src={photo} alt={`Slide ${slideIndex}`} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+      <section id="horizontal_thumbnail_carousel" ref={splideRef} className="splide pb-2 pt-0.5">
+        <div className="splide__track rounded-2xl">
+          <ul className="splide__list">
+            {photos.map((photo, slideIndex) => (
+                <li key={slideIndex} className={`splide__slide`} onContextMenu={(e) => e.preventDefault()}>
+                  {loading[slideIndex] && (
+                      <SkeletonLoader className="ssm:h-[440px] lg:h-[600px] xl:h-[700px] w-full object-cover rounded-lg" />
+                  )}
+                  <img
+                      className={`ssm:h-[440px] lg:h-[600px] xl:h-[700px] w-full object-cover duration-300 ease-out ${loading[slideIndex] ? 'hidden' : ''}`}
+                      src={photo}
+                      alt={`Slide ${slideIndex}`}
+                      onLoad={() => handleImageLoad(slideIndex)}
+                  />
+                </li>
+            ))}
+          </ul>
+        </div>
+      </section>
   );
 };
 

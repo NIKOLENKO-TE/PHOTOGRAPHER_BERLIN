@@ -1,6 +1,6 @@
-//PreviewSliderHorizontal.tsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Splide } from "@splidejs/splide";
+import SkeletonLoader from './SkeletonLoader'; // Импортируем компонент
 
 interface PreviewSliderHorizontalProps {
   photos: string[];
@@ -11,6 +11,7 @@ interface PreviewSliderHorizontalProps {
 
 const HorizontalSliderPreview = ({ photos, selectedSlide, onPreviewClick, getPerPageValue }: PreviewSliderHorizontalProps) => {
   const previewSplideRef = useRef<HTMLDivElement | null>(null);
+  const [loading, setLoading] = useState<boolean[]>(Array(photos.length).fill(true));
 
   useEffect(() => {
     if (previewSplideRef.current) {
@@ -50,18 +51,34 @@ const HorizontalSliderPreview = ({ photos, selectedSlide, onPreviewClick, getPer
     }
   }, [selectedSlide, getPerPageValue, onPreviewClick]);
 
+  const handleImageLoad = (index: number) => {
+    setLoading((prevLoading) => {
+      const newLoading = [...prevLoading];
+      newLoading[index] = false;
+      return newLoading;
+    });
+  };
+
   return (
-    <section id="thumbnail_carousel_preview" ref={previewSplideRef} className="splide">
-      <div className="splide__track">
-        <ul className="splide__list">
-          {photos.map((photo, previewIndex) => (
-            <li key={previewIndex} className={`splide__slide`} onClick={() => onPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()}>
-              <img className="h-[100px] w-full object-cover rounded-2xl" src={photo} alt={`Preview ${previewIndex}`} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+      <section id="thumbnail_carousel_preview" ref={previewSplideRef} className="splide">
+        <div className="splide__track">
+          <ul className="splide__list">
+            {photos.map((photo, previewIndex) => (
+                <li key={previewIndex} className={`splide__slide`} onClick={() => onPreviewClick(previewIndex)} onContextMenu={(e) => e.preventDefault()}>
+                  {loading[previewIndex] && (
+                      <SkeletonLoader className="h-[100px] w-full object-cover rounded-2xl" />
+                  )}
+                  <img
+                      className={`h-[100px] w-full object-cover rounded-2xl duration-300 ease-out ${loading[previewIndex] ? 'hidden' : ''}`}
+                      src={photo}
+                      alt={`Preview ${previewIndex}`}
+                      onLoad={() => handleImageLoad(previewIndex)}
+                  />
+                </li>
+            ))}
+          </ul>
+        </div>
+      </section>
   );
 };
 
