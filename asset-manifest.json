@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PHOTOGRAPHER_BERLIN/static/css/main.d87d994a.css",
-    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.da8eaf8e.js",
+    "main.js": "/PHOTOGRAPHER_BERLIN/static/js/main.c06b8f25.js",
     "static/js/94.b66b93f6.chunk.js": "/PHOTOGRAPHER_BERLIN/static/js/94.b66b93f6.chunk.js",
     "static/js/856.1df5e78d.chunk.js": "/PHOTOGRAPHER_BERLIN/static/js/856.1df5e78d.chunk.js",
     "static/js/701.f1342ee1.chunk.js": "/PHOTOGRAPHER_BERLIN/static/js/701.f1342ee1.chunk.js",
@@ -74,7 +74,7 @@
     "static/media/deFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/deFlag.202dbcc02e84dae3ba8c022622d53e43.svg",
     "static/media/uaFlag.svg": "/PHOTOGRAPHER_BERLIN/static/media/uaFlag.bf6ea1ce28490b2c476ed39c999e1f24.svg",
     "main.d87d994a.css.map": "/PHOTOGRAPHER_BERLIN/static/css/main.d87d994a.css.map",
-    "main.da8eaf8e.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.da8eaf8e.js.map",
+    "main.c06b8f25.js.map": "/PHOTOGRAPHER_BERLIN/static/js/main.c06b8f25.js.map",
     "94.b66b93f6.chunk.js.map": "/PHOTOGRAPHER_BERLIN/static/js/94.b66b93f6.chunk.js.map",
     "856.1df5e78d.chunk.js.map": "/PHOTOGRAPHER_BERLIN/static/js/856.1df5e78d.chunk.js.map",
     "701.f1342ee1.chunk.js.map": "/PHOTOGRAPHER_BERLIN/static/js/701.f1342ee1.chunk.js.map",
@@ -87,6 +87,6 @@
   },
   "entrypoints": [
     "static/css/main.d87d994a.css",
-    "static/js/main.da8eaf8e.js"
+    "static/js/main.c06b8f25.js"
   ]
 }
