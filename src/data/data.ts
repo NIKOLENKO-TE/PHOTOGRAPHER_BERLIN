@@ -10,10 +10,10 @@ function importAll(r: __WebpackModuleApi.RequireContext) {
 }
 
 const weddingVerticalImages = importAll(
-    require.context("../components/img/Wedding/verticalWeddings", false, /\.(png|jpe?g|svg)$/)
+    require.context("../components/img/Wedding/verticalWeddings", false, /\.(gif|png|jpe?g|svg)$/)
 );
 const weddingHorizontalImages = importAll(
-    require.context("../components/img/Wedding/horizontalWeddings", false, /\.(png|jpe?g|svg)$/)
+    require.context("../components/img/Wedding/horizontalWeddings", false, /\.(gif|png|jpe?g|svg)$/)
 );
 const flowersImages = importAll(
     require.context("../components/img/Flowers", false, /\.(png|jpe?g|svg)$/)
@@ -28,7 +28,7 @@ const photosessionsHorizontalImages = importAll(
     require.context("../components/img/Photosessions/horizontalPhotos", false, /\.(png|jpe?g|svg)$/)
 );
 const photosessionsVerticalImages = importAll(
-    require.context("../components/img/Photosessions/verticalPhotos", false, /\.(png|jpe?g|svg)$/)
+    require.context("../components/img/Photosessions/verticalPhotos", false, /\.(gif|png|jpe?g|svg)$/)
 );
 const hospitalImages = importAll(
     require.context("../components/img/Hospital", false, /\.(png|jpe?g|svg)$/)

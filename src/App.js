@@ -12,7 +12,7 @@ const Weddings = lazy(() => import("./components/Weddings.tsx"));
 const AboutMe = lazy(() => import("./components/About_Me.tsx"));
 const Restoration = lazy(() => import("./components/Restoration.tsx"));
 const Flowers = lazy(() => import("./components/Flowers.tsx"));
-const Children = lazy(() => import("./components/Childrens.tsx"));
+const Childrens = lazy(() => import("./components/Childrens.tsx"));
 const Photosessions = lazy(() => import("./components/Photosessions.tsx"));
 const Hospital = lazy(() => import("./components/Hospital.tsx"));
 const AID = lazy(() => import("./components/AID.tsx"));
@@ -140,7 +140,7 @@ function App() {
           <Categories scrollToBlock={scrollToBlock} />
           <LazyLoadComponent component={Weddings} ref={weddingRef} />
           <LazyLoadComponent component={Flowers} ref={flowersRef} />
-          <LazyLoadComponent component={Children} ref={childrensRef} />
+          <LazyLoadComponent component={Childrens} ref={childrensRef} />
           <LazyLoadComponent component={Photosessions} ref={photosessionsRef} />
           <LazyLoadComponent component={AID} ref={aidRef} />
           <LazyLoadComponent component={Hospital} ref={hospitalRef} />
